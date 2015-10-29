@@ -9,6 +9,6 @@ describe Timeslot do
 
   context "associations" do
     it { is_expected.to belong_to :tutor}
-    it { is_expected.to have_one :student}
+    it { is_expected.to belong_to :student}
   end
 end
