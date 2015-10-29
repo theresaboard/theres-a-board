@@ -42,6 +42,7 @@ For DBC students who want to learn the mentor me site is a resource allocation t
 
 ### Community
 Members of the community we will most likely need to communicate with:
+
 - paid mentors
 - dbc staff
 - students
@@ -68,6 +69,7 @@ Members of the community we will most likely need to communicate with:
 
 ### Trade Offs
 Our priorities for when its down to the wire:
+
 1. Usability
 2. Code Quality
 3. Design
