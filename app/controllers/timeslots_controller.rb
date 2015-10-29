@@ -1,6 +1,6 @@
 class TimeslotsController < ApplicationController
   def new
-    timeslot = Timeslot.new
+    @timeslot = Timeslot.new
   end
 
   def build_timeslots
