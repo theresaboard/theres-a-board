@@ -24,6 +24,7 @@ For DBC students who want to learn the mentor me site is a resource allocation t
 - custom profile
 - sf/ chicago/ san diego
 - not testing view/angular
+
 ##### 2. IN Scope
 - notification - email - text - slack
 - scheduling
@@ -32,6 +33,7 @@ For DBC students who want to learn the mentor me site is a resource allocation t
 - paid mentor queue
 - paid mentor status
 - testing for rails api and database
+
 ##### 3. Unresolved
 - admin + permissions
 - cohorts from git
