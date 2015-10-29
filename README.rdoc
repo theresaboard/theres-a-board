@@ -1,28 +1,137 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Mentor Me
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+Why are we here?
+
+— —
+
+Enhance our environment
+
+
+
+For DBC students
+
+who want to learn
+
+the mentor me site
+
+is a resource allocation tool
+
+that matches people needing help with those willing to give it
+
+unlike the post its and board
+
+our product is realtime, visible universally accessible
+
+
+
+
+
+sell it as a student
+
+— —
+
+mentor me
+
+-help when you need it, want it, and without having to look for it
+
+-reinforce your learning so you get more from your time here and are better prepared for the workplace
+
+
+
+immediate
+online
+low friction (github)
+
+
+
+
+Scope
+
+——
+
+not
+
+==
+
+tinder
+feedback (student)
+chat
+custom profile
+sf/ chicago/ san diego
+not testing view/angular
+
+
+in
+
+==
+
+notification - email - text - slack
+scheduling
+auto profile
+user specified cohort
+paid mentor queue
+paid mentor status
+testing for rails api and database
+
+
+unresolved
+
+==
+
+admin + permissions
+cohorts from git
+authentication
+rating
+
+
+
+
+community
+
+— —
+
+paid mentors
+dbc staff
+students
+github
+heroku
+auth0
+circleCI
+envato
+erin
+
+
+technical stuff
+
+— —
+
+angular - json - auth0(included in rails api as well) - github
+rails api - send grid - sms - slack#
+postgres
+heroku
+
+
+scary shit
+
+— —
+
+dont know angular
+david is possibly homeless
+everyone pulling weight
+lack of communication
+halloween
+exhaustion
+
+
+trade offs
+
+— —
+
+code quality 2
+scope 4
+testing 5
+usability 1
+design 3
+optimization 6
