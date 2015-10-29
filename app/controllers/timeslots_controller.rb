@@ -1,7 +1,4 @@
 class TimeslotsController < ApplicationController
-  def new
-    @timeslot = Timeslot.new
-  end
 
   def build_timeslots
     @timeslots = []
@@ -12,6 +9,7 @@ class TimeslotsController < ApplicationController
   end
 
   def create
+    build_timeslots
     if @timeslots.save
       render json: @timeslots
     else
