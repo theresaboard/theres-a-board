@@ -13,16 +13,21 @@ $(function(){
       right: 'month,agendaWeek,agendaDay'
     },
     editable: true,
-    eventLimit: true
-    // eventClick: function(event, jsEvent, view) {
-    //       //set the values and open the modal
-    //       debugger;
-    //       $("#eventInfo").html(event.description);
-    //       $("#eventLink").attr('href', event.url);
-    //       $("#eventContent").dialog({ modal: true, title: event.title });
-        // }
+    eventLimit: true,
+    selectable: true,
+    select: function(start, end, allDay, ev) {
+      //datetime object can be accessed by jquery method _d
+      //start._d
+      console.log(start);
+      console.log(end);
+      console.log(ev.data);
+    },
+    eventClick: function(event, jsEvent, view) {
+      //datetime object can be accessed by jquery method _d
+      //event._d
+          //set the values and open the modal
+    }
   });
-  $('new_timeslot_button').click(function(){});
   // var myCalendar = $('#my-calendar-id');
   // myCalendar.fullCalendar();
   // var myEvent = {
