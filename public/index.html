@@ -4,14 +4,23 @@
 <html>
 <head>
   <title>My Page</title>
-
   <link rel='stylesheet' href='fullcalendar.css' />
   <script src='jquery-2.1.4.min.js'></script>
+  <script src='jquery-ui.min.js'></script>
+  <link rel='stylesheet' href='jquery-ui.min.css' />
   <script src='moment.min.js'></script>
   <script src='fullcalendar.js'></script>
   <script src="junk.js"></script>
 </head>
 <body>
+  <form method="post" action="/api/timeslots">
+    <label for="timeslot_start">timeslot:</label>
+      <!-- DateTime.now.strftime("%m/%d/%Y/%T/%z") ? -->
+      <input id="timeslot_start" name="timeslot" type="text" placeholder="datetime object">
+      <label for="tutor_name">name:</label>
+      <input id="tutor_name" name="name" type="text" value="" > </input>
+      <input type="submit" value="create" class="button">
+  </form>
   <div id='calendar'></div>
 </body>
 </html>

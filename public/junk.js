@@ -13,18 +13,16 @@ $(function(){
       right: 'month,agendaWeek,agendaDay'
     },
     editable: true,
-    eventLimit: true,
-    eventRender: function(event, element) {
-        element.qtip({
-            content: event.description
-        });
-    },
-    eventClick: function(event) {
-            // opens events in a popup window
-            window.open(event.url, 'gcalevent', 'width=700,height=600');
-            return false;
-        }
+    eventLimit: true
+    // eventClick: function(event, jsEvent, view) {
+    //       //set the values and open the modal
+    //       debugger;
+    //       $("#eventInfo").html(event.description);
+    //       $("#eventLink").attr('href', event.url);
+    //       $("#eventContent").dialog({ modal: true, title: event.title });
+        // }
   });
+  $('new_timeslot_button').click(function(){});
   // var myCalendar = $('#my-calendar-id');
   // myCalendar.fullCalendar();
   // var myEvent = {
