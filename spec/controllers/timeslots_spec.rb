@@ -10,19 +10,19 @@ describe Api::TimeslotsController do
 
   describe '#create' do
     it 'should exist' do
-      post :create, { timeslots: [timeslot] }
+      post :create, { timeslot: timeslot['start'] }
       expect(response).to be_success
     end
 
     it 'should be able to create a new timeslot' do
       expect do
-        post :create, { timeslots: [timeslot] }
+        post :create, { timeslot: timeslot['start'] }
       end.to change{Timeslot.count}.by(1)
     end
 
     it 'should not be able to create a new timeslot with invalid data' do
       expect do
-        post :create, { timeslots: [] }
+        post :create, { timeslot: nil }
       end.to change{Timeslot.count}.by(0)
     end
   end
