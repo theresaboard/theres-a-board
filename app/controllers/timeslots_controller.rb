@@ -1,4 +1,9 @@
 class TimeslotsController < ApplicationController
+  def index
+    @timeslots = Timeslot.all
+    render json: @timeslots
+  end
+
   def create
     current_user.timeslots.build(params[:timeslots])
     if current_user.save
