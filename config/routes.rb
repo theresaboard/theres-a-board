@@ -4,11 +4,14 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-    get "api/hello" => "hello_world#hello"
-
+  get "api/hello" => "hello_world#hello"
 
   root :to => "angular#index"
   get "*path" => "angular#index"
+
+  namespace :api, defaults: {format: :json} do
+    resources :timeslots, only: [:create]
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

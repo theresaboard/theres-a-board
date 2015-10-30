@@ -1,14 +1,12 @@
 # Mentor Me
 
 ###  Why are we here?
-Enhance our environment
+To enhance DBC's learning environment.
 
 ### Who is this for?
-For DBC students who want to learn the mentor me site is a resource allocation tool that matches people needing help with those willing to give it unlike the post its and board our product is realtime, visible universally accessible
+For DBC students who want to learn, the mentor me site is a resource allocation tool that matches people needing help with those willing to give it.  Unlike the current post-its and whiteboard system, our product is realtime, visible, universally accessible
 
-### Sell it as a student:
-
-##### Mentor Me
+### Selling points:
 
 1. Help when you need it, want it, and without having to look for it
 2. Reinforce your learning so you get more from your time here and are better prepared for the workplace
@@ -24,6 +22,7 @@ For DBC students who want to learn the mentor me site is a resource allocation t
 - custom profile
 - sf/ chicago/ san diego
 - not testing view/angular
+
 ##### 2. IN Scope
 - notification - email - text - slack
 - scheduling
@@ -32,6 +31,7 @@ For DBC students who want to learn the mentor me site is a resource allocation t
 - paid mentor queue
 - paid mentor status
 - testing for rails api and database
+
 ##### 3. Unresolved
 - admin + permissions
 - cohorts from git
@@ -40,6 +40,7 @@ For DBC students who want to learn the mentor me site is a resource allocation t
 
 ### Community
 Members of the community we will most likely need to communicate with:
+
 - paid mentors
 - dbc staff
 - students
@@ -56,7 +57,7 @@ Members of the community we will most likely need to communicate with:
 - postgres
 - heroku
 
-### Scary Shit
+### Scary Stuff
 - We don't know angular
 - David is possibly homeless
 - Everyone pulling their weight
@@ -66,6 +67,7 @@ Members of the community we will most likely need to communicate with:
 
 ### Trade Offs
 Our priorities for when its down to the wire:
+
 1. Usability
 2. Code Quality
 3. Design
