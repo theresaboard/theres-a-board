@@ -13,6 +13,17 @@ class Api::TimeslotsController < ApplicationController
     end
   end
 
+  def update
+    @timeslot = Timeslot.find_by(id: safe_params[:id])
+    @timeslot.student_id = current_user.id
+    if @timeslot.save
+      render json: { message: 'success' }
+    else
+      @errors = @timeslot.errors.full_messages
+      render json: @errors
+    end
+  end
+
   private
   def build_params
     params[:timeslots].each do |timeslot|
@@ -24,6 +35,6 @@ class Api::TimeslotsController < ApplicationController
   end
 
   def safe_params
-    params.permit(:start)
+    params.permit(:start, :id)
   end
 end

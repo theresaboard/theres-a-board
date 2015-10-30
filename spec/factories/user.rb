@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory(:user) do
-    name { Faker::Internet.user_name }
+  factory(:user, aliases: [:tutor, :student]) do
+    name { Faker::Name.name }
   end
 end
