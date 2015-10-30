@@ -8,8 +8,9 @@ var app = angular.module('myApp', [
   'myApp.view2',
   'myApp.version',
 ]).
-config(['$routeProvider', function($routeProvider) {
+config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $routeProvider.otherwise({redirectTo: '/view2'});
+  $locationProvider.html5Mode(true);
 }]);
 
 

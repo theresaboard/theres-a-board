@@ -14,7 +14,7 @@ angular.module('myApp.view2', ['ngRoute', 'ngResource'])
    var doShit = function() {
     $http({
           method: 'GET',
-          url: 'api/hello'
+          url: 'api/timeslots'
       }).
       success(function(data, status, headers, config) {
           $scope.items = data;
