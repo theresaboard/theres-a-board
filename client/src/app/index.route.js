@@ -3,7 +3,7 @@
 
   angular
     .module('mentorMe')
-    .config(routerConfig);
+    .config(routerConfig)
 
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
