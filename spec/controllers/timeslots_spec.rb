@@ -10,7 +10,7 @@ describe Api::TimeslotsController do
   describe '#create' do
     it "should be able to create a new timeslot" do
       expect do
-        post :create, timeslot
+        post :'create', { timeslots: [timeslot] }
       end.to change{Timeslot.count}.by(1)
     end
   end

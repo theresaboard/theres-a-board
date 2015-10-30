@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root :to => "angular#index"
   get "*path" => "angular#index"
 
-  namespace :api do
+  namespace :api, default: {format: :json} do
     resources :timeslots, only: [:create]
   end
 
