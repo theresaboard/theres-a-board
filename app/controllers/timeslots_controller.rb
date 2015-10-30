@@ -5,18 +5,25 @@ class TimeslotsController < ApplicationController
   end
 
   def create
-    current_user.timeslots.build(params[:timeslots])
-    if current_user.save
+    if build_params
       status 200
     else
-      @errors = current_user.errors.full_messages
+      @errors = @timeslot.errors.full_messages
       render json: @errors
     end
   end
 
-  private:
+  private
+  def build_params
+    params[:timeslots].each do |timeslot|
+      @timeslot = Timeslot.new(safe_params)
+      @timeslot.tutor_id = current_user.id
+      return false unless @timeslot.save
+    end
+    true
+  end
 
   def safe_params
-    params.require(:timeslot).permit(:start, :tutor_id)
+    params.require(:timeslot).permit(:start)
   end
 end
