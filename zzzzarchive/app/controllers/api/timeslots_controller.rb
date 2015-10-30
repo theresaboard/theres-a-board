@@ -1,4 +1,4 @@
-class Api::TimeslotsController < ApplicationController
+class Api::TimeslotsController < ActionController::API
   def index
     @timeslots = Timeslot.all
     render json: @timeslots
