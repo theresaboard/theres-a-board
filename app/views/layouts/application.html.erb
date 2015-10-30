@@ -5,9 +5,10 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <%= render partial: "shared/head" %>
 </head>
 <body>
-
+<%= render partial: "shared/nav" %>
 <%= yield %>
 
 </body>
