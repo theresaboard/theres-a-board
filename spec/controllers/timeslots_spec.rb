@@ -14,5 +14,4 @@ describe Api::TimeslotsController do
       end.to change{Timeslot.count}.by(1)
     end
   end
-
 end
