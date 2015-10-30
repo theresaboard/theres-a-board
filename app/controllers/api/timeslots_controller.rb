@@ -8,7 +8,6 @@ class Api::TimeslotsController < ApplicationController
     timeslot = Timeslot.new(start: DateTime.parse(params[:timeslot]))
     timeslot.tutor_id = current_user.id
     if timeslot.save
-      binding.pry
       render json: { message: "I am the timeslot controller API and need to be fixed because I am a terrible route" }
     else
       @errors = current_user.errors.full_messages
