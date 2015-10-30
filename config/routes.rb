@@ -6,12 +6,20 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   get "api/hello" => "hello_world#hello"
 
+  get "api/timeslots" => "timeslots#index"
+
+  namespace :api, defaults: {format: :json} do
+    resources :timeslots, only: [:index, :create]
+  end
+
   root :to => "angular#index"
   get "*path" => "angular#index"
 
-  namespace :api, defaults: {format: :json} do
-    resources :timeslots, only: [:create]
-  end
+
+
+
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
