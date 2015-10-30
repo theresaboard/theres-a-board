@@ -13,13 +13,25 @@ $(function(){
       right: 'month,agendaWeek,agendaDay'
     },
     editable: true,
-    eventLimit: true
+    eventLimit: true,
+    eventRender: function(event, element) {
+        element.qtip({
+            content: event.description
+        });
+    },
+    eventClick: function(event) {
+            // opens events in a popup window
+            window.open(event.url, 'gcalevent', 'width=700,height=600');
+            return false;
+        }
   });
-
-  //catches click existing event
-  $('#calendar').on('click','.fc-content', function(){
-    var moment = $(this).fullCalendar('getDate');
-  });
-
-  // $('#calendar').fullCalendar( 'renderEvent', event [, stick ] )
+  // var myCalendar = $('#my-calendar-id');
+  // myCalendar.fullCalendar();
+  // var myEvent = {
+  //   title:"my new event",
+  //   allDay: true,
+  //   start: new Date(),
+  //   end: new Date()
+  // };
+  // myCalendar.fullCalendar( 'renderEvent', myEvent );
 });
