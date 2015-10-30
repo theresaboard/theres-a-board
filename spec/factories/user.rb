@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory(:user) do
-    name { Faker::Internet.user_name }
+    name { Faker::Name.name }
   end
 end
