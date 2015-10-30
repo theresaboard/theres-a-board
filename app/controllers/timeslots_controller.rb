@@ -14,7 +14,7 @@ class TimeslotsController < ApplicationController
     end
   end
 
-  private:
+  private
 
   def safe_params
     params.require(:timeslot).permit(:start, :tutor_id)
