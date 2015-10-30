@@ -1,22 +1,15 @@
 class TimeslotsController < ApplicationController
-
-  def build_timeslots
-    @timeslots = []
-    params[:timeslots].each.with_index do |timeslot, idx|
-      @timeslots << Timeslot.new(safe_params)
-      @timeslots[idx].tutor_id = current_user.id
-    end
-  end
-
   def create
-    build_timeslots
-    if @timeslots.save
-      render json: @timeslots
+    current_user.timeslots.build(params[:timeslots])
+    if current_user.save
+      status 200
     else
       @errors = current_user.errors.full_messages
       render json: @errors
     end
   end
+
+  private:
 
   def safe_params
     params.require(:timeslot).permit(:start, :tutor_id)
