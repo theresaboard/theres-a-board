@@ -5,20 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user_count = 5
+user_count = 25
 user_count.times do
-  User.create(name: Faker::Internet.user_name)
+  User.create(name: Faker::Name.name)
 end
 
 user_ids = User.ids
 
-10.times do
-  date = Date.today + rand(7) + 1
-  time = Time.now + rand(86400)
-  datetime = DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec, time.zone)
-  user_id = user_ids.sample
-  user_ids.delete(user_id)
-  student_id = user_ids.sample
-  Timeslot.create(start: datetime, tutor_id: user_ids.sample, student_id: student_id)
-  user_ids << user_id
+25.times do
+  date = Faker::Date.forward(7)
+  hour = rand(24)
+  half_hour = rand(2) == 1 ? 0 : 30
+  datetime = Time.local(date.year, date.month, date.day, hour, half_hour)
+  tutor_id = user_ids.sample
+  student_id = rand(2) == 1 ? (user_ids - [tutor_id]).sample : nil
+  Timeslot.create(start: datetime, tutor_id: tutor_id, student_id: student_id)
 end
