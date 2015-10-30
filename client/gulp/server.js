@@ -66,5 +66,8 @@ gulp.task('serve:e2e-dist', ['build'], function () {
   browserSyncInit(conf.paths.dist, []);
 });
 
+ gulp.task('serve:full-stack', ['rails', 'serve']);
 
-
+gulp.task('rails', function() {
+  exec("rails server -b 0.0.0.0");
+});
