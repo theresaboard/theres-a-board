@@ -26,25 +26,17 @@ describe Api::TimeslotsController do
       end.to change{Timeslot.count}.by(0)
     end
   end
+
   describe '#update' do
-    xit 'should exist' do
-      post :update, { timeslot: persisted_timeslot, start: DateTime.now }
+    let(:timeslot) { FactoryGirl.create(:timeslot) }
+
+    it 'should update a timeslot with valid data' do
+      expect {
+        post :update, { id: timeslot.id }
+      }.to change { timeslot.reload.student_id }.to(user.id)
       expect(response).to be_success
     end
 
-    xit 'should be able to update an existing timeslot' do
-      time_now = DateTime.now + 10
-      expect do
-        post :update, { timeslot: persisted_timeslot, start: time_now }
-      end.to change{persisted_timeslot.start}.from(persisted_timeslot.start).to(time_now)
-    end
-
-    xit 'should not be able to update an existing timeslot with invalid data' do
-      time_now = nil
-      expect do
-        post :update, { timeslot: persisted_timeslot, start: time_now }
-      end.to_not change{persisted_timeslot.start}.from(persisted_timeslot.start).to(time_now)
-    end
   end
 
 end
