@@ -15,6 +15,11 @@ class TimeslotsController < SecuredController
     end
   end
 
+  def show
+    @timeslot = Timeslot.find(params[:id])
+    render '/timeslots/show'
+  end
+
   private
 
   def safe_params
