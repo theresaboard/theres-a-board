@@ -1,7 +1,6 @@
 class Api::TimeslotsController < ApplicationController
   def index
     @timeslots = Timeslot.all
-    render json: @timeslots
   end
 
   def create
