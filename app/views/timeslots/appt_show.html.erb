@@ -1,7 +1,7 @@
 <!-- Modal Header -->
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal">&times;</button>
-  <h5 class="modal-title">Tutoring Session with <%= @timeslot.tutor.name.split(' ').first %></h5>
+  <h5 class="modal-title"><i class="icon-graduation"></i> &nbsp;Tutoring Session with <%= @timeslot.tutor.name.split(' ').first %></h5>
 </div>
 <!-- End Modal Header -->
 
@@ -11,7 +11,7 @@
   <!-- Time -->
   <div class="media">
     <div class="media-left media-middle">
-      <a href="#" class="btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm"></i></a>
+      <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm"></i></a>
     </div>
 
     <div class="media-left">
@@ -53,26 +53,13 @@
   <% end %>
   <!-- End Student -->
 
+</div>
 
-  <!-- Open -->
-  <div class="media">
-    <div class="media-left media-middle">
-      <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-xs btn-icon"><i class="icon-plus-circle2"></i></a>
-    </div>
-
-    <div class="media-left">
-      <h5 class="text-semibold no-margin">
-        Open
-        <small class="display-block no-margin">You can book this session!</small>
-      </h5>
-    </div>
-  </div>
-  <!-- End Open -->
-
-      <div class="modal-footer">
-        <button class="btn btn-link" data-dismiss="modal"><i class="icon-cross"></i> Close</button>
-        <%= link_to "Sign Up!", timeslot_path(@timeslot), method: :patch, class: "btn bg-primary" if @timeslot.open? %>
-      </div>
+<!-- Footer -->
+<div class="modal-footer text-center">
+  <%= link_to "Sign Up!", timeslot_path(@timeslot), method: :patch, class: "btn bg-success" if @timeslot.open? %>
+</div>
+<!-- Footer -->
 
 
 
