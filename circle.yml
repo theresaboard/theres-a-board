@@ -1,3 +1,8 @@
 machine:
   ruby:
     version: 2.2.1
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: mentor-me-dev
