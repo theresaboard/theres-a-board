@@ -5,7 +5,6 @@ class Api::TimeslotsController < SecuredController
 
   def create
     timeslot = Timeslot.new(safe_params)
-    binding.pry
     timeslot.tutor_id = current_user.id
     if timeslot.save
       render json: { message: 'post api timeslot' }
