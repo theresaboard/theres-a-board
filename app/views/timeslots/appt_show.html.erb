@@ -1,47 +1,66 @@
-<div class="col-lg-6">
-  <div class="panel panel-flat">
-    <h4 class="panel-heading">Mentoring Session</h4>
-    <div class="panel-body">
-      <p class="media-header">
-        Scheduled For: <%= @timeslot.start.strftime("%m/%d/%Y at %I:%M%p") %>
-      </p>
-        <div class="media">
-        <div class="media-left media-middle">
-          <%= image_tag @timeslot.tutor.image,
-              :class => 'img-circle' %>
-        </div>
-        <div class="media-body">
-          <div class="media-heading text-semibold">
-            <%= @timeslot.tutor.name %>
-          </div>
-          <span class="text-muted">Mentor</span>
-        </div>
-      </div>
-      <div class="media">
-        <div class="media-body">
-          <% if @timeslot.student_id.nil? %>
-            <div class="media-heading text-semibold">
-                This slot is still available!
-              </div>
-            <div class="media-left media-middle">
-              <%= link_to "Sign Up!", timeslot_path(@timeslot), method: :patch, class: "btn btn-primary" %>
-            </div>
-          <% else %>
-            <div class="media-left media-middle">
-              <%= image_tag @timeslot.student.image,
-              :class => 'img-circle' %>
-            </div>
-            <div class="media-body">
-              <div class="media-heading text-semibold">
-                <%= @timeslot.student.name %>
-              </div>
-              <span class="text-muted">Student</span>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      </div>
+<!-- Modal Header -->
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <h5 class="modal-title"><i class="icon-graduation"></i> &nbsp;Tutoring Session with <%= @timeslot.tutor.name.split(' ').first %></h5>
+</div>
+<!-- End Modal Header -->
+
+<!-- Modal Body -->
+<div class="modal-body">
+
+  <!-- Time -->
+  <div class="media">
+    <div class="media-left media-middle">
+      <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm"></i></a>
+    </div>
+
+    <div class="media-left">
+      <h5 class="text-semibold no-margin">
+        <%= @timeslot.start.strftime("%A at %I:%M%p") %>
+        <small class="display-block no-margin"><%= @timeslot.start.to_date.to_formatted_s(:long_ordinal) %></small>
+      </h5>
     </div>
   </div>
+  <!-- End Time -->
+
+  <!-- Tutor -->
+  <div class="media">
+    <div class="media-left media-middle">
+      <%= image_tag @timeslot.tutor.image, :class => 'img-circle' %>
+    </div>
+    <div class="media-body">
+      <div class="media-heading text-semibold">
+      <%= @timeslot.tutor.name %>
+      </div>
+      <span class="text-muted">Tutor</span>
+    </div>
+  </div>
+  <!-- End Tutor -->
+
+  <!-- Student -->
+  <% unless @timeslot.open? %>
+    <div class="media">
+      <div class="media-left media-middle">
+        <%= image_tag @timeslot.student.image, :class => 'img-circle' %>
+      </div>
+      <div class="media-body">
+        <div class="media-heading text-semibold">
+          <%= @timeslot.student.name %>
+        </div>
+        <span class="text-muted">Student</span>
+      </div>
+    </div>
+  <% end %>
+  <!-- End Student -->
+
 </div>
+
+<!-- Footer -->
+<div class="modal-footer text-center">
+  <%= link_to "Sign Up!", timeslot_path(@timeslot), method: :patch, class: "btn bg-success" if @timeslot.open? %>
+</div>
+<!-- Footer -->
+
+
+
 
