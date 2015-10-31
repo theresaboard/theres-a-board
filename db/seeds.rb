@@ -22,7 +22,7 @@ timeslots_count.times do
   hour = rand(24)
   half_hour = rand(2) == 1 ? 0 : 30
   datetime = Time.local(date.year, date.month, date.day, hour, half_hour)
-  tutor_id = user_ids.sample
-  student_id = rand(2) == 1 ? (user_ids - [tutor_id]).sample : nil
+  tutor_id, student_id = user_ids.sample(2)
+  student_id = nil if rand(2) == 1
   Timeslot.create(start: datetime, tutor_id: tutor_id, student_id: student_id)
 end
