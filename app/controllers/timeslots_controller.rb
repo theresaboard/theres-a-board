@@ -1,4 +1,9 @@
 class TimeslotsController < SecuredController
+  def show
+    @timeslot = Timeslot.find(params[:id])
+    render '/timeslots/show'
+  end
+
   def update
     @timeslot = Timeslot.find_by(id: safe_params[:id])
     @timeslot.student_id = current_user.id
