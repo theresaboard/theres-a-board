@@ -6,10 +6,9 @@ Rails.application.routes.draw do
   get   '/login', :to => 'sessions#new', :as => :login
   get   '/logout', :to => 'sessions#destroy', :as => :logout
 
-  resources :timeslots, only: [:update]
+  resources :timeslots, only: [:update, :show]
 
   namespace :api, defaults: {format: :json} do
     resources :timeslots, only: [:index, :create, :update]
   end
-
 end

@@ -1,0 +1,42 @@
+<div class="col-lg-6">
+  <div class="panel panel-flat">
+    <h4 class="panel-heading">Your Mentoring Session</h4>
+    <div class="panel-body">
+      <p class="media-header">
+        Scheduled For: <%= @timeslot.start.strftime("%m/%d/%Y at %I:%M%p") %>
+      </p>
+        <div class="media">
+        <div class="media-left media-middle">
+          <%= link_to( image_tag(@timeslot.tutor.image), :class => 'img-circle') %>
+        </div>
+        <div class="media-body">
+          <div class="media-heading text-semibold">
+            <%= @timeslot.tutor.name %>
+          </div>
+          <span class="text-muted">Your Mentor</span>
+        </div>
+      </div>
+      <div class="media">
+        <div class="media-body">
+          <% if @timeslot.student_id.nil? %>
+            <div class="media-left media-middle">
+              <button type="button" class="btn btn-primary">Sign Up!</button>
+            </div>
+          <% else %>
+            <div class="media-left media-middle">
+              <%= link_to( image_tag(@timeslot.student.image), :class => 'img-circle') %>
+            </div>
+            <div class="media-body">
+              <div class="media-heading text-semibold">
+                <%= @timeslot.student.name %>
+              </div>
+              <span class="text-muted">Student</span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
