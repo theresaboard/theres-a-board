@@ -7,4 +7,8 @@ class Timeslot < ActiveRecord::Base
   def end
     start + 30.minutes
   end
+
+  def open?
+    student.nil?
+  end
 end
