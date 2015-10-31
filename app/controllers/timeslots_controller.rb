@@ -22,7 +22,7 @@ class TimeslotsController < SecuredController
     elsif @timeslot.tutor_id == current_user.id
       render "tutor_appt_show"
     else
-      render :appt_show
+      render "appt_show"
     end
   end
 
