@@ -94,8 +94,9 @@ $(function() {
 
   CalendarShow.Controller.prototype.postTimeslot = function(element){
     var dateTime = ctrlr.createDateTime();
+    var loc = "need to be implemented";
     $.ajax({
-      data: { timeslot: dateTime },
+      data: {timeslot: {start: dateTime, location: loc}},
       type: 'POST',
       url: '/api/timeslots'
     }).then(function(response){
@@ -114,8 +115,8 @@ $(function() {
   CalendarShow.View.prototype.setupListeners = function(){
     $('#create-timeslot').on('click', function(e){
       e.preventDefault();
-      if ($('.timepicker').val() === ""){
-        alert('Please select a time.');
+      if ($('.timepicker').val() === "" || $('.datepicker').val() === ""){
+        alert('Please select a date and time.');
       }
       else{
         ctrlr.postTimeslot(this);
