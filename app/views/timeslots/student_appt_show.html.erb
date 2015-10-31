@@ -20,7 +20,7 @@
         <div class="media-body">
           <% if @timeslot.student_id.nil? %>
             <div class="media-left media-middle">
-              <%= link_to "Sign Up!", timeslot_path(@timeslot), method: :patch, class: "btn btn-primary" %>
+             <button id="sign-up-btn" class="btn btn-primary">Sign Up!</button>
             </div>
           <% else %>
             <div class="media-left media-middle">

@@ -13,3 +13,53 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+// $(document).ready(function(){
+
+//   $("#sign-up-btn").click(function(event) {
+//     event.preventDefault();
+//     var url = $(this).attr("data-timeslot-url")
+//     $("#modal_remote").modal('hide');
+//     $.ajax({
+//       type: "PATCH",
+//       url: url
+//     }).done(function(){
+//         swal({
+//               title: "Good job!",
+//               text: "You clicked the button!",
+//               confirmButtonColor: "#66BB6A",
+//               type: "success"
+//           });
+//     }).fail(function() {
+//       swal({
+//             title: "Oops...",
+//             text: "Something went wrong!",
+//             confirmButtonColor: "#EF5350",
+//             type: "error"
+//         });
+//     });
+//   });
+
+// })
+
+var studentSignUp = function(timeslot_id){
+  $("#modal_remote").modal('hide');
+  // $.ajax({
+  //     type: "PATCH",
+  //     url: url
+  //   }).done(function(){
+  //       swal({
+  //             title: "Good job!",
+  //             text: "You clicked the button!",
+  //             confirmButtonColor: "#66BB6A",
+  //             type: "success"
+  //         });
+  //   }).fail(function() {
+  //     swal({
+  //           title: "Oops...",
+  //           text: "Something went wrong!",
+  //           confirmButtonColor: "#EF5350",
+  //           type: "error"
+  //       });
+  //   });
+}
