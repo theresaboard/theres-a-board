@@ -1,3 +1,7 @@
-TimeslotMailer#student_scheduled
+Hi, <%= @timeslot.student.name %>!
 
-<%= @greeting %>, find me in app/views/timeslot_mailer/student_scheduled.text.erb
+This is a scheduling notification from Mentor Me.
+
+You are scheduled for a tutoring session with <%= @timeslot.tutor.name %> on <%= @timeslot.start.strftime("%A, %b %e '%y, at %l:%m %P") %>.
+
+You can contact your tutor at <%= @timeslot.tutor.email %>.

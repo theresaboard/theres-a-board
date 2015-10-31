@@ -1,5 +1,4 @@
-<h1>TimeslotMailer#student_scheduled</h1>
-
-<p>
-  <%= @greeting %>, find me in app/views/timeslot_mailer/student_scheduled.html.erb
-</p>
+<h5>Hi, <%= @timeslot.student.name %>!</h5>
+<p>This is a scheduling notification from Mentor Me.</p>
+<p>You are scheduled for a tutoring session with <%= @timeslot.tutor.name %> on <%= @timeslot.start.strftime("%A, %b %e '%y, at %l:%m %P") %>.</p>
+<p>You can contact your tutor at <%= @timeslot.tutor.email %>.</p>
