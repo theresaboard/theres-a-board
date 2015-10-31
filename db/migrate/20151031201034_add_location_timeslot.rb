@@ -1,5 +1,5 @@
 class AddLocationTimeslot < ActiveRecord::Migration
   def change
-    add_column :timeslots, :location, :string
+    add_column :timeslots, :onsite, :boolean, :default => true
   end
 end
