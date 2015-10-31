@@ -1,5 +1,4 @@
 class TimeslotsController < SecuredController
-
   def update
     @timeslot = Timeslot.find_by(id: safe_params[:id])
     @timeslot.student_id = current_user.id
@@ -10,6 +9,8 @@ class TimeslotsController < SecuredController
       render text: @errors.to_s, status: 422
     end
   end
+
+  private
 
   def safe_params
     params.permit(:start, :id)
