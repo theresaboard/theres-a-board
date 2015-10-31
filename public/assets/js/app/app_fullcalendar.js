@@ -129,6 +129,12 @@ $(function() {
         ctrlr.postTimeslot();
       };
     });
+    $('#reload_icon').click(function(){
+      $('.fullcalendar-basic').fullCalendar('refetchEvents');
+    });
+    setInterval(function(){
+      $('.fullcalendar-basic').fullCalendar('refetchEvents')
+    }, 300000);
   };
 
   var ctrlr = new CalendarShow.Controller;
