@@ -18,11 +18,11 @@ class TimeslotsController < SecuredController
   def show
     @timeslot = Timeslot.find(params[:id])
     if @timeslot.student_id == current_user.id
-      render template: "timeslots/student_appt_show"
+      render "student_appt_show"
     elsif @timeslot.tutor_id == current_user.id
-      render template: "timeslots/tutor_appt_show"
+      render "tutor_appt_show"
     else
-      render template: "timeslots/appt_show"
+      render :appt_show
     end
   end
 
