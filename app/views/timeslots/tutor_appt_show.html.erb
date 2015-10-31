@@ -1,0 +1,18 @@
+<div class="page-content">
+  <h4 class="page-title">Your Mentoring Session</h4>
+  <p>Scheduled For:<%= @timeslot.start %></p>
+  <div class="panel-content">
+    <h5 class="panel-title">Mentor:</h5>
+    <%= link_to image_tag(@timeslot.tutor.image) %>
+    <p><%= @timeslot.tutor.name %>.</p>
+  </div>
+  <div class="panel-content">
+    <h5 class="panel-title">Your Pupil:</h5>
+    <% if @timeslot.student_id.nil? %>
+      <p>A student has yet to sign up for this timeslot.</p>
+    <% else %>
+      <%= link_to image_tag(@timeslot.student.image) %>
+      <p><%= @timeslot.student.name %></p>
+    <% end %>
+  </div>
+</div>

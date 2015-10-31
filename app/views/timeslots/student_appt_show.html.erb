@@ -1,0 +1,13 @@
+<div class="page-content">
+  <h4 class="page-title">Your Mentoring Session</h4>
+  <div class="panel-content">
+    <%= link_to image_tag(@timeslot.student.image) %>
+    <p><%= @timeslot.student.name %>.</p>
+  </div>
+  <p>Scheduled For:<%= @timeslot.start %></p>
+  <div class="panel-content">
+    <h5 class="panel-title">Your Mentor:</h5>
+    <%= link_to image_tag(@timeslot.tutor.image) %>
+    <p><%= @timeslot.tutor.name %></p>
+  </div>
+</div>
