@@ -3,6 +3,7 @@ json.array! @timeslots do |slot|
     json.title slot.tutor.name
     json.start slot.start
     json.end slot.end
+    json.allDay false
     if slot.student
       json.color slot.booked_slot
     else
