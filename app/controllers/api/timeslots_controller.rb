@@ -18,7 +18,13 @@ class Api::TimeslotsController < SecuredController
     @timeslot = Timeslot.find_by(id: safe_params[:id])
     @timeslot.student_id = current_user.id
     if @timeslot.save
+<<<<<<< HEAD
       render plain: { message: 'success' }
+=======
+      TimeslotMailer.tutor_scheduled(@timeslot).deliver_now
+      TimeslotMailer.student_scheduled(@timeslot).deliver_now
+      render json: { message: 'success' }
+>>>>>>> Add mailer calls to Timeslots#update actions
     else
       render plain: { message: 'fail' }
     end

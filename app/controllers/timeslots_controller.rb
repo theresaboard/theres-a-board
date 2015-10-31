@@ -3,6 +3,8 @@ class TimeslotsController < SecuredController
     timeslot = Timeslot.find_by(id: safe_params[:id])
     timeslot.student_id = current_user.id
     if timeslot.save
+      TimeslotMailer.tutor_scheduled(timeslot).deliver_now
+      TimeslotMailer.student_scheduled(timeslot).deliver_now
       render text: 'success'
     else
       render text: timeslot.errors.full_messages.to_s, status: 422
