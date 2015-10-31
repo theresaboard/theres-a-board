@@ -1,24 +1,12 @@
 class TimeslotMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.timeslot_mailer.tutor_scheduled.subject
-  #
-  def tutor_scheduled
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def tutor_scheduled(timeslot)
+    @timeslot = timeslot
+    mail to: @timeslot.tutor.email, subject: "Mentor Me Scheduling Notification"
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.timeslot_mailer.student_scheduled.subject
-  #
-  def student_scheduled
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def student_scheduled(timeslot)
+    @timeslot = timeslot
+    mail to: @timeslot.student.email, subject: "Mentor Me Scheduling Notification"
   end
 end
