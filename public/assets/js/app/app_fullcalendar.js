@@ -16,6 +16,7 @@ $(function() {
           center: 'title',
           right: 'month,agendaWeek,agendaDay'
       },
+      timezone: 'local',
       editable: false,
       defaultView: 'agendaWeek',
       events: {
@@ -23,8 +24,8 @@ $(function() {
           type: 'get'
       },
       selectable: true,
-      select: function(start, end, allDay, ev) {
-        ctrlr.getNewForm(ev);
+      select: function(start, end, allDay, ev){
+        ctrlr.getNewForm(start._d);
       },
       eventClick: function(event, jsEvent, view) {
         var url = '/timeslots/' + event.id
@@ -45,11 +46,38 @@ $(function() {
   var CalendarShow = {};
 
   CalendarShow.Controller = function(){
-    this.view = new CalendarShow.View('#calendar');
+    this.view = new CalendarShow.View('.fullcalendar-basic');
   };
 
-  CalendarShow.Controller.prototype.getNewForm = function(event){
+  CalendarShow.Controller.prototype.getNewForm = function(dateTimeObj){
     $('#modal_new_timeslot').modal({ show: true });
+    $('.datepicker').val(ctrlr.dateCreate(dateTimeObj));
+    $('.timepicker').val(ctrlr.timeCreate(dateTimeObj));
+  };
+
+  CalendarShow.Controller.prototype.dateCreate = function(dateTimeObj){
+    var fullDate = dateTimeObj;
+    var day = fullDate.getDate().toString();
+    var months = [ "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December" ];
+    var month = months[fullDate.getMonth()];
+    var year = fullDate.getFullYear().toString();
+    return (day + ' ' + month + ', ' + year);
+  };
+  CalendarShow.Controller.prototype.timeCreate = function(dateTimeObj){
+    var fullDate = dateTimeObj;
+    var hours = fullDate.getHours().toString();
+    var minutes = fullDate.getMinutes();
+    if (minutes > 15 && minutes < 45){
+      minutes = '30';
+    }
+    else if (minutes >= 45 || (minutes >= 0 && minutes <= 15)){
+      minutes = '00';
+    };
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    return (hours + ':' + minutes + ' ' + ampm);
   };
 
   CalendarShow.Controller.prototype.createDateTime = function (){
@@ -61,13 +89,13 @@ $(function() {
   CalendarShow.Controller.prototype.createCalenderEvent = function(){
     var dateTimeObj = ctrlr.createDateTime();
     var newEvent = { title: 'booked appointment', start: dateTimeObj };
-    $('#calendar').fullCalendar('renderEvent', newEvent, 'stick');
+    $('.fullcalendar-basic').fullCalendar('renderEvent', newEvent, 'stick');
   };
 
   CalendarShow.Controller.prototype.postTimeslot = function(element){
     var dateTime = ctrlr.createDateTime();
     $.ajax({
-      data: {timeslot: dateTime},
+      data: { timeslot: dateTime },
       type: 'POST',
       url: '/api/timeslots'
     }).then(function(response){
@@ -84,7 +112,7 @@ $(function() {
   };
 
   CalendarShow.View.prototype.setupListeners = function(){
-    $('.modal-footer').on('click','button', function(e){
+    $('.modal_new_timeslot_footer').on('click','button', function(e){
       e.preventDefault();
       if ($('timepicker').val() === ""){
         alert('please select a time.');
