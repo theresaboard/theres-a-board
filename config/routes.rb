@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :timeslots, only: [:index, :create, :update]
   end
 
+  resources :timeslots, only: [:show]
+
   root "dashboard#index"
 
 end
