@@ -1,8 +1,18 @@
 <div id="timeslot-<%= @timeslot.id %>">
-  <% if @timeslot.tutor_id == current_user.id %>
-    <p>You are tutoring: <%= @timeslot.student.name %></p>
-  <% else %>
-    <p>You are tutored by: <%= @timeslot.tutor.name %></p>
-  <% end %>
+  <% if @timeslot.student_id == current_user.id %>
+    <p>You will be tutored by: <%= @timeslot.tutor.name %>.</p>
+    <p><%= link_to image_tag(@timeslot.tutor.image) %></p>
+    <p>You will be tutoring: <%= @timeslot.student.name %>.</p>
+    <p><%= link_to image_tag(@timeslot.student.image) %></p>
     <p>Booking time: <%= @timeslot.start %>.</p>
+  <% elsif @timeslot.tutor_id == current_user.id && @timeslot.student_id != nil %>
+    <p>You will be tutoring: <%= @timeslot.student.name %>.</p>
+    <p><%= link_to image_tag(@timeslot.student.image) %></p>
+    <p>You will be tutored by: <%= @timeslot.tutor.name %>.</p>
+    <p><%= link_to image_tag(@timeslot.tutor.image) %></p>
+  <% elsif @timeslot.student_id.nil? && current_user.id != @timeslot.tutor_id %>
+    <p>You will be tutored by: <%= @timeslot.tutor.name %>.</p>
+    <p><%= link_to image_tag(@timeslot.tutor.image) %></p>
+    <p>sign up for tutoring!<%= link_to 'sign up', api_timeslot_path(@timeslot) %></p>
+  <% end %>
 </div>
