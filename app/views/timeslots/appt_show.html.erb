@@ -7,7 +7,8 @@
       </p>
         <div class="media">
         <div class="media-left media-middle">
-          <%= link_to( image_tag(@timeslot.tutor.image), :class => 'img-circle') %>
+          <%= image_tag @timeslot.tutor.image,
+              :class => 'img-circle' %>
         </div>
         <div class="media-body">
           <div class="media-heading text-semibold">
@@ -23,11 +24,12 @@
                 This slot is still available!
               </div>
             <div class="media-left media-middle">
-              <button type="button" class="btn btn-primary">Sign Up!</button>
+              <%= link_to "Sign Up!", timeslot_path(@timeslot), method: :patch, class: "btn btn-primary" %>
             </div>
           <% else %>
             <div class="media-left media-middle">
-              <%= link_to( image_tag(@timeslot.student.image), :class => 'img-circle') %>
+              <%= image_tag @timeslot.student.image,
+              :class => 'img-circle' %>
             </div>
             <div class="media-body">
               <div class="media-heading text-semibold">
