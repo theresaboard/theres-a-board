@@ -7,4 +7,12 @@ class Timeslot < ActiveRecord::Base
   def end
     start + 30.minutes
   end
+
+  def booked_slot
+    "#FF5722"
+  end
+
+  def open_slot
+    "#2196F3"
+  end
 end
