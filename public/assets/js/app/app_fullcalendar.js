@@ -92,11 +92,11 @@ $(function() {
     $('.fullcalendar-basic').fullCalendar('renderEvent', newEvent, 'stick');
   };
 
-  CalendarShow.Controller.prototype.postTimeslot = function(element){
+  CalendarShow.Controller.prototype.postTimeslot = function(){
     var dateTime = ctrlr.createDateTime();
-    var loc = "need to be implemented";
+    var loc = ctrlr.setLocation();
     $.ajax({
-      data: {timeslot: {start: dateTime, location: loc}},
+      data: {timeslot: {start: dateTime, onsite: loc}},
       type: 'POST',
       url: '/api/timeslots'
     }).then(function(response){
@@ -106,7 +106,14 @@ $(function() {
 
     });
   };
-
+  CalendarShow.Controller.prototype.setLocation = function(){
+    if ($('#location_input_dropdown').val() === 'online'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  };
   CalendarShow.View = function(element){
     this.setupListeners();
     this.element = $(element);
@@ -119,7 +126,7 @@ $(function() {
         alert('Please select a date and time.');
       }
       else{
-        ctrlr.postTimeslot(this);
+        ctrlr.postTimeslot();
       };
     });
   };
