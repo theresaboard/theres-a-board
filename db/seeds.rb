@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user_count = 25
 user_count.times do
-  User.create(name: Faker::Name.name)
+  User.create(name: Faker::Name.name, image: Faker::Avatar.image)
 end
 
 user_ids = User.ids
