@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20151031201034) do
   enable_extension "plpgsql"
 
   create_table "timeslots", force: :cascade do |t|
-    t.datetime "start",      null: false
-    t.integer  "tutor_id",   null: false
+    t.datetime "start",                     null: false
+    t.integer  "tutor_id",                  null: false
     t.integer  "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "location"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.boolean  "onsite",     default: true
   end
 
   add_index "timeslots", ["start"], name: "index_timeslots_on_start", using: :btree
