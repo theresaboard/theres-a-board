@@ -9,7 +9,7 @@ FactoryGirl.define do
       half_hour = rand(2) == 1 ? 0 : 30
       datetime = Time.local(date.year, date.month, date.day, hour, half_hour)
     }.to_s
-    location 'onsite'
+    onsite true
 
     factory(:booked_timeslot) do
       student
