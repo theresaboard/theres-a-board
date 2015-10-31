@@ -2,7 +2,7 @@ class Timeslot < ActiveRecord::Base
   belongs_to :tutor, class_name: 'User'
   belongs_to :student, class_name: 'User'
 
-  validates_presence_of :start, :tutor_id, :location
+  validates_presence_of :start, :tutor_id
 
   def end
     start + 30.minutes
