@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :timeslots, only: [:update, :show]
 
   namespace :api, defaults: {format: :json} do
-    resources :timeslots, only: [:index, :create, :update]
+    resources :timeslots, only: [:index, :create, :update, :delete]
   end
 end
