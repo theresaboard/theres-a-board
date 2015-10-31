@@ -12,4 +12,11 @@ Rails.application.routes.draw do
     resources :timeslots, only: [:index, :create, :update]
   end
 
+<<<<<<< HEAD
+=======
+  resources :timeslots, only: [:show]
+
+  root "dashboard#index"
+
+>>>>>>> implement booking show
 end
