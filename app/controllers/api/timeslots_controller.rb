@@ -18,10 +18,9 @@ class Api::TimeslotsController < ApplicationController
     @timeslot = Timeslot.find_by(id: safe_params[:id])
     @timeslot.student_id = current_user.id
     if @timeslot.save
-      render json: { message: 'success' }
+      render plain: { message: 'success' }
     else
-      @errors = @timeslot.errors.full_messages
-      render json: @errors
+      render plain: { message: 'fail' }
     end
   end
 
