@@ -18,8 +18,8 @@ class Api::TimeslotsController < SecuredController
     timeslot = Timeslot.find_by(id: safe_params[:id])
     timeslot.student_id = current_user.id
     if timeslot.save
-      TimeslotMailer.tutor_scheduled(timeslot).deliver_now unless timeslot.tutor.email.nil?
-      TimeslotMailer.student_scheduled(timeslot).deliver_now unless timeslot.student.email.nil?
+      timeslot.send_tutor_scheduling_email
+      timeslot.send_student_scheduling_email
       render plain: { message: 'success' }
     else
       render plain: { message: 'fail' }
