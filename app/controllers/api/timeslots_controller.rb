@@ -25,15 +25,6 @@ class Api::TimeslotsController < SecuredController
   end
 
   private
-  # def build_params
-  #   params[:timeslots].each do |timeslot|
-  #     @timeslot = Timeslot.new(start: timeslot[:timeslot])
-  #     @timeslot.tutor_id = current_user.id
-  #     return false unless @timeslot.save
-  #   end
-  #   true
-  # end
-
   def safe_params
     params.permit(:start, :id)
   end
