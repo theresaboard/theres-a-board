@@ -66,8 +66,9 @@ $(function() {
   };
   CalendarShow.Controller.prototype.timeCreate = function(dateTimeObj){
     var fullDate = dateTimeObj;
-    var hours = fullDate.getHours().toString();
-    var minutes = fullDate.getMinutes();
+    var hours = fullDate.getHours() + 1;
+    hours = hours.toString();
+    var minutes = fullDate.getMinutes() + 1;
     if (minutes > 15 && minutes < 45){
       minutes = '30';
     }
