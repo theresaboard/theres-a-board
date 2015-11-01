@@ -1,17 +1,17 @@
 IntercomRails.config do |config|
   # == Intercom app_id
   #
-  config.app_id = ENV["INTERCOM_APP_ID"] || "orls8tyi"
+  config.app_id = ENV["INTERCOM_APP_ID"] || "mxgvwg3w"
+
 
   # == Intercom secret key
   # This is required to enable secure mode, you can find it on your Setup
   # guide in the "Secure Mode" step.
   #
   # config.api_secret = "..."
-  config.api_secret = 'am1GbiI4lh-5OldguzMMgSa2lKyLU9WeNGSIdsBx'
-
+  config.api_secret = ENV["INTERCOM_API_SECRET"] || '467b68593a1ed2927482a9ef8d7dfe3c76f756ad'
   # == Intercom API Key
-  # This is required for some Intercom rake tasks like importing your users;
+  # This is required for some Intercom rake tasks like importing youur users;
   # you can generate one at https://app.intercom.io/apps/api_keys.
   #
   # config.api_key = "..."

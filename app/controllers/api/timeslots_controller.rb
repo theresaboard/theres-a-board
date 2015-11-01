@@ -7,7 +7,7 @@ class Api::TimeslotsController < SecuredController
     timeslot = Timeslot.new(timeslot_params)
     if timeslot.save
       render plain: { message: "success" }
-      intercom_event("created-timeslot")
+      current_user.track_event("created-timeslot")
     else
       render plain: { message: "fail" }
     end
@@ -17,10 +17,10 @@ class Api::TimeslotsController < SecuredController
     timeslot = Timeslot.find_by(id: safe_params[:id])
     timeslot.student_id = current_user.id
     if timeslot.save
+      render plain: { message: 'success' }
       timeslot.send_tutor_scheduling_email
       timeslot.send_student_scheduling_email
-      intercom_event("booked-tutor")
-      render plain: { message: 'success' }
+      current_user.track_event("booked-tutor")
     else
       render plain: { message: 'fail' }
     end
