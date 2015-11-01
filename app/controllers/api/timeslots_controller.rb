@@ -14,13 +14,14 @@ class Api::TimeslotsController < SecuredController
   end
 
   def update
+<<<<<<< 437ae230ffc38c3e698c0ed9cd5936ca28d513ea
     timeslot = Timeslot.find_by(id: safe_params[:id])
     timeslot.student_id = current_user.id
     if timeslot.save
       timeslot.send_tutor_scheduling_email
       timeslot.send_student_scheduling_email
-      render plain: { message: 'success' }
       intercom_event("booked-tutor")
+      render plain: { message: 'success' }
     else
       render plain: { message: 'fail' }
     end
