@@ -1,4 +1,4 @@
-class Api::TimeslotsController < ApplicationController
+class Api::TimeslotsController < SecuredController
   def index
     @timeslots = Timeslot.all
   end
