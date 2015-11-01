@@ -5,4 +5,9 @@ deployment:
   production:
     branch: master
     heroku:
+      appname: mentor-me-prod
+deployment:
+  production:
+    branch: development
+    heroku:
       appname: mentor-me-dev
