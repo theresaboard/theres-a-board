@@ -10,19 +10,19 @@ describe Api::TimeslotsController do
 
   describe '#create' do
     it 'should exist' do
-      post :create, timeslot: timeslot_attribs
+      post :create, timeslot_attribs
     expect(response).to be_success
     end
 
     it 'should be able to create a new timeslot' do
       expect do
-        post :create, timeslot: timeslot_attribs
+        post :create, timeslot_attribs
       end.to change{Timeslot.count}.by(1)
     end
 
     it 'should not be able to create a new timeslot with invalid data' do
       expect do
-        post :create, timeslot: {start: nil, location: nil}
+        post :create, {start: nil, location: nil}
       end.to change{Timeslot.count}.by(0)
     end
   end
@@ -30,7 +30,7 @@ describe Api::TimeslotsController do
   describe '#update' do
     let(:timeslot) { FactoryGirl.create(:timeslot) }
 
-    xit 'should update a timeslot with valid data' do
+    it 'should update a timeslot with valid data' do
       expect {
         post :update, id: timeslot.id
       }.to change { timeslot.reload.student_id }.to(user.id)
