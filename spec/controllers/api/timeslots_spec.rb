@@ -37,4 +37,33 @@ describe Api::TimeslotsController do
       expect(response).to be_success
     end
   end
+
+  describe '#cancel' do
+    let(:timeslot) { FactoryGirl.create(:booked_timeslot) }
+
+    it 'should allow the tutor to cancel a session' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(timeslot.tutor)
+      expect {
+        patch :cancel, id: timeslot.id
+      }.to change { timeslot.reload.student_id }.to(nil)
+      expect(response).to be_success
+    end
+
+    it 'should allow the student to cancel a session' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(timeslot.student)
+      expect {
+        patch :cancel, id: timeslot.id
+      }.to change { timeslot.reload.student_id }.to(nil)
+      expect(response).to be_success
+    end
+
+    it 'should not allow user that is not tutor or student to cancel a session' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      expect {
+        patch :cancel, id: timeslot.id
+      }.not_to change { timeslot.reload.student_id }
+    end
+
+  end
+
 end
