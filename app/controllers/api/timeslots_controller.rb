@@ -7,6 +7,7 @@ class Api::TimeslotsController < SecuredController
     timeslot = Timeslot.new(timeslot_params)
     if timeslot.save
       render plain: { message: "success" }
+      intercom_event("created-timeslot")
     else
       render plain: { message: "fail" }
     end
@@ -19,6 +20,7 @@ class Api::TimeslotsController < SecuredController
       timeslot.send_tutor_scheduling_email
       timeslot.send_student_scheduling_email
       render plain: { message: 'success' }
+      intercom_event("booked-tutor")
     else
       render plain: { message: 'fail' }
     end

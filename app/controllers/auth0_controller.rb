@@ -8,7 +8,6 @@ class Auth0Controller < ApplicationController
     user.save
 
     session[:uid] = user.uid
-
     redirect_to root_url
   end
 
