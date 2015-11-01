@@ -14,7 +14,8 @@ RSpec.describe TimeslotMailer, type: :mailer do
   end
 
   describe "student_scheduled" do
-    let(:mail) { TimeslotMailer.student_scheduled }
+    let!(:timeslot) { FactoryGirl.create(:booked_timeslot)}
+    let!(:mail) { TimeslotMailer.tutor_scheduled(timeslot) }
 
     it "renders the headers" do
       expect(mail.subject).to eq("Mentor Me Scheduling Notification")
