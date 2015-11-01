@@ -1,6 +1,6 @@
 class Api::TimeslotsController < SecuredController
   def index
-    @timeslots = Timeslot.all
+    @timeslots = Timeslot.all.includes(:tutor, :student)
   end
 
   def create
