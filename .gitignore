@@ -12,4 +12,8 @@
 !/log/.keep
 /tmp
 
+# Ignore simplecov reports
+coverage
+
+# Ignore stupid apple files
 .DS_Store
