@@ -5,8 +5,8 @@ var studentSignUp = function(timeslot_id){
       url: "/api/timeslots/" + timeslot_id
     }).done(function(){
         swal({
-              title: "Good job!",
-              text: "You clicked the button!",
+              title: "Great!",
+              text: "You have scheduled a tutoring session!",
               confirmButtonColor: "#66BB6A",
               type: "success"
           });
