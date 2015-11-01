@@ -124,4 +124,11 @@ $(function() {
   };
 
   var ctrlr = new CalendarShow.Controller;
+
+  // Fix for modals not changing between shows
+  $('body').on('hidden.bs.modal', '.modal', function () {
+    $(this).removeData('bs.modal');
+  });
+
+
 });
