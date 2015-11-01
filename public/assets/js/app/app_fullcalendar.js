@@ -87,6 +87,7 @@ $(function() {
     var dateTime = date + " " + time;
     return (new Date(dateTime))
   };
+
   CalendarShow.Controller.prototype.createCalenderEvent = function(){
     var dateTimeObj = ctrlr.createDateTime();
     var newEvent = { title: 'New session created!', start: dateTimeObj };
@@ -95,9 +96,9 @@ $(function() {
 
   CalendarShow.Controller.prototype.postTimeslot = function(){
     var dateTime = ctrlr.createDateTime();
-    var loc = ctrlr.setLocation();
+    // var loc = ctrlr.setLocation();
     $.ajax({
-      data: {timeslot: {start: dateTime, onsite: loc}},
+      data: {timeslot: {start: dateTime}},//, onsite: loc
       type: 'POST',
       url: '/api/timeslots'
     }).then(function(response){
@@ -107,6 +108,7 @@ $(function() {
 
     });
   };
+
   CalendarShow.Controller.prototype.setLocation = function(){
     if ($('#location_input_dropdown').val() === 'online'){
       return true;
@@ -115,6 +117,7 @@ $(function() {
       return false;
     }
   };
+
   CalendarShow.View = function(element){
     this.setupListeners();
     this.element = $(element);
