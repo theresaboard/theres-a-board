@@ -110,7 +110,7 @@ $(function() {
   };
 
   CalendarShow.Controller.prototype.setLocation = function(){
-    if ($('#location_input_dropdown').val() === 'online'){
+    if ($('#location_input_dropdown').val() === 'off site'){
       return true;
     }
     else{
