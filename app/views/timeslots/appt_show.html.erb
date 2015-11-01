@@ -57,7 +57,7 @@
 
 <!-- Footer -->
 <div class="modal-footer text-center">
-  <%= link_to "Sign Up!", timeslot_path(@timeslot), method: :patch, class: "btn bg-success" if @timeslot.open? %>
+  <button class="btn bg-success" onClick= "studentSignUp(<%= @timeslot.id %>)">Sign Up!</button>
 </div>
 <!-- Footer -->
 
