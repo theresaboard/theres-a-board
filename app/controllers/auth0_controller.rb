@@ -12,7 +12,6 @@ class Auth0Controller < ApplicationController
   end
 
   def failure
-
     @error_msg = request.params['message']
     render plain: @error_msg.to_s
   end

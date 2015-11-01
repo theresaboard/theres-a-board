@@ -1,44 +1,78 @@
-<div class="col-lg-6">
-  <div class="panel panel-flat">
-    <h4 class="panel-heading">Your Mentoring Session</h4>
-    <div class="panel-body">
-      <p class="media-header">
-        Scheduled For: <%= @timeslot.start.strftime("%m/%d/%Y at %I:%M%p") %>
-      </p>
-        <div class="media">
-        <div class="media-left media-middle">
-          <%= image_tag @timeslot.tutor.image,
-              :class => 'img-circle' %>
-        </div>
-        <div class="media-body">
-          <div class="media-heading text-semibold">
-            <%= @timeslot.tutor.name %>
-          </div>
-          <span class="text-muted">Mentor</span>
-        </div>
-      </div>
-      <div class="media">
-        <div class="media-body">
-          <% if @timeslot.student_id.nil? %>
-            <div class="media-body">
-              <span class="text-muted">A student has yet to sign up for this timeslot.</span>
-            </div>
-          <% else %>
-            <div class="media-left media-middle">
-              <%= image_tag @timeslot.student.image,
-              :class => 'img-circle' %>
-            </div>
-            <div class="media-body">
-              <div class="media-heading text-semibold">
-                <%= @timeslot.student.name %>
-              </div>
-              <span class="text-muted">Your Pupil</span>
-            </div>
-          <% end %>
-        </div>
-      </div>
-      </div>
+<!-- Modal Header -->
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <h5 class="modal-title"><i class="icon-graduation"></i> &nbsp;Your Open Session</h5>
+</div>
+<!-- End Modal Header -->
+
+<!-- Modal Body -->
+<div class="modal-body">
+
+  <!-- Time -->
+  <div class="media">
+    <div class="media-left media-middle">
+      <a href="#" class="btn border-primary text-primary btn-flat btn-rounded btn-xs btn-icon"><i class="icon-alarm"></i></a>
+    </div>
+
+    <div class="media-left">
+      <h5 class="text-semibold no-margin">
+        <%= @timeslot.day_and_time %>
+        <small class="display-block no-margin"><%= @timeslot.new_york_ordinal_time %></small>
+      </h5>
     </div>
   </div>
+  <!-- End Time -->
+
+  <!-- Tutor -->
+  <div class="media">
+    <div class="media-left media-middle">
+      <%= image_tag @timeslot.tutor.image, :class => 'img-circle' %>
+    </div>
+    <div class="media-body">
+      <div class="media-heading text-semibold">
+      <%= @timeslot.tutor.name %>
+      </div>
+      <span class="text-muted">Tutor</span>
+    </div>
+  </div>
+  <!-- End Tutor -->
+
+  <!-- Time -->
+  <% if @timeslot.open? %>
+    <div class="media">
+      <div class="media-left media-middle">
+        <a href="#" class="btn border-info text-info btn-flat btn-rounded btn-xs btn-icon">
+        <i class="icon-people"></i></a>
+      </div>
+
+      <div class="media-left">
+        <h5 class="text-semibold no-margin">
+          Open
+          <small class="display-block no-margin">No on has signed up for this time yet!</small>
+        </h5>
+      </div>
+    </div>
+  <% end %>
+  <!-- End Time -->
+
+  <!-- Student -->
+  <% unless @timeslot.open? %>
+    <div class="media">
+      <div class="media-left media-middle">
+        <%= image_tag @timeslot.student.image, :class => 'img-circle' %>
+      </div>
+      <div class="media-body">
+        <div class="media-heading text-semibold">
+          <%= @timeslot.student.name %>
+        </div>
+        <span class="text-muted">Student</span>
+      </div>
+    </div>
+  <% end %>
+  <!-- End Student -->
+
 </div>
+
+
+
 

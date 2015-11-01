@@ -88,7 +88,7 @@ $(function() {
   };
   CalendarShow.Controller.prototype.createCalenderEvent = function(){
     var dateTimeObj = ctrlr.createDateTime();
-    var newEvent = { title: 'booked appointment', start: dateTimeObj };
+    var newEvent = { title: 'New session created!', start: dateTimeObj };
     $('.fullcalendar-basic').fullCalendar('renderEvent', newEvent, 'stick');
   };
 
@@ -112,10 +112,10 @@ $(function() {
   };
 
   CalendarShow.View.prototype.setupListeners = function(){
-    $('.modal_new_timeslot_footer').on('click','button', function(e){
+    $('#create-timeslot').on('click', function(e){
       e.preventDefault();
-      if ($('timepicker').val() === ""){
-        alert('please select a time.');
+      if ($('.timepicker').val() === ""){
+        alert('Please select a time.');
       }
       else{
         ctrlr.postTimeslot(this);

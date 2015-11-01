@@ -1,1 +1,96 @@
-Hi you are logged in as <%= @message %>
+<!-- Page header -->
+<div class="page-header">
+  <div class="page-header-content">
+    <div class="page-title">
+      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Dashboard</span> - Student View</h4>
+
+      <ul class="breadcrumb breadcrumb-caret position-right">
+        <li><a href="#">Mentor Me</a></li>
+        <li><a href="#">Dashboard</a></li>
+        <li class="active">Board</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- /page header -->
+
+<!-- Page container -->
+<div class="page-container">
+
+  <!-- Page content -->
+  <div class="page-content">
+
+    <!-- Main content -->
+    <div class="content-wrapper">
+
+      <div class="panel panel-flat">
+
+        <div class="panel-heading">
+          <h5 class="panel-title">Tutor Board</h5>
+          <div class="heading-elements">
+            <ul class="icons-list">
+              <li><a data-action="collapse"></a></li>
+              <li><a data-action="reload"></a></li>
+              <li><a data-action="close"></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- FullCalendar View -->
+        <div class="panel-body">
+          <div class="fullcalendar-basic"></div>
+        </div>
+        <!-- FullCalendar View -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+<!-- Modal used for showing timeslots -->
+<div id="modal_remote" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+<!-- /Modal used for showing timeslots -->
+
+<!-- Create timeslot modal -->
+<div id="modal_new_timeslot" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h5 class="modal-title"><h5 class="modal-title"><i class="icon-alarm-add"></i> &nbsp;Add Tutoring Time</h5>
+      </div>
+
+      <form action="#">
+        <div class="modal-body">
+          <div class="alert alert-info alert-styled-left text-blue-800 content-group">
+              <span class="text-semibold">Remember!</span> All sessions are 30 minutes.
+              <button type="button" class="close" data-dismiss="alert">×</button>
+          </div>
+          <h6 class="text-semibold">Select a Date</h6>
+          <div class="input-group">
+                <span class="input-group-addon"><i class="icon-calendar5"></i></span>
+                <input type="text" placeholder="Eugene" class="form-control datepicker">
+          </div>
+
+          <h6 class="text-semibold">Select a Time</h6>
+          <div class="input-group">
+                <span class="input-group-addon"><i class="icon-alarm"></i></span>
+                <input type="text" placeholder="Eugene" class="form-control timepicker">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+          <button id="create-timeslot" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /create timeslot modal -->

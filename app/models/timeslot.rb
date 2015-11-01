@@ -8,7 +8,6 @@ class Timeslot < ActiveRecord::Base
     start + 30.minutes
   end
 
-
   def open?
     student.nil?
   end
@@ -19,5 +18,13 @@ class Timeslot < ActiveRecord::Base
 
   def open_slot
     "#2196F3"
+  end
+
+  def new_york_ordinal_time
+    start.in_time_zone('EST').to_date.to_formatted_s(:long_ordinal)
+  end
+
+  def day_and_time
+    start.in_time_zone('EST').strftime("%A at %I:%M%p")
   end
 end
