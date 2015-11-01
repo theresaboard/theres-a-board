@@ -66,8 +66,9 @@ $(function() {
   };
   CalendarShow.Controller.prototype.timeCreate = function(dateTimeObj){
     var fullDate = dateTimeObj;
-    var hours = fullDate.getHours().toString();
-    var minutes = fullDate.getMinutes();
+    var hours = fullDate.getHours() + 1;
+    hours = hours.toString();
+    var minutes = fullDate.getMinutes() + 1;
     if (minutes > 15 && minutes < 45){
       minutes = '30';
     }
@@ -86,16 +87,18 @@ $(function() {
     var dateTime = date + " " + time;
     return (new Date(dateTime))
   };
+
   CalendarShow.Controller.prototype.createCalenderEvent = function(){
     var dateTimeObj = ctrlr.createDateTime();
     var newEvent = { title: 'New session created!', start: dateTimeObj };
     $('.fullcalendar-basic').fullCalendar('renderEvent', newEvent, 'stick');
   };
 
-  CalendarShow.Controller.prototype.postTimeslot = function(element){
+  CalendarShow.Controller.prototype.postTimeslot = function(){
     var dateTime = ctrlr.createDateTime();
+    // var loc = ctrlr.setLocation();
     $.ajax({
-      data: { timeslot: dateTime },
+      data: {timeslot: {start: dateTime}},//, onsite: loc
       type: 'POST',
       url: '/api/timeslots'
     }).then(function(response){
@@ -106,6 +109,15 @@ $(function() {
     });
   };
 
+  CalendarShow.Controller.prototype.setLocation = function(){
+    if ($('#location_input_dropdown').val() === 'off site'){
+      return true;
+    }
+    else{
+      return false;
+    }
+  };
+
   CalendarShow.View = function(element){
     this.setupListeners();
     this.element = $(element);
@@ -114,13 +126,19 @@ $(function() {
   CalendarShow.View.prototype.setupListeners = function(){
     $('#create-timeslot').on('click', function(e){
       e.preventDefault();
-      if ($('.timepicker').val() === ""){
-        alert('Please select a time.');
+      if ($('.timepicker').val() === "" || $('.datepicker').val() === ""){
+        alert('Please select a date and time.');
       }
       else{
-        ctrlr.postTimeslot(this);
+        ctrlr.postTimeslot();
       };
     });
+    $('#reload_icon').click(function(){
+      $('.fullcalendar-basic').fullCalendar('refetchEvents');
+    });
+    setInterval(function(){
+      $('.fullcalendar-basic').fullCalendar('refetchEvents')
+    }, 300000);
   };
 
   var ctrlr = new CalendarShow.Controller;
