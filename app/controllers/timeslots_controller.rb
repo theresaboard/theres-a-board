@@ -22,15 +22,6 @@ class TimeslotsController < SecuredController
     end
   end
 
-  def delete
-    if current_user == @timeslot.tutor && @timeslot.student.nil?
-      @timeslot.destroy
-      render redirect_to root_path
-    else
-      render json: {message: 'not the owner of this appointment or this is a booked appointment.'}, status: 422
-    end
-  end
-
   private
 
   def safe_params
