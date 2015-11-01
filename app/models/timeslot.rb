@@ -27,4 +27,13 @@ class Timeslot < ActiveRecord::Base
   def day_and_time
     start.in_time_zone("Eastern Time (US & Canada)").strftime("%A at %I:%M%p")
   end
+
+  def send_tutor_scheduling_email
+    TimeslotMailer.tutor_scheduled(self).deliver_now unless self.tutor.email.nil?
+  end
+
+  def send_student_scheduling_email
+    TimeslotMailer.student_scheduled(self).deliver_now unless self.student.email.nil?
+  end
+
 end
