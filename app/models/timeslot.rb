@@ -21,10 +21,10 @@ class Timeslot < ActiveRecord::Base
   end
 
   def new_york_ordinal_time
-    start.in_time_zone('EST').to_date.to_formatted_s(:long_ordinal)
+    start.in_time_zone("Eastern Time (US & Canada)").to_date.to_formatted_s(:long_ordinal)
   end
 
   def day_and_time
-    start.in_time_zone('EST').strftime("%A at %I:%M%p")
+    start.in_time_zone("Eastern Time (US & Canada)").strftime("%A at %I:%M%p")
   end
 end
