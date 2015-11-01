@@ -4,13 +4,11 @@ class Api::TimeslotsController < SecuredController
   end
 
   def create
-    timeslot = Timeslot.new(safe_params)
-    timeslot.tutor_id = current_user.id
+    timeslot = Timeslot.new(timeslot_params)
     if timeslot.save
-      render json: { message: 'post api timeslot' }
+      render plain: { message: "success" }
     else
-      @errors = current_user.errors.full_messages
-      render json: @errors
+      render plain: { message: "fail" }
     end
   end
 
@@ -28,6 +26,10 @@ class Api::TimeslotsController < SecuredController
 
   private
   def safe_params
-    params.require(:timeslot).permit(:start, :id, :onsite)
+    params.permit(:start, :id)
+  end
+
+  def timeslot_params
+    params.permit(:start).merge(tutor_id: current_user.id)
   end
 end
