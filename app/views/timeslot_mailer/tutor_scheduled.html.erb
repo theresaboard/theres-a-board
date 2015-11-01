@@ -1,0 +1,4 @@
+<h5>Hi, <%= @timeslot.tutor.name %>!</h5>
+<p>This is a scheduling notification from Mentor Me.</p>
+<p><%= @timeslot.student.name %> has claimed the tutoring time slot you offered on <%= @timeslot.start.strftime("%A, %b %e '%y, at %l:%m %P") %>.</p>
+<p>You can contact this student at <%= @timeslot.student.email %>.</p>
