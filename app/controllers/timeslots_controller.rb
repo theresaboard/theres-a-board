@@ -1,5 +1,4 @@
 class TimeslotsController < SecuredController
-
   def update
     timeslot = Timeslot.find_by(id: safe_params[:id])
     timeslot.student_id = current_user.id
@@ -18,6 +17,15 @@ class TimeslotsController < SecuredController
       render "tutor_appt_show"
     else
       render "appt_show"
+    end
+  end
+
+  def delete
+    if current_user == @timeslot.tutor && @timeslot.student.nil?
+      @timeslot.destroy
+      render redirect_to root_path
+    else
+      render json: {message: 'not the owner of this appointment or this is a booked appointment.'}, status: 422
     end
   end
 
