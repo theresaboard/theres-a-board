@@ -25,7 +25,12 @@ class Api::TimeslotsController < SecuredController
   end
 
   def delete
-
+    if current_user == @timeslot.tutor && @timeslot.student.nil?
+      @timeslot.destroy
+      render json: {message: 'success'}
+    else
+      render json: {message: 'not the owner of this appointment or this is a booked appointment.'}, status: 422
+    end
   end
 
   private
