@@ -36,4 +36,12 @@ class Timeslot < ActiveRecord::Base
     TimeslotMailer.student_scheduled(self).deliver_now unless self.student.email.nil?
   end
 
+  def send_tutor_cancel_email(student)
+    TimeslotMailer.tutor_cancel(self, student).deliver_now unless self.tutor.email.nil?
+  end
+
+  def send_student_cancel_email(student)
+    TimeslotMailer.student_cancel(self, student).deliver_now unless student.email.nil?
+  end
+
 end
