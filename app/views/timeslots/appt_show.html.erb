@@ -1,7 +1,7 @@
 <!-- Modal Header -->
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal">&times;</button>
-  <h5 class="modal-title"><i class="icon-graduation"></i> &nbsp;Tutoring Session with <%= @timeslot.tutor.name.split(' ').first %></h5>
+  <h5 class="modal-title"><i class="icon-graduation"></i> &nbsp;Open Session with <%= @timeslot.tutor.name.split(' ').first %></h5>
 </div>
 <!-- End Modal Header -->
 
@@ -16,8 +16,8 @@
 
     <div class="media-left">
       <h5 class="text-semibold no-margin">
-        <%= @timeslot.start.strftime("%A at %I:%M%p") %>
-        <small class="display-block no-margin"><%= @timeslot.start.to_date.to_formatted_s(:long_ordinal) %></small>
+        <%= @timeslot.day_and_time %>
+        <small class="display-block no-margin"><%= @timeslot.new_york_ordinal_time %></small>
       </h5>
     </div>
   </div>
