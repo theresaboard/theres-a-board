@@ -3,8 +3,14 @@ require 'rails_helper'
 describe Timeslot do
 
   context "validations" do
+    let!(:timeslot) { FactoryGirl.create(:timeslot) }
     it { is_expected.to validate_presence_of :start }
     it { is_expected.to validate_presence_of :tutor_id }
+    it {
+      is_expected.to validate_uniqueness_of(:tutor_id)
+        .scoped_to(:start)
+        .with_message('you are already available at this time')
+    }
   end
 
   context "associations" do
