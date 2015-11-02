@@ -3,6 +3,10 @@ class Timeslot < ActiveRecord::Base
   belongs_to :student, class_name: 'User'
 
   validates_presence_of :start, :tutor_id
+  validates :tutor_id, uniqueness: {
+    scope: :start,
+    message: "you are already available at this time"
+  }
 
   def end
     start + 30.minutes
