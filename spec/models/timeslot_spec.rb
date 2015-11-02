@@ -3,13 +3,20 @@ require 'rails_helper'
 describe Timeslot do
 
   context "validations" do
-    let!(:timeslot) { FactoryGirl.create(:timeslot) }
+
     it { is_expected.to validate_presence_of :start }
     it { is_expected.to validate_presence_of :tutor_id }
+    subject { FactoryGirl.create(:timeslot) }
     it {
       is_expected.to validate_uniqueness_of(:tutor_id)
         .scoped_to(:start)
         .with_message('you are already available at this time')
+    }
+    subject { FactoryGirl.create(:booked_timeslot) }
+    it {
+      is_expected.to validate_uniqueness_of(:student_id)
+        .scoped_to(:start)
+        .with_message('you are already scheduled for another session at this time')
     }
   end
 
