@@ -40,14 +40,13 @@ class Timeslot < ActiveRecord::Base
 
   private
 
-    def start_must_be_future
-      if start.nil? || start <= Time.zone.now
-        errors.add(:start, "must be in the future")
-      end
+  def start_must_be_future
+    if start.nil? || start <= Time.zone.now
+      errors.add(:start, "must be in the future")
     end
+  end
 
-    def tutor_and_student_unique
-      errors.add(:student_id, "you can't tutor yourself :/") if tutor_id == student_id
-    end
-
+  def tutor_and_student_unique
+    errors.add(:student_id, "you can't tutor yourself :/") if tutor_id == student_id
+  end
 end

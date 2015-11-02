@@ -1,6 +1,5 @@
 class Auth0Controller < ApplicationController
   def callback
-
     user = User.find_or_create_by(uid: request.env['omniauth.auth']['uid'])
     user.image = request.env['omniauth.auth']['info']['image']
     user.name  = request.env['omniauth.auth']['info']['name']
