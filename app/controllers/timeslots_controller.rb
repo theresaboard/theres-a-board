@@ -1,15 +1,4 @@
 class TimeslotsController < SecuredController
-  def update
-    timeslot = Timeslot.find_by(id: safe_params[:id])
-    timeslot.student_id = current_user.id
-    if timeslot.save
-      timeslot.send_tutor_scheduling_email
-      timeslot.send_student_scheduling_email
-      render text: 'success'
-    else
-      render text: timeslot.errors.full_messages.to_s, status: 422
-    end
-  end
 
   def show
     @timeslot = Timeslot.find(params[:id])
