@@ -5,8 +5,12 @@ class Timeslot < ActiveRecord::Base
   validates_presence_of :start, :tutor_id
   validates :tutor_id, uniqueness: {
     scope: :start,
-    message: "you are already available at this time"
+    message: 'you are already available at this time'
   }
+  validates :student_id, uniqueness: {
+      scope: :start,
+      message: 'you are already scheduled for another session at this time'
+    }, unless: 'student_id.nil?'
 
   def end
     start + 30.minutes
