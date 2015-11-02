@@ -66,4 +66,14 @@ describe Api::TimeslotsController do
 
   end
 
+  describe '#delete' do
+    let(:timeslot) { FactoryGirl.create(:timeslot) }
+
+    it 'should update a timeslot with valid data' do
+      expect {
+        post :destroy, id: timeslot.id
+      }.to change{Timeslot.count}.by(1)
+    end
+  end
+
 end
