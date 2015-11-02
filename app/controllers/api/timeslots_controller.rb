@@ -39,6 +39,16 @@ class Api::TimeslotsController < SecuredController
     end
   end
 
+  def destroy
+    @timeslot = Timeslot.find(params[:id])
+    if current_user == @timeslot.tutor && @timeslot.student.nil?
+      @timeslot.destroy
+      render plain: { message: 'success' }
+    else
+      render plain: { messag: 'fail' }
+    end
+  end
+
   private
   def safe_params
     params.permit(:start, :id)
