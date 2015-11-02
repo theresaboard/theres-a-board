@@ -12,5 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require temporal
+//= require core/jquery.min
+//= require core/bootstrap.min
+//= require core/nicescroll.min
+//= require core/drilldown
+//= require core/blockui.min
+//= require core/temporal
+//= require theme/app
+//= require theme/extension_blockui
+//= require theme/sweet_alert.min
+//= require fullcalendar/moment.min
+//= require fullcalendar/fullcalendar.min
+//= require fullcalendar/picker
+//= require fullcalendar/picker.time
+//= require fullcalendar/picker.date
 //= require_tree .
