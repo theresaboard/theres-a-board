@@ -7,7 +7,8 @@ $(document).ready(function(){
     $.ajax({
         type: "POST",
         url: "/api/timeslots",
-        data: { start: data }
+        data: { start: data },
+        beforeSend: customBlockUi(this)
       }).done(function(response) {
           swal({
                 title: "Great!",

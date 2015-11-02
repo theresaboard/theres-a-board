@@ -72,17 +72,27 @@
   <!-- End Student -->
 </div>
 
+<!-- Delete Open Session-->
 <% if @timeslot.open? %>
   <div class="modal-footer text-left">
       <form onsubmit="deleteOpenSession(<%= @timeslot.id %>)">
         <input type="hidden" name="_method" value="DELETE">
         <button type="submit" class="btn btn-danger btn-labeled btn-xs">
           <b><i class="icon-trash"></i></b>
-          Cancel your Session
+          Cancel your Availability
         </button>
       </form>
     </div>
 <% end %>
+<!-- /Delete Open Session -->
 
-
-
+<!-- Tutor Cancel Session -->
+<% unless @timeslot.open? %>
+  <div class="modal-footer text-left">
+      <button id="tutor-cancel-appointment" class="btn btn-danger btn-labeled btn-xs" onClick="cancelAppointment(<%= @timeslot.id %>)">
+        <b><i class="icon-alarm-cancel"></i></b>
+        Cancel Appointment
+      </button>
+  </div>
+<% end %>
+<!-- /Tutor Cancel Session -->

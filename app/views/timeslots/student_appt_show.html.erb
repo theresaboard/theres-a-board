@@ -55,3 +55,15 @@
 
 </div>
 <!-- /Modal body -->
+
+
+<!-- Student Cancel Button -->
+<div class="modal-footer text-left">
+  <% unless @timeslot.open? %>
+    <button id="student-cancel-appointment" class="btn btn-danger btn-labeled btn-xs" onClick="cancelAppointment(<%= @timeslot.id %>)">
+      <b><i class="icon-alarm-cancel"></i></b>
+      Cancel Appointment
+    </button>
+  <% end %>
+</div>
+<!-- /Student Cancel Button -->
