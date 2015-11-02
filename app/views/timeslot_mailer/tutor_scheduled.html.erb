@@ -1,4 +1,4 @@
-<h5>Hi, <%= @timeslot.tutor.name %>!</h5>
-<p>This is a scheduling notification from there's a board.</p>
-<p><%= @timeslot.student.name %> has claimed the tutoring time slot you offered on <%= Time.zone.at(@timeslot.start).strftime("%A, %b %e '%y, at %l:%M %P") %>.</p>
-<p>You can contact this student at <%= @timeslot.student.email %>.</p>
+<p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6em; font-weight: normal; margin: 0 0 10px; padding: 0;">Hi, <%= @timeslot.tutor.name %>!</p>
+<p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6em; font-weight: normal; margin: 0 0 10px; padding: 0;">This is a scheduling notification from there's a board.</p>
+<p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6em; font-weight: normal; margin: 0 0 10px; padding: 0;"><%= @timeslot.student.name %> has claimed the tutoring time slot you offered on <%= Time.zone.at(@timeslot.start).strftime("%A, %b %e '%y, at %l:%M %P") %>.</p>
+<p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6em; font-weight: normal; margin: 0 0 10px; padding: 0;">You can contact this student at <%= @timeslot.student.email %>.</p>
