@@ -42,10 +42,18 @@ GEM
     builder (3.2.2)
     byebug (6.0.2)
     coderay (1.1.0)
+    coffee-rails (4.1.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.9.1.1)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
+    execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -177,6 +185,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    temporal-rails (0.2.4)
+      coffee-rails
+      railties (>= 3.2.5, < 5)
     thor (0.19.1)
     thread_safe (0.3.5)
     tzinfo (1.2.2)
@@ -211,6 +222,7 @@ DEPENDENCIES
   shoulda-matchers (~> 3.0)
   simplecov
   spring
+  temporal-rails
   web-console (~> 2.0)
 
 BUNDLED WITH

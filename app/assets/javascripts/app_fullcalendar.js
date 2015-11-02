@@ -20,6 +20,7 @@ $(function() {
       editable: false,
       allDaySlot: false,
       defaultView: 'agendaWeek',
+      scrollTime: '10:00:00',
       slotEventOverlap: false,
       slotLabelInterval: '00:30:00',
       events: {
