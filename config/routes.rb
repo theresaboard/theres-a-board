@@ -9,9 +9,7 @@ Rails.application.routes.draw do
   resources :timeslots, only: [:update, :show]
 
   namespace :api, defaults: {format: :json} do
-
     patch 'timeslots/:id/cancel', to: 'timeslots#cancel', as: :cancel
     resources :timeslots, only: [:index, :create, :update, :destroy]
-
   end
 end
