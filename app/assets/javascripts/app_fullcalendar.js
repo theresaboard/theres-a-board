@@ -20,6 +20,8 @@ $(function() {
       editable: false,
       allDaySlot: false,
       defaultView: 'agendaWeek',
+      slotEventOverlap: false,
+      slotLabelInterval: '00:30:00',
       events: {
           url: '/api/timeslots',
           type: 'get'
