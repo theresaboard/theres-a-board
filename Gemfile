@@ -23,10 +23,9 @@ gem 'omniauth-auth0', '~> 1.1'
 
 gem 'puma'
 
-gem 'faker'
-
 gem 'newrelic_rpm'
 
+gem 'temporal-rails'
 
 gem 'simplecov', :require => false, :group => :test
 
@@ -48,10 +47,6 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-end
-
-group :production do
-  gem 'rails_12factor'
 end
 
 group :production do

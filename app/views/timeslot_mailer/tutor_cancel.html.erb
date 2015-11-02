@@ -1,4 +1,4 @@
 <h5>Hi, <%= @timeslot.tutor.name %>!</h5>
 <p>This is a scheduling notification from there's a board.</p>
-<p>Your tutoring session with <%= @student.name %>, previously scheduled for <%= @timeslot.start.strftime("%A, %b %e '%y, at %l:%M %P") %>, has been canceled by you or your student.</p>
+<p>Your tutoring session with <%= @student.name %>, previously scheduled for <%= Time.zone.at(@timeslot.start).strftime("%A, %b %e '%y, at %l:%M %P") %>, has been canceled by you or your student.</p>
 <p>If you did not cancel this session, you may contact this student at <%= @student.email %> for further information.</p>

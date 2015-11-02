@@ -2,6 +2,6 @@ Hi, <%= @timeslot.student.name %>!
 
 This is a scheduling notification from there's a board.
 
-You are scheduled for a tutoring session with <%= @timeslot.tutor.name %> on <%= @timeslot.start.strftime("%A, %b %e '%y, at %l:%M %P") %>.
+You are scheduled for a tutoring session with <%= @timeslot.tutor.name %> on <%= Time.zone.at(@timeslot.start).strftime("%A, %b %e '%y, at %l:%M %P") %>.
 
 You can contact your tutor at <%= @timeslot.tutor.email %>.

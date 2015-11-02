@@ -22,7 +22,7 @@ var deleteOpenSession = function(timeslot_id){
                 title: "Deleted!",
                 text: "Your mentoring availabilty has been removed.",
                 confirmButtonColor: "#66BB6A",
-                type: "success"
+                type: "info"
             });
             $('#tutor-cal').fullCalendar( 'refetchEvents' );
         }).fail(function() {
