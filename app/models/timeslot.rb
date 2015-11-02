@@ -7,6 +7,7 @@ class Timeslot < ActiveRecord::Base
     scope: :start,
     message: 'you are already available at this time'
   }
+  validate :tutor_and_student_unique
   validates :student_id, uniqueness: {
       scope: :start,
       message: 'you are already scheduled for another session at this time'
@@ -43,5 +44,11 @@ class Timeslot < ActiveRecord::Base
   def send_student_cancel_email(student)
     TimeslotMailer.student_cancel(self, student).deliver_now unless student.email.nil?
   end
+
+  private
+
+    def tutor_and_student_unique
+      errors.add(:student_id, "you can't tutor yourself :/") if tutor_id == student_id
+    end
 
 end
