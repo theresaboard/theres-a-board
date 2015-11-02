@@ -1,6 +1,6 @@
 class Event 
   def self.client
-    @client ||= Intercom::Client.new(app_id: IntercomRails.config.app_id, api_key: IntercomRails.config.api_secret)
+    @client ||= Intercom::Client.new(app_id: IntercomRails.config.app_id, api_key: ENV["INTERCOM_API_KEY"])
   end
 
   def self.create(options)
