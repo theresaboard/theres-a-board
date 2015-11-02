@@ -48,13 +48,10 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-<<<<<<< c703465741fb462679d15fb4558557124c8fe5d5
 end
 
 group :production do
   gem 'rails_12factor'
-=======
->>>>>>> Add new relic gem
 end
 
 group :production do
