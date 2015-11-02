@@ -2,7 +2,8 @@ var studentSignUp = function(timeslot_id){
   $("#modal_remote").modal('hide');
   $.ajax({
       type: "PATCH",
-      url: "/api/timeslots/" + timeslot_id
+      url: "/api/timeslots/" + timeslot_id,
+      beforeSend: customBlockUi(this)
     }).done(function(){
         swal({
               title: "Great!",
