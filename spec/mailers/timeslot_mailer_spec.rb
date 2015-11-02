@@ -6,9 +6,9 @@ RSpec.describe TimeslotMailer, type: :mailer do
     let!(:mail) { TimeslotMailer.tutor_scheduled(timeslot) }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Mentor Me Scheduling Notification")
-      expect(mail.to).to eq(["mentor.me.dev@gmail.com"])
-      expect(mail.from).to eq(["mentor.me.dev@gmail.com"])
+      expect(mail.subject).to eq("there's a board Scheduling Notification")
+      expect(mail.to).to eq(["notify@theresaboard.com"])
+      expect(mail.from).to eq(["notify@theresaboard.com"])
     end
 
   end
@@ -18,9 +18,9 @@ RSpec.describe TimeslotMailer, type: :mailer do
     let!(:mail) { TimeslotMailer.tutor_scheduled(timeslot) }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Mentor Me Scheduling Notification")
-      expect(mail.to).to eq(["mentor.me.dev@gmail.com"])
-      expect(mail.from).to eq(["mentor.me.dev@gmail.com"])
+      expect(mail.subject).to eq("there's a board Scheduling Notification")
+      expect(mail.to).to eq(["notify@theresaboard.com"])
+      expect(mail.from).to eq(["notify@theresaboard.com"])
     end
 
   end
@@ -30,9 +30,9 @@ RSpec.describe TimeslotMailer, type: :mailer do
     let!(:mail) { TimeslotMailer.tutor_cancel(timeslot, timeslot.student) }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Mentor Me Cancellation Notification")
-      expect(mail.to).to eq(["mentor.me.dev@gmail.com"])
-      expect(mail.from).to eq(["mentor.me.dev@gmail.com"])
+      expect(mail.subject).to eq("there's a board Cancellation Notification")
+      expect(mail.to).to eq(["notify@theresaboard.com"])
+      expect(mail.from).to eq(["notify@theresaboard.com"])
     end
 
   end
@@ -42,9 +42,9 @@ RSpec.describe TimeslotMailer, type: :mailer do
     let!(:mail) { TimeslotMailer.tutor_cancel(timeslot, timeslot.student) }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Mentor Me Cancellation Notification")
-      expect(mail.to).to eq(["mentor.me.dev@gmail.com"])
-      expect(mail.from).to eq(["mentor.me.dev@gmail.com"])
+      expect(mail.subject).to eq("there's a board Cancellation Notification")
+      expect(mail.to).to eq(["notify@theresaboard.com"])
+      expect(mail.from).to eq(["notify@theresaboard.com"])
     end
 
   end

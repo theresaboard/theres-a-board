@@ -5,7 +5,7 @@ user_count.times do
   User.create(
     uid:   SecureRandom.urlsafe_base64,
     name:  Faker::Name.name,
-    email: 'mentor.me.dev@gmail.com',
+    email: 'notify@theresaboard.com',
     image: Faker::Avatar.image(nil, "100x100")
   )
 end
