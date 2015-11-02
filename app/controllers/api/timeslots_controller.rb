@@ -1,6 +1,6 @@
 class Api::TimeslotsController < SecuredController
   def index
-    @timeslots = Timeslot.all.includes(:tutor, :student)
+    @timeslots = Timeslot.all.includes(:tutor, :student).where('start >= ? AND start <= ?', params[:start], params[:end])
   end
 
   def create
