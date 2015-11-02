@@ -26,6 +26,19 @@ class Api::TimeslotsController < SecuredController
     end
   end
 
+  def cancel
+    timeslot = Timeslot.find_by(id: safe_params[:id])
+    student = timeslot.student
+    timeslot.student_id = nil
+    if (current_user.id == timeslot.tutor.id || current_user.id == student.id) && timeslot.save
+      timeslot.send_tutor_cancel_email(student)
+      timeslot.send_student_cancel_email(student)
+      render plain: { message: 'success' }
+    else
+      render plain: { message: 'fail' }
+    end
+  end
+
   private
   def safe_params
     params.permit(:start, :id)

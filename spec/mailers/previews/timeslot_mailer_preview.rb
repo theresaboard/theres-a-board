@@ -13,4 +13,18 @@ class TimeslotMailerPreview < ActionMailer::Preview
     TimeslotMailer.student_scheduled(timeslot)
   end
 
+  # Preview this email at http://localhost:3000/rails/mailers/timeslot_mailer/tutor_cancel
+  def tutor_cancel
+    timeslot = Timeslot.where.not(student_id: nil).first
+    student = timeslot.student
+    TimeslotMailer.tutor_cancel(timeslot, student)
+  end
+
+  # Preview this email at http://localhost:3000/rails/mailers/timeslot_mailer/student_cancel
+  def student_cancel
+    timeslot = Timeslot.where.not(student_id: nil).first
+    student = timeslot.student
+    TimeslotMailer.student_cancel(timeslot, student)
+  end
+
 end
