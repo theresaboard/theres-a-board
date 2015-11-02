@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 20151031201034) do
     t.integer  "student_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.boolean  "onsite",     default: true
   end
 
   add_index "timeslots", ["start"], name: "index_timeslots_on_start", using: :btree

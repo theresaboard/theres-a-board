@@ -22,7 +22,7 @@ describe Api::TimeslotsController do
 
     it 'should not be able to create a new timeslot with invalid data' do
       expect do
-        post :create, {start: nil, location: nil}
+        post :create, {start: nil}
       end.to change{Timeslot.count}.by(0)
     end
   end
