@@ -15,12 +15,18 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
+
 gem 'pry-rails'
+
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-auth0', '~> 1.1'
 
-
 gem 'puma'
+
+gem 'faker'
+
+gem 'newrelic_rpm'
+
 
 gem 'simplecov', :require => false, :group => :test
 
@@ -48,3 +54,6 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
