@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   resources :shares, only: [:index, :create, :new]
   resources :timeslots, only: [:update, :show]
 
+
   namespace :api, defaults: {format: :json} do
     patch 'timeslots/:id/cancel', to: 'timeslots#cancel', as: :cancel
     resources :timeslots, only: [:index, :create, :update, :destroy]
+    resources :users, only: [:update]
   end
 
   get "/404", :to => "errors#not_found"
