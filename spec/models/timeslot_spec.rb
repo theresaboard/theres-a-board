@@ -46,4 +46,23 @@ describe Timeslot do
     it { is_expected.to belong_to :tutor}
     it { is_expected.to belong_to :student}
   end
+
+  context "#end" do
+    it "should return start plus 30 minutes" do
+      timeslot = FactoryGirl.create(:timeslot)
+      expect(timeslot.end).to eq(timeslot.start + 30.minutes)
+    end
+  end
+
+  context "#open?" do
+    it "should return true for booked session" do
+      timeslot = FactoryGirl.create(:booked_timeslot)
+      expect(timeslot.open?).to be_falsy
+    end
+    it "should return false for unclaimed session" do
+      timeslot = FactoryGirl.create(:timeslot)
+      expect(timeslot.open?).to be_truthy
+    end
+  end
+
 end
