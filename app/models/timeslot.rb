@@ -3,6 +3,7 @@ class Timeslot < ActiveRecord::Base
   belongs_to :student, class_name: 'User'
 
   validates_presence_of :start, :tutor_id
+  validate :start_must_be_future
   validates :tutor_id, uniqueness: {
     scope: :start,
     message: 'you are already available at this time'
@@ -46,6 +47,12 @@ class Timeslot < ActiveRecord::Base
   end
 
   private
+
+    def start_must_be_future
+      if start.nil? || start <= Time.zone.now
+        errors.add(:start, "must be in the future")
+      end
+    end
 
     def tutor_and_student_unique
       errors.add(:student_id, "you can't tutor yourself :/") if tutor_id == student_id
