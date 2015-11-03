@@ -23,6 +23,14 @@ timeslots_count.times do
   half_hour = rand(2) == 1 ? 0 : 30
   datetime = Time.local(date.year, date.month, date.day, hour, half_hour)
   tutor_id, student_id = user_ids.sample(2)
-  student_id = nil if rand(2) == 1
-  Timeslot.create(start: datetime, tutor_id: tutor_id, student_id: student_id)
+  if rand(2) == 1
+    student_id = nil
+  else
+    if rand(3) == 1
+      subject = nil
+    else
+      subject = "How do you #{Faker::Hacker.verb} the #{Faker::Hacker.noun}?"
+    end
+  end
+  Timeslot.create(start: datetime, tutor_id: tutor_id, student_id: student_id, subject: subject)
 end
