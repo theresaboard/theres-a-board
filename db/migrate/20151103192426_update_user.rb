@@ -1,7 +1,7 @@
 class UpdateUser < ActiveRecord::Migration
-  def change_table :users do |t|
+  change_table :users do |t|
     t.boolean :email_notify, null: false, default: true
     t.boolean :text_notify, null: false, default: false
-    t.string  :cellphone, limit: 15,
+    t.string  :cellphone, limit: 15
   end
 end
