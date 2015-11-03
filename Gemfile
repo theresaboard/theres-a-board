@@ -34,7 +34,7 @@ gem 'simplecov', :require => false, :group => :test
 gem 'intercom-rails'
 gem 'intercom'
 gem 'faraday'
-gem 'github_api'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'rspec-rails'

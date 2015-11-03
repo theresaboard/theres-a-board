@@ -21,9 +21,7 @@ class Auth0Controller < ApplicationController
 
   def github_org_authorized?
     conn = Faraday.new(:url => 'https://api.github.com') do |faraday|
-      # faraday.request  :url_encoded             # form-encode POST params
-      # faraday.response :logger                  # log requests to STDOUT
-      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
+      faraday.adapter  Faraday.default_adapter
     end
 
     token = "#{request.env['omniauth.auth']['extra']['raw_info']['identities'][0]['access_token']}"
@@ -31,7 +29,7 @@ class Auth0Controller < ApplicationController
       req.url "/orgs/devbootcamp/members/#{request.env['omniauth.auth']['info']['nickname']}"
       req.headers['Authorization'] = "token #{token}"
     end
-    puts response
+
     if response[:status] == "204 No Content"
       return true
     end
