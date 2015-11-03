@@ -208,6 +208,7 @@ DEPENDENCIES
   byebug
   factory_girl_rails
   faker
+  faraday
   intercom
   intercom-rails
   jbuilder (~> 2.0)
