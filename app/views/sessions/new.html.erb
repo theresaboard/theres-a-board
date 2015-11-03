@@ -1,10 +1,9 @@
 <div id="root" style="width: 280px; margin: 40px auto; padding: 10px; ; border-width: 1px;">
-    embeded area
 </div>
 <script src="https://cdn.auth0.com/js/lock-7.9.min.js"></script>
 <script>
   
-  var lock = new Auth0Lock('IjMvSSE8zdo53tB1QFX5U8EDIxCTzW8Z', 'dbc-mentor-me.auth0.com');
+  var lock = new Auth0Lock("<%= ENV["AUTH0_CLIENT"] || 'IjMvSSE8zdo53tB1QFX5U8EDIxCTzW8Z' %>", 'dbc-mentor-me.auth0.com');
   var url = (document.location.origin + "/auth/auth0/callback")
   
   lock.show({

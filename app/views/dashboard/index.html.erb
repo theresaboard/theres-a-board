@@ -5,7 +5,7 @@
       <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Dashboard</span> - Student View</h4>
 
       <ul class="breadcrumb breadcrumb-caret position-right">
-        <li><a href="#">Mentor Me</a></li>
+        <li><a href="#">Home</a></li>
         <li><a href="#">Dashboard</a></li>
         <li class="active">Board</li>
       </ul>
@@ -27,13 +27,6 @@
 
         <div class="panel-heading">
           <h5 class="panel-title">Tutor Board</h5>
-          <div class="heading-elements">
-            <ul class="icons-list">
-              <li><a data-action="collapse"></a></li>
-              <li><a data-action="reload"></a></li>
-              <li><a data-action="close"></a></li>
-            </ul>
-          </div>
         </div>
 
         <!-- FullCalendar View -->
@@ -47,7 +40,6 @@
   </div>
 </div>
 
-      
 <!-- Modal used for showing timeslots -->
 <div id="modal_remote" class="modal fade">
   <div class="modal-dialog modal-sm">
@@ -66,7 +58,7 @@
         <h5 class="modal-title"><h5 class="modal-title"><i class="icon-alarm-add"></i> &nbsp;Add Tutoring Time</h5>
       </div>
 
-      <form action="#">
+      <form id="new-timeslot-form" action="#">
         <div class="modal-body">
           <div class="alert alert-info alert-styled-left text-blue-800 content-group">
               <span class="text-semibold">Remember!</span> All sessions are 30 minutes.

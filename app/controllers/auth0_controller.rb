@@ -3,11 +3,11 @@ class Auth0Controller < ApplicationController
 
     user = User.find_or_create_by(uid: request.env['omniauth.auth']['uid'])
     user.image = request.env['omniauth.auth']['info']['image']
-    user.name = request.env['omniauth.auth']['info']['name']
+    user.name  = request.env['omniauth.auth']['info']['name']
+    user.email = request.env['omniauth.auth']['info']['email']
     user.save
 
     session[:uid] = user.uid
-
     redirect_to root_url
   end
 
