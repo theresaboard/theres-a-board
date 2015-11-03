@@ -16,8 +16,8 @@
 
     <div class="media-left">
       <h5 class="text-semibold no-margin">
-        <%= @timeslot.day_and_time %>
-        <small class="display-block no-margin"><%= @timeslot.new_york_ordinal_time %></small>
+        <%= start_day_time(@timeslot) %>
+        <small class="display-block no-margin"><%= start_long_ordinal(@timeslot) %></small>
       </h5>
     </div>
   </div>
