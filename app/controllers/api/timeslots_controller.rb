@@ -47,6 +47,9 @@ class Api::TimeslotsController < SecuredController
   end
 
   private
+  def safe_params
+    params.permit(:start, :id, :subject)
+  end
 
   def timeslot_params
     params.permit(:start).merge(tutor_id: current_user.id)
