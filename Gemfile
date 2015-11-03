@@ -33,6 +33,7 @@ gem 'simplecov', :require => false, :group => :test
 
 gem 'intercom-rails'
 gem 'intercom'
+
 gem 'faraday'
 
 group :development, :test do

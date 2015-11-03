@@ -1,5 +1,4 @@
 class TimeslotMailer < ApplicationMailer
-
   def tutor_scheduled(timeslot)
     @timeslot = timeslot
     mail to: @timeslot.tutor.email, subject: "there's a board Scheduling Notification"
