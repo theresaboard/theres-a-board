@@ -10,8 +10,4 @@ class TimeslotsController < SecuredController
     end
   end
 
-  private
-  def safe_params
-    params.permit(:start, :id)
-  end
 end
