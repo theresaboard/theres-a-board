@@ -10,7 +10,7 @@ class Auth0Controller < ApplicationController
       session[:uid] = user.uid
       redirect_to root_url
     else
-      render plain: { bell: 'shame' }, status: 403
+      render plain: "You are not a member of the Devbootcamp Org on GitHub", status: 403
     end
   end
 
