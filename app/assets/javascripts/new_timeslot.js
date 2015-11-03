@@ -35,3 +35,9 @@ var createDate = function() {
   var dateTime = date + " " + time;
   return (new Date(dateTime));
 }
+
+// Timeslot New Button
+
+var makeNewTimeslotbutton = function(){
+  $('#modal_new_timeslot').modal({ show: true });
+}
