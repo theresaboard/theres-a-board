@@ -7,7 +7,31 @@
     <!-- Main content -->
     <div class="content-wrapper">
 
-      <div class="panel panel-flat">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h5 class="panel-title">The Board</h5>
+          <!--New Button-->
+          <div class="heading-elements">
+            <button type="button" class="btn btn-success btn-xs heading-btn">
+              New Availability
+            </button>
+            <!--Filter Button-->
+            <div class="btn-group heading-btn">
+              <button type="button" class="btn btn-primary btn-xs btn-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                 <i class="icon-search4"></i>
+                 Filter
+                 <span class="caret"></span>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="#">All</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Open</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Your</a></li>
+                  </ul>
+              </button>
+            </div>
+          </div>
+        </div>
 
         <!-- FullCalendar View -->
         <div class="panel-body">
