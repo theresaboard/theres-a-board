@@ -53,6 +53,23 @@
   <% end %>
   <!-- End Student -->
 
+  <!-- Subject -->
+  <% if @timeslot.subject %>
+  <div class="media">
+    <div class="media-left media-middle">
+      <a href="#" class="btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-book2"></i></a>
+    </div>
+
+    <div class="media-left">
+      <h5 class="text-semibold no-margin">
+        Subject
+        <small class="display-block no-margin"><%= @timeslot.subject %></small>
+      </h5>
+    </div>
+  </div>
+  <% end %>
+  <!-- End Subject -->
+
 </div>
 <!-- /Modal body -->
 

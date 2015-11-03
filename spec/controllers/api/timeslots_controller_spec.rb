@@ -90,5 +90,4 @@ describe Api::TimeslotsController do
       }.not_to change{Timeslot.count}
     end
   end
-
 end
