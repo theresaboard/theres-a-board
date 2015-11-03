@@ -8,6 +8,13 @@ describe Api::TimeslotsController do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
 
+  context "#index" do
+    it "is successful" do
+      get :index, format: :json, start: persisted_timeslot.start, end: persisted_timeslot.start + 7
+      expect(response).to be_success
+    end
+  end
+
   describe '#create' do
     it 'should exist' do
       post :create, timeslot_attribs
@@ -66,13 +73,21 @@ describe Api::TimeslotsController do
 
   end
 
-  describe '#delete' do
-    let(:timeslot) { FactoryGirl.create(:timeslot) }
+  context '#destroy' do
+    let!(:timeslot) { FactoryGirl.create(:timeslot) }
 
     it 'should update a timeslot with valid data' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(timeslot.tutor)
       expect {
-        post :destroy, id: timeslot.id
-      }.to change{Timeslot.count}.by(1)
+        delete :destroy, id: timeslot.id
+      }.to change{Timeslot.count}.by(-1)
+    end
+
+    it 'should not update a timeslot with valid data' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      expect {
+        delete :destroy, id: timeslot.id
+      }.not_to change{Timeslot.count}
     end
   end
 

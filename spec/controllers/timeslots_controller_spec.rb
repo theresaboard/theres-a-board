@@ -26,4 +26,13 @@ describe TimeslotsController do
     end
   end
 
+  context "SecuredController#logged_in_using_omniauth?" do
+    let(:timeslot) { FactoryGirl.create(:timeslot) }
+    it "should redirect if not logged in" do
+      session.clear
+      get :show, id: timeslot.id
+      expect(response).to redirect_to login_path
+    end
+  end
+
 end
