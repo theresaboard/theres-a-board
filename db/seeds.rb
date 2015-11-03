@@ -2,11 +2,19 @@
 # image (string, URI for avatar image).
 user_count = 25
 user_count.times do
+  if rand(2) == 1
+    text_notify = true
+    cellphone = '5555555555'
+  else
+    text_notify = false
+  end
   User.create(
-    uid:   SecureRandom.urlsafe_base64,
-    name:  Faker::Name.name,
-    email: 'notify@theresaboard.com',
-    image: Faker::Avatar.image(nil, "100x100")
+    uid:         SecureRandom.urlsafe_base64,
+    name:        Faker::Name.name,
+    email:       'notify@theresaboard.com',
+    image:       Faker::Avatar.image(nil, "100x100"),
+    text_notify: text_notify,
+    cellphone:   cellphone
   )
 end
 
