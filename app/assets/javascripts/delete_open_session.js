@@ -24,7 +24,7 @@ var deleteOpenSession = function(timeslot_id){
                 confirmButtonColor: "#66BB6A",
                 type: "info"
             });
-            $('#tutor-cal').fullCalendar( 'refetchEvents' );
+            $('#tutor-cal').fullCalendar('refetchEvents');
         }).fail(function() {
             swal({
               title: "Oops...",
