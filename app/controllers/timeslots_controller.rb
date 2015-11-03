@@ -9,5 +9,4 @@ class TimeslotsController < SecuredController
       render "appt_show"
     end
   end
-
 end
