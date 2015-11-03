@@ -16,6 +16,7 @@ class Api::TimeslotsController < SecuredController
   def update
     timeslot = Timeslot.find_by(id: params[:id])
     timeslot.student_id = current_user.id
+    timeslot.update_attributes(safe_params)
     timeslot.save!
     render plain: { message: 'success' }
     timeslot.send_tutor_scheduling_email
