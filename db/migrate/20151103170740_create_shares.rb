@@ -4,7 +4,7 @@ class CreateShares < ActiveRecord::Migration
       t.string :url, null: false
       t.string :title, null: false
       t.string :description
-      t.string :type
+      t.string :category
       t.integer :user_id
       t.timestamps null: false
     end
