@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get   '/logout', to: 'sessions#destroy', as: :logout
   post '/shares/search', as: :search
 
-  resources :timeslots, only: [:update, :show]
+  resources :timeslots, only: [:show]
   resources :users, only: [:edit]
   resources :shares, only: [:index, :create, :new]
 
