@@ -5,7 +5,7 @@ class Api::UsersController < SecuredController
       render plain: { message: 'success' }
       current_user.track_event('updated profile')
     else
-      render plain: { message: 'fail' }, status: 422
+      render json: { errors: current_user.errors.full_messages.join('. ') }, status: 406
     end
   end
 
