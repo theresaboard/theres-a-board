@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get   '/logout', to: 'sessions#destroy', as: :logout
   post '/shares/search', as: :search
 
+  resources :timeslots, only: [:update, :show]
+  resources :users, only: [:edit]
   resources :shares, only: [:index, :create, :new]
-  resources :timeslots, only: [:show]
 
   namespace :api, defaults: {format: :json} do
     patch 'timeslots/:id/cancel', to: 'timeslots#cancel', as: :cancel
