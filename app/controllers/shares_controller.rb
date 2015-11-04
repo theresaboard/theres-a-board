@@ -19,9 +19,8 @@ class SharesController < SecuredController
   end
 
   def search
-    # params[:search]
-    #pgsearch
-    @timeslots = Timeslot.search(params[:search])
+    @shares = Share.search(params[:search])
+    render 'results'
   end
 
   private
