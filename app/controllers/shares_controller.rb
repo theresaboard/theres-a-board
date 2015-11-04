@@ -18,6 +18,13 @@ class SharesController < SecuredController
     end
   end
 
+  def search
+    # params[:search]
+    #pgsearch
+    @timeslots = Timeslot.search(params[:search])
+  end
+
+  private
   def share_params
     params.require(:share).permit(:url, :title, :description, :category)
   end
