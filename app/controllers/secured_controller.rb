@@ -1,5 +1,4 @@
 class SecuredController < ApplicationController
-
   before_action :logged_in_using_omniauth?
 
   private
@@ -9,5 +8,4 @@ class SecuredController < ApplicationController
       redirect_to '/login'
     end
   end
-
 end

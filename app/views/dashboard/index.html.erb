@@ -1,19 +1,3 @@
-<!-- Page header -->
-<div class="page-header">
-  <div class="page-header-content">
-    <div class="page-title">
-      <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Dashboard</span> - Student View</h4>
-
-      <ul class="breadcrumb breadcrumb-caret position-right">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Dashboard</a></li>
-        <li class="active">Board</li>
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- /page header -->
-
 <!-- Page container -->
 <div class="page-container">
 
@@ -23,10 +7,15 @@
     <!-- Main content -->
     <div class="content-wrapper">
 
-      <div class="panel panel-flat">
-
+      <div class="panel panel-default">
         <div class="panel-heading">
-          <h5 class="panel-title">Tutor Board</h5>
+          <h5 class="panel-title">The Board</h5>
+          <!--New Button-->
+          <div class="heading-elements">
+            <button id="new-timeslot-btn" type="button" class="btn btn-success btn-xs heading-btn" onClick="makeNewTimeslotbutton()">
+              New Availability
+            </button>
+          </div>
         </div>
 
         <!-- FullCalendar View -->
@@ -67,13 +56,13 @@
           <h6 class="text-semibold">Select a Date</h6>
           <div class="input-group">
                 <span class="input-group-addon"><i class="icon-calendar5"></i></span>
-                <input type="text" placeholder="Eugene" class="form-control datepicker">
+                <input type="text" placeholder="Select a Date" class="form-control datepicker">
           </div>
 
           <h6 class="text-semibold">Select a Time</h6>
           <div class="input-group">
                 <span class="input-group-addon"><i class="icon-alarm"></i></span>
-                <input type="text" placeholder="Eugene" class="form-control timepicker">
+                <input type="text" placeholder="Select a Time" class="form-control timepicker">
           </div>
         </div>
 

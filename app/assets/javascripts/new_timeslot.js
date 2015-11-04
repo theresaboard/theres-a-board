@@ -16,11 +16,11 @@ $(document).ready(function(){
                 confirmButtonColor: "#66BB6A",
                 type: "success"
             });
-          $('#tutor-cal').fullCalendar( 'refetchEvents' );
+          $('#tutor-cal').fullCalendar('refetchEvents');
       }).fail(function(response) {
         swal({
               title: "Oops...",
-              text: "Something went wrong!",
+              text: response.responseJSON.errors,
               confirmButtonColor: "#EF5350",
               type: "error"
           });
@@ -34,4 +34,10 @@ var createDate = function() {
   var time = $('.datepicker').val();
   var dateTime = date + " " + time;
   return (new Date(dateTime));
+}
+
+// Timeslot New Button
+
+var makeNewTimeslotbutton = function(){
+  $('#modal_new_timeslot').modal({ show: true });
 }
