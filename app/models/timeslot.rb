@@ -29,7 +29,20 @@ class Timeslot < ActiveRecord::Base
     if self.student.email_notify && !self.student.email.nil?
       TimeslotMailer.student_scheduled(self).deliver_now
     end
-    # Send text notifications, if appropriate
+    if self.tutor.text_notify && !self.tutor.cellphone.nil?
+      message = "#{self.student.name} requests to be tutored on " +
+        "#{Time.zone.at(self.start).to_formatted_s(:notify_short)}. " +
+        "You can contact this student at #{self.student.email}. " +
+        "theresaboard.com"
+      TextMessage.send(self.tutor, message)
+    end
+    if self.student.text_notify && !self.student.cellphone.nil?
+      message = "You requested to be tutored on " +
+        "#{Time.zone.at(self.start).to_formatted_s(:notify_short)} " +
+        "by #{self.tutor.name}. You can contact this tutor at " +
+        "#{self.tutor.email}. theresaboard.com"
+      TextMessage.send(self.student, message)
+    end
   end
 
   def send_cancel_notifications(student)
@@ -39,7 +52,18 @@ class Timeslot < ActiveRecord::Base
     if student.email_notify && !student.email.nil?
       TimeslotMailer.student_cancel(self, student).deliver_now
     end
-    # Send text notification, if appropriate.
+    if self.tutor.text_notify && !self.tutor.cellphone.nil?
+      message = "Your tutor session with #{student.name} " +
+        "on #{Time.zone.at(self.start).to_formatted_s(:notify_short)} " +
+        "has been canceled. theresaboard.com"
+      TextMessage.send(self.tutor, message)
+    end
+    if student.text_notify && !student.cellphone.nil?
+      message = "Your tutor session with #{self.tutor.name} " +
+        "on #{Time.zone.at(self.start).to_formatted_s(:notify_short)} " +
+        "has been canceled. theresaboard.com"
+      TextMessage.send(student, message)
+    end
   end
 
   private
