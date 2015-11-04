@@ -42,8 +42,8 @@ describe SharesController do
     end
 
     it 'should not return a share if nothing is found' do
-      post :search
-      expect(response).to be_success
+      post :search, search: nil
+      expect(assigns(:shares)).to be_empty
     end
   end
 end
