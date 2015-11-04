@@ -25,8 +25,7 @@ class Api::TimeslotsController < SecuredController
     timeslot.update_attributes(safe_params)
     timeslot.save!
     render plain: { message: 'success' }
-    timeslot.send_tutor_scheduling_email
-    timeslot.send_student_scheduling_email
+    timeslot.send_booking_notifications
     current_user.track_event("booked-tutor")
   end
 
@@ -35,9 +34,8 @@ class Api::TimeslotsController < SecuredController
     student = timeslot.student
     timeslot.student_id = nil
     if (current_user.id == timeslot.tutor.id || current_user.id == student.id) && timeslot.save
-      timeslot.send_tutor_cancel_email(student)
-      timeslot.send_student_cancel_email(student)
       render plain: { message: 'success' }
+      timeslot.send_cancel_notifications(student)
     else
       render plain: { message: 'fail' }
     end
