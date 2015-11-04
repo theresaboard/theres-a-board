@@ -15,7 +15,7 @@
       </div>
       <div class="form-group">
         <label>Description:</label>
-        <textarea rows="5" cols="5" class="form-control" placeholder="Your reasons why this is worth sharing go here."></textarea>
+        <textarea rows="5" cols="5" class="form-control" name="share[description]" placeholder="Your reasons why this is worth sharing go here."></textarea>
       </div>
       <div class="form-group">
         <label>Link:</label>
@@ -27,19 +27,19 @@
       <div class="form-group">
         <label class="display-block">Category:</label>
         <label class="radio-inline">
-          <input type="radio" class="styled" name="share[description]" checked="checked">
+          <input type="radio" class="styled" name="share[category]" checked="checked" value='Article'>
           Article
         </label>
         <label class="radio-inline">
-          <input type="radio" class="styled" name="share[description]">
+          <input type="radio" class="styled" name="share[category]" value='Video'>
           Video
         </label>
         <label class="radio-inline">
-          <input type="radio" class="styled" name="share[description]">
+          <input type="radio" class="styled" name="share[category]" value='Podcast'>
           Podcast
         </label>
         <label class="radio-inline">
-          <input type="radio" class="styled" name="share[description]">
+          <input type="radio" class="styled" name="share[category]" value='Other'>
           Other
         </label>
       </div>
