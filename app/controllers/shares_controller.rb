@@ -18,6 +18,12 @@ class SharesController < SecuredController
     end
   end
 
+  def search
+    @shares = Share.search(params[:search])
+    render 'results'
+  end
+
+  private
   def share_params
     params.require(:share).permit(:url, :title, :description, :category)
   end

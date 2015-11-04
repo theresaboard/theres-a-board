@@ -1,4 +1,11 @@
-<div id='shares-index'>
+<div id='shares_search_container'>
+  <form id='shares_search_form' action='/shares/search' method='post'>
+      <input type='text' name='search' placeholder='Search for...'>
+      <input type="submit" value="search">
+  </form>
+</div>
+
+<div id='shares_index'>
   <% @shares.each do |share| %>
     <li><%= share.url %></li>
     <li><%= share.title %></li>

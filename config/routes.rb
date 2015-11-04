@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   get "/auth/failure" => "auth0#failure"
   get   '/login', to: 'sessions#new', as: :login
   get   '/logout', to: 'sessions#destroy', as: :logout
+  post '/shares/search', as: :search
 
   resources :shares, only: [:index, :create, :new]
   resources :timeslots, only: [:update, :show]
-
 
   namespace :api, defaults: {format: :json} do
     patch 'timeslots/:id/cancel', to: 'timeslots#cancel', as: :cancel
