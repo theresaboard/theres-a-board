@@ -29,7 +29,7 @@ $(function(){
       }).fail(function(response) {
         swal({
               title: "Oops...",
-              text: "Something went wrong!",
+              text: response.responseJSON.errors,
               confirmButtonColor: "#EF5350",
               type: "error"
           });

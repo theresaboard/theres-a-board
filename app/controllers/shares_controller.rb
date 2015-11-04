@@ -14,7 +14,7 @@ class SharesController < SecuredController
     if share.save
       render plain: { message: 'success' }
     else
-      render plain: { message: 'fail' }
+      render json: { errors: share.errors.full_messages.join('. ') }, status: 422
     end
   end
 
