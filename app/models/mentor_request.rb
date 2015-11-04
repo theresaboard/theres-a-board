@@ -2,6 +2,14 @@ class MentorRequest < ActiveRecord::Base
   belongs_to :student, class_name: "User"
   validates_presence_of :student
 
+  after_create :light_up
+
+  def light_up
+    a = ['red','green','blue','0,128,128', "128,0,128"]
+    Particle.publish(name: "aBcK9anskFasd", data: a.sample)
+  end
+    
+
   def self.open_by_user(user)
     req = self.where(student: user, open: true)
   end
@@ -18,7 +26,7 @@ class MentorRequest < ActiveRecord::Base
     self.open = false
     self.save
     unless MentorRequest.open_requests?
-      Particle.publish(name: "btnoff")
+      Particle.publish(name: "aBcK9anskFasd", data: "off")
     end
   end
 

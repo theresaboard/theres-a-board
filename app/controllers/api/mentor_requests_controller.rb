@@ -7,7 +7,6 @@ class Api::MentorRequestsController < SecuredController
   def open
     req = MentorRequest.new(student: current_user)
     if req.save!
-      Particle.publish(name: "lighton")
       render json: {result: "success"}
     end
   end
