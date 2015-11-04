@@ -1,16 +1,29 @@
 class Api::TimeslotsController < SecuredController
   def index
     if params[:search] == 'ALL'
-      @timeslots = Timeslot.where('start >= ? AND start <= ?', params[:start], params[:end]).includes(:tutor, :student)
+      @timeslots = Timeslot.where(
+        'start >= ? AND start <= ?',
+        params[:start],
+        params[:end]
+      ).includes(:tutor, :student)
     elsif params[:search] == 'AVAILABLE'
-      @timeslots = Timeslot.where('start >= ? AND start <= ? AND student_id IS NULL', params[:start], params[:end]).includes(:tutor, :student)
+      @timeslots = Timeslot.where(
+        'start >= ? AND start <= ? AND student_id IS NULL',
+        params[:start],
+        params[:end]
+      ).includes(:tutor, :student)
     elsif params[:search] == 'MINE'
-      @timeslots = Timeslot.where('start >= ? AND start <= ? AND tutor_id = ?', params[:start], params[:end], current_user.id).includes(:tutor, :student)
+      @timeslots = Timeslot.where(
+        'start >= ? AND start <= ? AND tutor_id = ?',
+        params[:start],
+        params[:end],
+      current_user.id).includes(:tutor, :student)
     end
   end
 
   def create
     timeslot = Timeslot.new(timeslot_params)
+    timeslot.tutor_id = current_user.id
     if timeslot.save
       render json: { status: "success" }
       current_user.track_event("created-timeslot")
@@ -22,7 +35,7 @@ class Api::TimeslotsController < SecuredController
   def update
     timeslot = Timeslot.find_by(id: params[:id])
     timeslot.student_id = current_user.id
-    timeslot.update_attributes(safe_params)
+    timeslot.update_attributes(timeslot_params)
     timeslot.save!
     render plain: { message: 'success' }
     timeslot.send_booking_notifications
@@ -52,11 +65,8 @@ class Api::TimeslotsController < SecuredController
   end
 
   private
-  def safe_params
-    params.permit(:start, :id, :subject)
-  end
 
-  def timeslot_params
-    params.permit(:start).merge(tutor_id: current_user.id)
-  end
+    def timeslot_params
+      params.permit(:start, :subject)
+    end
 end
