@@ -1,7 +1,52 @@
-<form id='new_share_form' action='/shares' method='post'>
-  <input type='text' name='share[url]' placeholder='url'>
-  <input type='text' name='share[title]' placeholder='title'>
-  <input type='text' name='share[description]' placeholder='description'>
-  <input type='text' name='share[category]' placeholder='category'>
-  <input type="submit" value="share!">
+<form id="new-share-form" action="/shares" method="post">
+    <div class="panel-heading bg-primary">
+      <h5 class="panel-title"><i class="icon-share3"></i> &nbsp;Share a Learning Resource:</h5>
+      <div class="heading-elements">
+        <ul class="icons-list">
+          <li><a data-action="close"></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div class="form-group">
+        <label>Title:</label>
+        <input type="text" class="form-control" name="share[title]">
+      </div>
+      <div class="form-group">
+        <label>Description:</label>
+        <textarea rows="5" cols="5" class="form-control" placeholder="Your reasons why this is worth sharing go here."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Link:</label>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon-link2"></i></span>
+          <input type="text" class="form-control" name="share[url]">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="display-block">Category:</label>
+        <label class="radio-inline">
+          <input type="radio" class="styled" name="share[description]" checked="checked">
+          Article
+        </label>
+        <label class="radio-inline">
+          <input type="radio" class="styled" name="share[description]">
+          Video
+        </label>
+        <label class="radio-inline">
+          <input type="radio" class="styled" name="share[description]">
+          Podcast
+        </label>
+        <label class="radio-inline">
+          <input type="radio" class="styled" name="share[description]">
+          Other
+        </label>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+      <button id="share-res-btn" type="submit" class="btn btn-success">Share!</button>
+    </div>
 </form>
+
