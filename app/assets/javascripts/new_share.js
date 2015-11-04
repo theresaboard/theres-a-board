@@ -19,7 +19,10 @@ $(function(){
           swal({
                 title: "Awesome!",
                 text: "Thanks for your share!",
-                confirmButtonColor: "#66BB6A",
+                confirmButtonColor: "#FFFFFF",
+                showConfirmButton: false,
+                allowOutsideClick: true,
+                timer: 1500,
                 type: "success"
             });
       }).fail(function(response) {
