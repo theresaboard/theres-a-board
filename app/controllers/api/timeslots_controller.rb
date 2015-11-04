@@ -1,15 +1,15 @@
 class Api::TimeslotsController < SecuredController
   def index
-    @timeslots = Timeslot.all.includes(:tutor, :student).where('start >= ? AND start <= ?', params[:start], params[:end])
+    @timeslots = Timeslot.where('start >= ? AND start <= ?', params[:start], params[:end]).includes(:tutor, :student)
   end
 
   def create
     timeslot = Timeslot.new(timeslot_params)
     if timeslot.save
-      render plain: { message: "success" }
+      render json: { status: "success" }
       current_user.track_event("created-timeslot")
     else
-      render plain: { message: "fail" }
+      render json: { errors: timeslot.errors.full_messages.join('. ') }, status: 406
     end
   end
 
