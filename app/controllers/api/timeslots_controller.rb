@@ -6,10 +6,10 @@ class Api::TimeslotsController < SecuredController
   def create
     timeslot = Timeslot.new(timeslot_params)
     if timeslot.save
-      render plain: { message: "success" }
+      render json: { status: "success" }
       current_user.track_event("created-timeslot")
     else
-      render plain: { message: "fail" }
+      render json: { errors: timeslot.errors.full_messages.join('. ') }, status: 406
     end
   end
 
