@@ -1,5 +1,3 @@
-# params[:timeslot][:start]
-# params[:timeslot][:location]
 FactoryGirl.define do
   factory(:timeslot) do
     tutor

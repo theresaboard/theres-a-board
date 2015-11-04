@@ -1,0 +1,9 @@
+<div id='shares-index'>
+  <% @shares.each do |share| %>
+    <li><%= share.url %></li>
+    <li><%= share.title %></li>
+    <li><%= share.description %></li>
+    <li><%= share.category %></li>
+    <li><%= share.user.name %></li>
+  <% end %>
+</div>
