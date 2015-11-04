@@ -12,22 +12,20 @@ describe Api::TimeslotsController do
   # end
   context "#index" do
     it "is successful" do
-      get :index, format: :json, start: persisted_timeslot.start, end: persisted_timeslot.start + 7
+      get :index, format: :json, start: persisted_timeslot.start - 1, end: persisted_timeslot.start + 7, search: 'All'
       expect(response).to be_success
+      p response.body
     end
 
     it 'should return all records for with any data in timeslot table' do
-      request.env["HTTP_ACCEPT"] = 'application/json'
-      get :index, format: :json, start: persisted_timeslot.start, end: persisted_timeslot.start + 7
-      response.should be_success
-      # puts persisted_timeslot.valid?
+      get :index, format: :json, start: persisted_timeslot.start, end: persisted_timeslot.start + 7, search: 'All'
+      expect(response).to be_success
+      # body = JSON.parse(response.body)
       # puts response
-      body = JSON.parse(response.body)
-      # puts body
-      # puts 'puts'
-      body.should include('timeslots')
-      groups = body['timeslot']
-      groups.should have(2).items
+      # body['timeslots']
+      # body.should include('timeslot')
+      # groups = body['timeslot']
+      # groups.should have(2).items
     end
   end
 
