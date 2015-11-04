@@ -16,6 +16,13 @@ ActiveRecord::Schema.define(version: 20151103192426) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "mentor_requests", force: :cascade do |t|
+    t.integer  "student_id",                null: false
+    t.boolean  "open",       default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "shares", force: :cascade do |t|
     t.string   "url",         null: false
     t.string   "title",       null: false

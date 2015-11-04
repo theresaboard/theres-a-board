@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     patch 'timeslots/:id/cancel', to: 'timeslots#cancel', as: :cancel
     resources :timeslots, only: [:index, :create, :update, :destroy]
     resources :users, only: [:update]
+    post "mentor_requests", to: 'mentor_requests#open'
+    put "mentor_requests", to: 'mentor_requests#close'
+    get "mentor_requests", to: 'mentor_requests#status'
+    get "mentor_requests/open", to: 'mentor_requests#index'
   end
 
   get "/404", :to => "errors#not_found"
