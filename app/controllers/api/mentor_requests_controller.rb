@@ -8,12 +8,14 @@ class Api::MentorRequestsController < SecuredController
     req = MentorRequest.new(student: current_user)
     if req.save!
       render json: {result: "success"}
+      current_user.track_event("opened-request")
     end
   end
 
   def close
     MentorRequest.close_all_by_user(current_user)
     render json: {result: "success"}
+    current_user.track_event("closed-request")
   end
 
 end
