@@ -34,7 +34,7 @@ describe Api::MentorRequestsController do
     it 'shoud not return 0 with open respones' do
       post :open
       get :status
-      expect(response.body).to_not include("{\"open\":0}")
+      expect(response.body).not_to include("{\"open\":0}")
     end
 
     it 'return 1 with open respones' do
