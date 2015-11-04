@@ -1,7 +1,10 @@
 $(function(){
   $('#new_share_link').click(function(e){
     e.preventDefault();
-    $('#new_share_modal').modal('toggle');
+    $('#new_share_modal').modal({
+      remote: '/shares/new',
+      show: true
+    });
   });
 
   $('#new_share_form').submit(function(e){
