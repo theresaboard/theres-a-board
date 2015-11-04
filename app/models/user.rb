@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   has_many :shares
 
   validates_presence_of :name
-  validates_presence_of :email_notify
-  validates_presence_of :text_notify
+  validates_inclusion_of :email_notify, in: [true, false], message: "can't be blank"
+  validates_inclusion_of :text_notify, in: [true, false], message: "can't be blank"
   validates_presence_of :cellphone, message: "must be present for text notifications", if: 'text_notify'
 
   def cellphone=(cellphone_number)
