@@ -6,7 +6,7 @@ class MentorController < SecuredController
 
   private
 
-  def redirect_if_not_logged_in
+  def redirect_if_not_mentor
     unless current_user.is_mentor?
       redirect_to '/login'
     end

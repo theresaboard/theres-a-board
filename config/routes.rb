@@ -17,9 +17,13 @@ Rails.application.routes.draw do
     post "mentor_requests", to: 'mentor_requests#open'
     put "mentor_requests", to: 'mentor_requests#close'
     get "mentor_requests", to: 'mentor_requests#status'
-    get "mentor_requests/open", to: 'mentor_requests#index'
+    post "mentor", to: 'mentor#checkin'
+    put "mentor", to: 'mentor#checkout'
+    get "mentor", to: 'mentor#status'
   end
 
+  resources :mentor, only: [:index]
+  
   get "/403", :to => "errors#forbidden"
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"
