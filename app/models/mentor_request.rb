@@ -5,8 +5,7 @@ class MentorRequest < ActiveRecord::Base
   after_create :light_up
 
   def light_up
-    a = ['red','green','blue','0,128,128', "128,0,128"]
-    Particle.publish(name: "aBcK9anskFasd", data: a.sample)
+    Light.on
   end
     
 
@@ -26,7 +25,7 @@ class MentorRequest < ActiveRecord::Base
     self.open = false
     self.save
     unless MentorRequest.open_requests?
-      Particle.publish(name: "aBcK9anskFasd", data: "off")
+      Light.off
     end
   end
 
