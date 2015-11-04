@@ -39,7 +39,7 @@ describe Api::TimeslotsController do
 
     it 'should update a timeslot with valid data' do
       expect {
-        post :update, id: timeslot.id
+        patch :update, id: timeslot.id
       }.to change { timeslot.reload.student_id }.to(user.id)
       expect(response).to be_success
     end
