@@ -4,8 +4,9 @@ class Api::MentorController < MentorController
     @requests = MentorRequest.where(open: true)
   end
 
-  def update
+  def close_request
     MentorRequest.find(params[:id]).close
+    render json: {status: "success"}
   end
 
   def status

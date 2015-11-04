@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     put "mentor", to: 'mentor#checkout'
     get "mentor", to: 'mentor#status'
     get "mentor/queue", to: 'mentor#index'
+    put "mentor/queue/:id", to: 'mentor#close_request'
   end
 
   resources :mentor, only: [:index]

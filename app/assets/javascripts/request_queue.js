@@ -31,14 +31,20 @@ requestQueue.prototype.setup = function () {
 }
 
 requestQueue.prototype.buildListener = function () {
+  var self = this;
   $('#request-queue-list').on('click', '.close-request', function(e) {
-      e.preventDefault()
-      var url = e.currentTarget.attributes['href'].value
-      $.ajax({
-        url: url,
-        method: "PUT",
-        data: {}
-      })
+      e.preventDefault(e)
+      self.closeRequest(e)
+      self.getRequests()
+  })
+}
+
+requestQueue.prototype.closeRequest = function (e) {
+  var url = e.currentTarget.attributes['href'].value
+  $.ajax({
+    url: url,
+    method: "PUT",
+    data: {}
   })
 }
 

@@ -15,6 +15,9 @@ mentorRequestDispatcher.prototype.checkStatus = function () {
   }).done( function(response) {
     self.activeRequests = response.open;
     self.setButtonState();
+    if (self.activeRequests != 0) {
+      self.poll()
+    }
   })
 }
 
@@ -56,7 +59,15 @@ mentorRequestDispatcher.prototype.openRequest = function () {
     method: "POST",
     data: {},
     url: "/api/mentor_requests"
-  }).done( self.buttonCancel() )
+  }).done( self.buttonCancel() );
+  self.poll()
+}
+
+mentorRequestDispatcher.prototype.poll = function () {
+ var self = this;
+ setTimeout(function() { 
+    self.checkStatus();
+ }, 3000);
 }
 
 var mentorDispatcher = new mentorRequestDispatcher()
