@@ -54,5 +54,5 @@ $(function() {
   });
 
   //polling every 5 minutes
-  setInterval(function(){ $('#tutor-cal').fullCalendar('refetchEvents'); }, 30000);
+  setInterval(function(){ $('#tutor-cal').fullCalendar('refetchEvents'); }, 300000);
 });
