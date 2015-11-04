@@ -11,7 +11,6 @@ $(function(){
     e.preventDefault();
     $('#new_share_modal').modal('toggle');
     var data = $(event.target).serialize();
-    debugger;
     $.ajax({
         type: "POST",
         url: "/shares",
