@@ -34,4 +34,14 @@ describe TimeslotsController do
       expect(response).to redirect_to login_path
     end
   end
+
+  context 'ApplicationController' do
+    let(:timeslot) { FactoryGirl.create(:timeslot) }
+    it 'should raise a 404 error' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      saved_id = timeslot.id
+      timeslot.destroy
+      expect { get :show, id: timeslot.id }.to raise_error ActiveRecord::RecordNotFound
+    end
+  end
 end
