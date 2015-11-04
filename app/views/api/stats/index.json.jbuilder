@@ -1,13 +1,7 @@
-json.array! @timeslots do |slot|
-    json.id slot.id
-    json.title slot.tutor.name
-    json.start slot.start
-    json.end slot.end
-    json.allDay false
-    json.subject slot.subject
-    if slot.student
-      json.color "#FF5722"
-    else
-      json.color "#2196F3"
-    end
+json.array! @users do |user|
+    json.id user[0].id
+    json.name user[0].name
+    json.image user[0].image
+    json.tutor_sessions user[1]
+    json.rank user[2]
 end
