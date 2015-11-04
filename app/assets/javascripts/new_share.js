@@ -7,13 +7,15 @@ $(function(){
     });
   });
 
-  $('#new_share_form').submit(function(e){
+  $('#new_share_modal').submit('#new-share-form', function(e){
     e.preventDefault();
     $('#new_share_modal').modal('toggle');
+    var data = $(event.target).serialize();
+    debugger;
     $.ajax({
         type: "POST",
         url: "/shares",
-        data: $(this).serialize(),
+        data: data,
         beforeSend: customBlockUi(this)
       }).done(function(response) {
           swal({
