@@ -22,20 +22,24 @@ class Timeslot < ActiveRecord::Base
     student.nil?
   end
 
-  def send_tutor_scheduling_email
-    TimeslotMailer.tutor_scheduled(self).deliver_now unless self.tutor.email.nil?
+  def send_booking_notifications
+    if self.tutor.email_notify && !self.tutor.email.nil?
+      TimeslotMailer.tutor_scheduled(self).deliver_now
+    end
+    if self.student.email_notify && !self.student.email.nil?
+      TimeslotMailer.student_scheduled(self).deliver_now
+    end
+    # Send text notifications, if appropriate
   end
 
-  def send_student_scheduling_email
-    TimeslotMailer.student_scheduled(self).deliver_now unless self.student.email.nil?
-  end
-
-  def send_tutor_cancel_email(student)
-    TimeslotMailer.tutor_cancel(self, student).deliver_now unless self.tutor.email.nil?
-  end
-
-  def send_student_cancel_email(student)
-    TimeslotMailer.student_cancel(self, student).deliver_now unless student.email.nil?
+  def send_cancel_notifications(student)
+    if self.tutor.email_notify && !self.tutor.email.nil?
+      TimeslotMailer.tutor_cancel(self, student).deliver_now
+    end
+    if student.email_notify && !student.email.nil?
+      TimeslotMailer.student_cancel(self, student).deliver_now
+    end
+    # Send text notification, if appropriate.
   end
 
   private
