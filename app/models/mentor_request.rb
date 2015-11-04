@@ -10,7 +10,7 @@ class MentorRequest < ActiveRecord::Base
     
 
   def self.open_by_user(user)
-    req = self.where(student: user, open: true)
+    self.where(student: user, open: true)
   end
 
   def self.close_all_by_user(user)
