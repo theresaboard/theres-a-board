@@ -1,6 +1,12 @@
 class Api::TimeslotsController < SecuredController
   def index
-    @timeslots = Timeslot.where('start >= ? AND start <= ?', params[:start], params[:end]).includes(:tutor, :student)
+    if params[:search] == 'All'
+      @timeslots = Timeslot.where('start >= ? AND start <= ?', params[:start], params[:end]).includes(:tutor, :student)
+    elsif params[:search] == 'Available'
+      @timeslots = Timeslot.where('start >= ? AND start <= ? AND student_id IS NULL', params[:start], params[:end]).includes(:tutor, :student)
+    elsif params[:search] == 'Mine'
+      @timeslots = Timeslot.where('start >= ? AND start <= ? AND tutor_id = ?', params[:start], params[:end], current_user.id).includes(:tutor, :student)
+    end
   end
 
   def create
