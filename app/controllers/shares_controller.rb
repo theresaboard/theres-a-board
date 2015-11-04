@@ -5,6 +5,7 @@ class SharesController < SecuredController
 
   def new
     @share = Share.new
+    render "/shares/new"
   end
 
   def create
