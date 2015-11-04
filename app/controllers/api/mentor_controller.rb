@@ -1,7 +1,7 @@
 class Api::MentorController < MentorController
 
   def index
-    render json: MentorRequest.where(open: true).to_json
+    @requests = MentorRequest.where(open: true)
   end
 
   def update

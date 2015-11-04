@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     post "mentor", to: 'mentor#checkin'
     put "mentor", to: 'mentor#checkout'
     get "mentor", to: 'mentor#status'
+    get "mentor/queue", to: 'mentor#index'
   end
 
   resources :mentor, only: [:index]

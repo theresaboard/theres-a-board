@@ -1,7 +1,3 @@
-
-
-// class="btn bg-warning-400 btn-block btn-float btn-float-lg" type="button"><i class="icon-people"></i> <span>Get Help</span>
-
 var mentorAvailability = function () {
   this.status;
   this.checkStatus();
