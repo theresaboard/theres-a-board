@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/shares/search', as: :search
 
   resources :shares, only: [:index, :create, :new]
-  resources :timeslots, only: [:update, :show]
+  resources :timeslots, only: [:show]
 
   namespace :api, defaults: {format: :json} do
     patch 'timeslots/:id/cancel', to: 'timeslots#cancel', as: :cancel
