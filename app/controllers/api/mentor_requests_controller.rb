@@ -1,5 +1,13 @@
 class Api::MentorRequestsController < SecuredController
 
+  def index
+    render json: MentorRequest.where(open: true).to_json
+  end
+
+  def update
+    MentorRequest.find(params[:id]).close
+  end
+
   def status
     render json: {open: MentorRequest.open_by_user(current_user).size}
   end
