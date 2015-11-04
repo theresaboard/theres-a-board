@@ -1,21 +1,40 @@
 require 'rails_helper'
 describe Api::TimeslotsController do
   let(:user) { FactoryGirl.create(:user) }
+  let(:user_two) { FactoryGirl.create(:user) }
   let(:timeslot_attribs) { FactoryGirl.attributes_for(:timeslot) }
-  let(:persisted_timeslot) { FactoryGirl.create(:timeslot) }
-
-  before(:each) do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-  end
-
+  let!(:persisted_timeslot) { FactoryGirl.create(:timeslot) }
+  let!(:empty_timeslot) { FactoryGirl.create(:empty_timeslot) }
+  let(:another_booked_timeslot) { FactoryGirl.create(:another_booked_timeslot) }
   context "#index" do
-    it "is successful" do
-      get :index, format: :json, start: persisted_timeslot.start, end: persisted_timeslot.start + 7
+    render_views
+
+    it 'filters for ALL timeslots' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      get :index, format: :json, start: persisted_timeslot.start, end: persisted_timeslot.start, search: 'ALL'
+      expect(assigns(:timeslots)).to eq([persisted_timeslot])
+    end
+
+    it 'filters for AVAILABLE timeslots' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      get :index, format: :json, start: empty_timeslot.start, end: empty_timeslot.start, search: 'AVAILABLE'
       expect(response).to be_success
+      expect(assigns(:timeslots)).to eq([empty_timeslot])
+    end
+
+    it 'filters for MINE timeslots' do
+      tutor = another_booked_timeslot.tutor
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(tutor)
+      get :index, format: :json, start: another_booked_timeslot.start, end: another_booked_timeslot.start, search: 'MINE'
+      expect(response).to be_success
+      expect(assigns(:timeslots)).to eq([another_booked_timeslot])
     end
   end
 
   describe '#create' do
+    before(:each) do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    end
     it 'should exist' do
       post :create, timeslot_attribs
     expect(response).to be_success
@@ -35,6 +54,9 @@ describe Api::TimeslotsController do
   end
 
   describe '#update' do
+    before(:each) do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    end
     let(:timeslot) { FactoryGirl.create(:timeslot) }
 
     it 'should update a timeslot with valid data' do
