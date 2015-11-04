@@ -22,20 +22,48 @@ class Timeslot < ActiveRecord::Base
     student.nil?
   end
 
-  def send_tutor_scheduling_email
-    TimeslotMailer.tutor_scheduled(self).deliver_now unless self.tutor.email.nil?
+  def send_booking_notifications
+    if self.tutor.email_notify && !self.tutor.email.nil?
+      TimeslotMailer.tutor_scheduled(self).deliver_now
+    end
+    if self.student.email_notify && !self.student.email.nil?
+      TimeslotMailer.student_scheduled(self).deliver_now
+    end
+    if self.tutor.text_notify && !self.tutor.cellphone.nil?
+      message = "#{self.student.name} requests to be tutored on " +
+        "#{Time.zone.at(self.start).to_formatted_s(:notify_short)}. " +
+        "You can contact this student at #{self.student.email}. " +
+        "theresaboard.com"
+      TextMessage.send(self.tutor, message)
+    end
+    if self.student.text_notify && !self.student.cellphone.nil?
+      message = "You requested to be tutored on " +
+        "#{Time.zone.at(self.start).to_formatted_s(:notify_short)} " +
+        "by #{self.tutor.name}. You can contact this tutor at " +
+        "#{self.tutor.email}. theresaboard.com"
+      TextMessage.send(self.student, message)
+    end
   end
 
-  def send_student_scheduling_email
-    TimeslotMailer.student_scheduled(self).deliver_now unless self.student.email.nil?
-  end
-
-  def send_tutor_cancel_email(student)
-    TimeslotMailer.tutor_cancel(self, student).deliver_now unless self.tutor.email.nil?
-  end
-
-  def send_student_cancel_email(student)
-    TimeslotMailer.student_cancel(self, student).deliver_now unless student.email.nil?
+  def send_cancel_notifications(student)
+    if self.tutor.email_notify && !self.tutor.email.nil?
+      TimeslotMailer.tutor_cancel(self, student).deliver_now
+    end
+    if student.email_notify && !student.email.nil?
+      TimeslotMailer.student_cancel(self, student).deliver_now
+    end
+    if self.tutor.text_notify && !self.tutor.cellphone.nil?
+      message = "Your tutor session with #{student.name} " +
+        "on #{Time.zone.at(self.start).to_formatted_s(:notify_short)} " +
+        "has been canceled. theresaboard.com"
+      TextMessage.send(self.tutor, message)
+    end
+    if student.text_notify && !student.cellphone.nil?
+      message = "Your tutor session with #{self.tutor.name} " +
+        "on #{Time.zone.at(self.start).to_formatted_s(:notify_short)} " +
+        "has been canceled. theresaboard.com"
+      TextMessage.send(student, message)
+    end
   end
 
   private
