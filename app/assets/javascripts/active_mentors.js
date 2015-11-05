@@ -18,7 +18,7 @@ activeMentors.prototype.updateView = function (data) {
     var html = this.template(data);
     $('#active-mentor-list').html(html)
   } else {
-    $('#active-mentor-list').text("There doesn't appear to be any mentors here")
+    $('#active-mentor-list').text("There doesn't appear to be any mentors on duty currently.")
   }
 };
 
