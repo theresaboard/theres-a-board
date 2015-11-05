@@ -9,7 +9,6 @@ $(function(){
 
   $('#new_share_modal').submit('#new-share-form', function(e){
     e.preventDefault();
-    $('#new_share_modal').modal('toggle');
     var data = $(event.target).serialize();
     $.ajax({
         type: "POST",
@@ -17,6 +16,8 @@ $(function(){
         data: data,
         beforeSend: customBlockUi(this)
       }).done(function(response) {
+         $('#new_share_modal').modal('toggle');
+         location.reload();
           swal({
                 title: "Awesome!",
                 text: "Thanks for your share!",
