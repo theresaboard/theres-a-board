@@ -1,76 +1,50 @@
 <!-- Page container -->
 <div class="page-container">
-
   <!-- Page content -->
   <div class="page-content">
-
-
     <!-- Main content -->
     <div class="content-wrapper">
-
-
-
-    <div class="row">
-
-
-    <div class="col-md-2">
-      <div class="panel panel-flat">
-
-
-        <div class="panel-body">
-
-              <button onClick="mentorDispatcher.openRequest()" id="help-button" class="btn bg-warning-400 btn-block btn-float btn-float-lg" type="button"><i class="icon-people"></i><span>Get Help</span></button>
-
+      <div class="row">
+        <div class="col-md-2">
+          <div class="panel panel-flat">
+            <div class="panel-body">
+                <button onClick="mentorDispatcher.openRequest()" id="help-button" class="btn bg-warning-400 btn-block btn-float btn-float-lg" type="button"><i class="icon-people"></i><span>Get Help</span></button>
+            </div>
+          </div>
+          <div class="panel panel-flat">
+            <div class="panel-heading">
+              <h6 class="panel-title">Active Mentors</h6>
+            </div>
+            <div class="panel-body">
+              <ul class="media-list" id="active-mentor-list">
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h5 class="panel-title">The Board</h5>
+              <!--New Button-->
+              <div class="heading-elements">
+                <div id="filter-select-div" class="btn btn-primary btn-xs dropdown-toggle heading-btn">
+                  <select id='calendar-filter' name='search' class="bg-primary">
+                    <option value='ALL'>All</option>
+                    <option value='AVAILABLE'>Available</option>
+                    <option value='MINE'>Mine</option>
+                  </select>
+                </div>
+                <button id="new-timeslot-btn" type="button" class="btn btn-success btn-xs heading-btn" onClick="makeNewTimeslotbutton()">New Availability</button>
+              </div>
+            </div>
+            <!-- FullCalendar View -->
+            <div class="panel-body">
+              <div id="tutor-cal" class="fullcalendar-basic"></div>
+            </div>
+            <!-- FullCalendar View -->
+          </div>
         </div>
       </div>
-
-        <div class="panel panel-flat">
-          <div class="panel-heading">
-            <h6 class="panel-title">Active Mentors</h6>
-          </div>
-
-          <div class="panel-body">
-            <ul class="media-list" id="active-mentor-list">
-
-            </ul>
-          </div>
-        </div>
-      </div>
-
-
-
-    <div class="col-md-10">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h5 class="panel-title">The Board</h5>
-          <!--New Button-->
-          <div class="heading-elements">
-            <select id='calendar-filter' name='search' class="btn btn-primary btn-xs heading-btn">
-              <option value='ALL'>All</option>
-              <option value='AVAILABLE'>Available</option>
-              <option value='MINE'>Mine</option>
-            </select>
-            <button id="new-timeslot-btn" type="button" class="btn btn-success btn-xs heading-btn" onClick="makeNewTimeslotbutton()">
-              New Availability
-            </button>
-          </div>
-        </div>
-
-          <!-- FullCalendar View -->
-          <div class="panel-body">
-            <div id="tutor-cal" class="fullcalendar-basic"></div>
-          </div>
-          <!-- FullCalendar View -->
-
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-
     </div>
   </div>
 </div>
@@ -92,7 +66,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h5 class="modal-title"><h5 class="modal-title"><i class="icon-alarm-add"></i> &nbsp;Add Tutoring Time</h5>
       </div>
-
+      <!-- New Timeslot FORM -->
       <form id="new-timeslot-form" action="#">
         <div class="modal-body">
           <div class="alert alert-info alert-styled-left text-blue-800 content-group">
@@ -104,19 +78,18 @@
                 <span class="input-group-addon"><i class="icon-calendar5"></i></span>
                 <input type="text" placeholder="Select a Date" class="form-control datepicker">
           </div>
-
           <h6 class="text-semibold">Select a Time</h6>
           <div class="input-group">
                 <span class="input-group-addon"><i class="icon-alarm"></i></span>
                 <input type="text" placeholder="Select a Time" class="form-control timepicker">
           </div>
         </div>
-
         <div class="modal-footer">
           <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
           <button id="create-timeslot" type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
+      <!-- /New Timeslot FORM -->
     </div>
   </div>
 </div>
