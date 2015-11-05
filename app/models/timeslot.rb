@@ -75,6 +75,30 @@ class Timeslot < ActiveRecord::Base
     end
   end
 
+  def self.current
+    self.where(
+        'start >= ? AND start <= ?',
+        params[:start],
+        params[:end]
+      ).includes(:tutor, :student)
+  end
+
+  def self.available
+    self.where(
+        'start >= ? AND start <= ? AND student_id IS NULL',
+        params[:start],
+        params[:end]
+      ).includes(:tutor, :student)
+  end
+
+  def self.owned_by_current_user
+    self.where(
+        'start >= ? AND start <= ? AND tutor_id = ?',
+        params[:start],
+        params[:end],
+      current_user.id).includes(:tutor, :student)
+  end
+
   private
 
   def start_must_be_future
