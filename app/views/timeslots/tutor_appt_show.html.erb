@@ -7,7 +7,6 @@
 
 <!-- Modal Body -->
 <div class="modal-body">
-
   <!-- Time -->
   <div class="media">
     <div class="media-left media-middle">
@@ -92,14 +91,14 @@
 <!-- Delete Open Session-->
 <% if @timeslot.open? %>
   <div class="modal-footer text-left">
-      <form onsubmit="deleteOpenSession(<%= @timeslot.id %>)">
-        <input type="hidden" name="_method" value="DELETE">
-        <button type="submit" class="btn btn-danger btn-labeled btn-xs">
-          <b><i class="icon-trash"></i></b>
-          Cancel your Availability
-        </button>
-      </form>
-    </div>
+    <form onsubmit="deleteOpenSession(<%= @timeslot.id %>)">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" class="btn btn-danger btn-labeled btn-xs">
+        <b><i class="icon-trash"></i></b>
+        Cancel your Availability
+      </button>
+    </form>
+  </div>
 <% end %>
 <!-- /Delete Open Session -->
 

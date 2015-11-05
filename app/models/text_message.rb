@@ -1,5 +1,4 @@
 class TextMessage
-
   def self.client
     @client ||= Twilio::REST::Client.new
   end

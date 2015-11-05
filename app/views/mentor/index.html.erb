@@ -1,42 +1,27 @@
 <!-- Page container -->
 <div class="page-container">
-
   <!-- Page content -->
   <div class="page-content">
-
-
     <!-- Main content -->
     <div class="content-wrapper">
-
-
-        <div class="row">
-
+      <div class="row">
         <div class="col-md-2">
-
           <div class="panel panel-flat">
             <div class="panel-body">
-
-                  <button onClick="availabilityDispatcher.checkIn()" id="checkin-button" class="btn bg-success-400 btn-block btn-float btn-float-lg" type="button"><i class="icon-user-plus"></i><span>Check In</span></button>
-
+              <button onClick="availabilityDispatcher.checkIn()" id="checkin-button" class="btn bg-success-400 btn-block btn-float btn-float-lg" type="button"><i class="icon-user-plus"></i><span>Check In</span></button>
             </div>
           </div>
-
           <div class="panel panel-flat">
             <div class="panel-heading">
               <h6 class="panel-title">Active Mentors</h6>
             </div>
-
             <div class="panel-body">
               <ul class="media-list" id="active-mentor-list">
-
               </ul>
             </div>
           </div>
-
         </div>
-
         <div class="col-md-10">
-
           <div class="panel panel-default">
             <div class="panel-heading">
               <h5 class="panel-title">Mentor Request Queue</h5>
@@ -53,26 +38,25 @@
   </div>
 </div>
 
-
 <script id="request-template" type="text/x-handlebars-template">
-{{#each .}}
-<li class="media">
-  <div class="media-left">
-    <a href="#"><img src="{{ image }}" class="img-sm img-circle" alt=""></a>
-  </div>
+  {{#each .}}
+  <li class="media">
+    <div class="media-left">
+      <a href="#"><img src="{{ image }}" class="img-sm img-circle" alt=""></a>
+    </div>
 
-  <div class="media-body media-middle text-semibold">
-    {{ username }}
-    <div class="media-annotation">{{ open }}</div>
-  </div>
+    <div class="media-body media-middle text-semibold">
+      {{ username }}
+      <div class="media-annotation">{{ open }}</div>
+    </div>
 
-  <div class="media-right media-middle">
-    <ul class="icons-list text-nowrap">
-      <li>
-        <a href="/api/mentor/queue/{{ id }}" class="close-request"><i class="icon-cross"></i></a>
-      </li>
-    </ul>
-  </div>
-</li>
-{{/each}}
+    <div class="media-right media-middle">
+      <ul class="icons-list text-nowrap">
+        <li>
+          <a href="/api/mentor/queue/{{ id }}" class="close-request"><i class="icon-cross"></i></a>
+        </li>
+      </ul>
+    </div>
+  </li>
+  {{/each}}
 </script>

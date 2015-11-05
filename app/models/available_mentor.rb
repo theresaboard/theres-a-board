@@ -12,5 +12,4 @@ class AvailableMentor < ActiveRecord::Base
       return false
     end
   end
-
 end
