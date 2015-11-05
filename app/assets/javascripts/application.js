@@ -26,4 +26,5 @@
 //= require fullcalendar/picker
 //= require fullcalendar/picker.time
 //= require fullcalendar/picker.date
+//= require handlebars
 //= require_tree .

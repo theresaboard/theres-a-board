@@ -15,5 +15,20 @@
     <%= render partial: "shared/nav" %>
     <%= yield %>
 
+
+
   </body>
 </html>
+
+
+<script id="mentor-template" type="text/x-handlebars-template">
+{{#each .}}
+<li class="media">
+  <a href="#" class="media-left"><img src="{{ image }}" class="img-sm img-circle" alt=""></a>
+  <div class="media-body">
+    <p class="media-heading text-semibold">{{ name }}</p>
+  </div>
+
+</li>
+{{/each}}
+</script>

@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :timeslots, foreign_key: 'tutor_id'
   has_many :bookings, class_name: 'Timeslot', foreign_key: 'student_id'
   has_many :shares
+  has_many :user_roles
+  has_many :roles, through: :user_roles
 
   validates_presence_of :name
   validates_inclusion_of :email_notify, in: [true, false], message: "can't be blank"
@@ -17,5 +19,9 @@ class User < ActiveRecord::Base
     attributes[:created_at] = options[:created_at] || Time.now.to_i
     attributes[:metadata] = options[:metadata] unless options[:metadata].nil?
     Event.create(attributes)
+  end
+
+  def is_mentor?
+    self.roles.include?(Role.find_by(name: "mentor"))
   end
 end

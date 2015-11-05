@@ -1,7 +1,7 @@
 class Api::MentorRequestsController < SecuredController
 
   def index
-    render json: MentorRequest.where(open: true).to_json
+    render json: MentorRequest.where(open: true).to_json.includes(:student)
   end
 
   def update
@@ -24,6 +24,10 @@ class Api::MentorRequestsController < SecuredController
     MentorRequest.close_all_by_user(current_user)
     render json: {result: "success"}
     current_user.track_event("closed-request")
+  end
+
+  def available_mentors
+    @availabilities = AvailableMentor.all.includes(:mentor)
   end
 
 end
