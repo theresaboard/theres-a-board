@@ -10,7 +10,7 @@ activeMentors.prototype.getMentors = function () {
     url: self.endpoint
   }).done( function(response) {
     self.updateView(response)
-  })
+  });
 };
 
 activeMentors.prototype.updateView = function (data) {

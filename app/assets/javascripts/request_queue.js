@@ -11,7 +11,7 @@ requestQueue.prototype.getRequests = function () {
     url: '/api/mentor/queue'
   }).done( function(response) {
     self.updateView(response);
-  })
+  });
 }
 
 requestQueue.prototype.updateView = function (data) {
