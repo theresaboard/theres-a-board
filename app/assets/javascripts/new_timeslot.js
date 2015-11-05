@@ -13,7 +13,10 @@ $(document).ready(function(){
           swal({
                 title: "Great!",
                 text: "You have set up a tutoring availability!",
-                confirmButtonColor: "#66BB6A",
+                confirmButtonColor: "#FFFFFF",
+                showConfirmButton: false,
+                allowOutsideClick: true,
+                timer: 1500,
                 type: "success"
             });
           $('#tutor-cal').fullCalendar('refetchEvents');
@@ -25,9 +28,9 @@ $(document).ready(function(){
               type: "error"
           });
       });
-  })
+  });
 
-})
+});
 
 var createDate = function() {
   var date = $('.timepicker').val();

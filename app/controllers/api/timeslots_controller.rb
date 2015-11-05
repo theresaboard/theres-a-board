@@ -1,10 +1,17 @@
 class Api::TimeslotsController < SecuredController
   def index
-    @timeslots = Timeslot.where('start >= ? AND start <= ?', params[:start], params[:end]).includes(:tutor, :student)
+    if params[:search] == 'ALL'
+      @timeslots = Timeslot.current(params)
+    elsif params[:search] == 'AVAILABLE'
+      @timeslots = Timeslot.available(params)
+    elsif params[:search] == 'MINE'
+      @timeslots = Timeslot.owned_by_current_user(params, current_user)
+    end
   end
 
   def create
     timeslot = Timeslot.new(timeslot_params)
+    timeslot.tutor_id = current_user.id
     if timeslot.save
       render json: { status: "success" }
       current_user.track_event("created-timeslot")
@@ -16,11 +23,10 @@ class Api::TimeslotsController < SecuredController
   def update
     timeslot = Timeslot.find_by(id: params[:id])
     timeslot.student_id = current_user.id
-    timeslot.update_attributes(safe_params)
+    timeslot.update_attributes(timeslot_params)
     timeslot.save!
     render plain: { message: 'success' }
-    timeslot.send_tutor_scheduling_email
-    timeslot.send_student_scheduling_email
+    timeslot.send_booking_notifications
     current_user.track_event("booked-tutor")
   end
 
@@ -29,9 +35,8 @@ class Api::TimeslotsController < SecuredController
     student = timeslot.student
     timeslot.student_id = nil
     if (current_user.id == timeslot.tutor.id || current_user.id == student.id) && timeslot.save
-      timeslot.send_tutor_cancel_email(student)
-      timeslot.send_student_cancel_email(student)
       render plain: { message: 'success' }
+      timeslot.send_cancel_notifications(student)
     else
       render plain: { message: 'fail' }
     end
@@ -48,11 +53,8 @@ class Api::TimeslotsController < SecuredController
   end
 
   private
-  def safe_params
-    params.permit(:start, :id, :subject)
-  end
 
   def timeslot_params
-    params.permit(:start).merge(tutor_id: current_user.id)
+    params.permit(:start, :subject)
   end
 end

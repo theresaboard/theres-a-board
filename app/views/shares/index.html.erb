@@ -1,0 +1,41 @@
+<!-- Page container -->
+<div class="page-container">
+
+  <!-- Page content -->
+  <div class="page-content">
+
+    <!-- Main content -->
+    <div class="content-wrapper">
+
+      <!-- Page header -->
+      <div class="page-header">
+        <div class="page-header-content">
+          <div class="page-title">
+            <h4><a href="/"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Resources</span> - Share Your Best Learning Materials</h4>
+          </div>
+
+          <div class="heading-elements">
+            <a href='/shares/new' id='new_share_link' class="btn-labeled btn-labeled-left btn bg-success heading-btn"><b><i class="icon-share3"></i></b>Share a Resource</a>
+          </div>
+        </div>
+      </div>
+      <!-- /page header -->
+      <%= render partial: "search" %>
+
+  <!-- Content area -->
+  <div class="content">
+    <p class="text-muted content-group">Recent Shares:</p>
+    <%= render partial: "share", collection: @shares %>
+
+  </div>
+</div>
+<!-- create new share modal-->
+<div id="new_share_modal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+    </div>
+  </div>
+</div>
+<!--/create new share modal-->
+

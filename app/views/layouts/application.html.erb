@@ -14,6 +14,26 @@
   <body>
     <%= render partial: "shared/nav" %>
     <%= yield %>
+    <!-- edit user modal-->
+    <div id="edit_user_modal" class="modal fade">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
 
+        </div>
+      </div>
+    </div>
+    <!--/edit user modal-->
   </body>
 </html>
+
+<script id="mentor-template" type="text/x-handlebars-template">
+  {{#each .}}
+  <li class="media">
+    <a href="#" class="media-left"><img src="{{ image }}" class="img-sm img-circle" alt=""></a>
+    <div class="media-body">
+      <p class="media-heading text-semibold">{{ name }}</p>
+    </div>
+
+  </li>
+  {{/each}}
+</script>
