@@ -14,6 +14,9 @@ class Timeslot < ActiveRecord::Base
       message: 'you are already scheduled for another session at this time'
     }, unless: 'student_id.nil?'
 
+    scope :booked, -> { where.not(student_id: nil) }
+    scope :recent, -> { where(start: (Time.zone.now.midnight - 45.days)..Time.zone.now.beginning_of_day) }
+
   def end
     start + 30.minutes
   end
