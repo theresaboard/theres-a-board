@@ -4,10 +4,14 @@ class TextMessage
   end
 
   def self.send(recipient, message)
-    self.client.messages.create(
-      from: '+16464553001', # Twilio account phone number
-      to:   "+1#{recipient.cellphone}",
-      body: message
-    )
+    begin
+      self.client.messages.create(
+        from: '+16464553001', # Twilio account phone number
+        to:   "+1#{recipient.cellphone}",
+        body: message
+      )
+    rescue
+      return false
+    end
   end
 end
