@@ -59,5 +59,7 @@ requestQueue.prototype.poll = function () {
 var mentorQueue = new requestQueue()
 
  $( document ).ready(function() {
-  mentorQueue.setup()
+  if ( $('#request-queue-list').length == 1 ) {
+    mentorQueue.setup()
+  }
 });
