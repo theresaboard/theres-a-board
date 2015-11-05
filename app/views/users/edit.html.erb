@@ -1,4 +1,4 @@
-<div class="panel-heading bg-primary">
+<div class="modal-header bg-primary">
   <h5 class="panel-title"><i class="icon-profile"></i> &nbsp;Update Your User Settings</h5>
 </div>
 
@@ -16,7 +16,7 @@
 </div>
 
 <form id="edit-user-form" action="/api/users/<%= @user.id %>" method="post">
-  <div class="panel-body">
+  <div class="modal-body">
     <h5 class="modal-title"><h5 class="modal-title">Notification Preferences</h5>
 
     <!-- Email Notifications -->
@@ -60,3 +60,7 @@
     <button id="edit-user-settings-btn" type="submit" class="btn btn-success">Update</button>
   </div>
 </form>
+
+
+
+
