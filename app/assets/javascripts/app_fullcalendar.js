@@ -10,7 +10,7 @@
 *
 * ---------------------------------------------------------------------------- */
 $(function() {
-  $('.fullcalendar-basic').fullCalendar({
+  $('#tutor-cal').fullCalendar({
       header: {
           left: 'prev,next today',
           center: 'title',
