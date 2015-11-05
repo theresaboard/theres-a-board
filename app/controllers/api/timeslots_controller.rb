@@ -1,12 +1,11 @@
 class Api::TimeslotsController < SecuredController
   def index
     if params[:search] == 'ALL'
-      binding.pry
-      @timeslots = Timeslot.current
+      @timeslots = Timeslot.current(params)
     elsif params[:search] == 'AVAILABLE'
-      @timeslots = Timeslot.available
+      @timeslots = Timeslot.available(params)
     elsif params[:search] == 'MINE'
-      @timeslots = Timeslot.owned_by_current_user
+      @timeslots = Timeslot.owned_by_current_user(params)
     end
   end
 

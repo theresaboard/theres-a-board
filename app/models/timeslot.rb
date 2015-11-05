@@ -75,7 +75,7 @@ class Timeslot < ActiveRecord::Base
     end
   end
 
-  def self.current
+  def self.current(params)
     self.where(
         'start >= ? AND start <= ?',
         params[:start],
@@ -83,7 +83,7 @@ class Timeslot < ActiveRecord::Base
       ).includes(:tutor, :student)
   end
 
-  def self.available
+  def self.available(params)
     self.where(
         'start >= ? AND start <= ? AND student_id IS NULL',
         params[:start],
@@ -91,7 +91,7 @@ class Timeslot < ActiveRecord::Base
       ).includes(:tutor, :student)
   end
 
-  def self.owned_by_current_user
+  def self.owned_by_current_user(params)
     self.where(
         'start >= ? AND start <= ? AND tutor_id = ?',
         params[:start],
