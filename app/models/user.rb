@@ -10,6 +10,19 @@ class User < ActiveRecord::Base
   validates_inclusion_of :text_notify, in: [true, false], message: "can't be blank"
   validates_presence_of :cellphone, message: "must be present for text notifications", if: 'text_notify'
 
+  def self.leaderboard # Returns an array of Users, *not* an ActiveRecord::Relation
+    self.where(id: Timeslot.recent.booked.group(:tutor_id).pluck(:tutor_id))
+      .sort_by(&:recent_count)[-10..-1].reverse
+  end
+
+  def completed_count
+    self.timeslots.booked.count
+  end
+
+  def recent_count
+    self.timeslots.recent.booked.count
+  end
+
   def cellphone=(cellphone_number)
     write_attribute(:cellphone, cellphone_number.gsub(/\D/, '')) unless cellphone_number.nil?
   end
