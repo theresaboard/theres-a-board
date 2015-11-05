@@ -50,7 +50,7 @@ mentorRequestDispatcher.prototype.cancelRequest = function () {
     method: "PUT",
     data: {},
     url: "/api/mentor_requests"
-  }).done ( self.buttonOpen(); );
+  }).done( self.buttonOpen() );
 }
 
 mentorRequestDispatcher.prototype.openRequest = function () {
@@ -59,7 +59,7 @@ mentorRequestDispatcher.prototype.openRequest = function () {
     method: "POST",
     data: {},
     url: "/api/mentor_requests"
-  }).done( self.buttonCancel(); );
+  }).done( self.buttonCancel() );
   self.poll();
 }
 

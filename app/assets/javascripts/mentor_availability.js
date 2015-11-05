@@ -44,7 +44,7 @@ mentorAvailability.prototype.checkOut = function () {
     method: "PUT",
     data: {},
     url: self.endpoint
-  }).done ( self.buttonOpen(); );
+  }).done(self.buttonOpen());
 }
 
 mentorAvailability.prototype.checkIn = function () {
@@ -53,7 +53,7 @@ mentorAvailability.prototype.checkIn = function () {
     method: "POST",
     data: {},
     url: self.endpoint
-  }).done( self.buttonCancel(); );
+  }).done(self.buttonCancel());
 }
 
 var availabilityDispatcher = new mentorAvailability();
