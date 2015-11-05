@@ -10,14 +10,14 @@ $(function(){
 
   $('#edit_user_modal').submit('#edit-user-form', function(event){
     event.preventDefault();
-    var url = event.target.action
+    var url = event.target.action;
     var data = $(event.target).serialize();
 
     if (data.search("text_notify") < 0) {
-      data += '&text_notify=false&cellphone=null'
+      data += '&text_notify=false&cellphone=null';
     }
     else if (data.search("email_notify") < 0){
-      data += '&email_notify=false'
+      data += '&email_notify=false';
     }
 
     $.ajax({
