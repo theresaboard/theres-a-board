@@ -10,7 +10,7 @@ class Share < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :url, :title, :user
-  validate :http_pad, :host_empty
+  before_save :http_pad
 
   def color
     color_category = self.category
@@ -29,11 +29,13 @@ class Share < ActiveRecord::Base
   private
   def http_pad
     parsed_url = URI.parse(self.url)
-    self.url = "http://#{url}" if parsed_url.scheme.nil?
+    if parsed_url.scheme.nil? && !parsed_url.host.nil?
+      self.url = "http://#{url}"
+    end
   end
 
-  def host_empty
-    parsed_url = URI.parse(url)
-    errors.add("Url can't be blank.") if parsed_url.host.nil?
-  end
+  # def host_empty
+  #   parsed_url = URI.parse(url)
+  #   errors.add("Url can't be blank.") if parsed_url.host.nil?
+  # end
 end
