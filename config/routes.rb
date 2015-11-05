@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :shares, only: [:index, :create, :new]
 
   namespace :api, defaults: {format: :json} do
+    get 'stats', to: 'stats#index'
     patch 'timeslots/:id/cancel', to: 'timeslots#cancel', as: :cancel
     resources :timeslots, only: [:index, :create, :update, :destroy]
     resources :users, only: [:update]
