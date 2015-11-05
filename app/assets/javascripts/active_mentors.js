@@ -28,7 +28,6 @@ activeMentors.prototype.setup = function () {
   this.poll()
 };
 
-
 activeMentors.prototype.poll = function () {
   var self = this
   setTimeout(function(){
@@ -37,10 +36,9 @@ activeMentors.prototype.poll = function () {
   }, 120000);
 };
 
-
 var mentorList = new activeMentors()
 
-$( document ).ready(function() {
+$(document).ready(function() {
   if ( $('#active-mentor-list').length == 1 ) {
     mentorList.setup()
   }
