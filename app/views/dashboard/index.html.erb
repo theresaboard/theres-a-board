@@ -45,6 +45,25 @@
             </div>
           </div>
           <!-- /Tutor Leaderboard -->
+          <!-- Tutoring Goal -->
+          <div class="panel panel-flat">
+            <div class="panel-heading">
+              <h6 class="panel-title">Tutoring Goal</h6>
+            </div>
+            <div class="panel-body">
+              <ul class="progress-list">
+                <li>
+                  <label>Goal: <span>10</span></label>
+                  <div class="progress progress-xxs">
+                    <div class="progress-bar progress-bar-info" style="width: <%= current_user.completed_count * 10 %>">
+                    </div>
+                  </div>
+                </li> 
+              </ul>
+            </div>
+          </div>
+          <!-- /Tutoring Goal -->
+
         </div>
         <div class="col-md-10">
           <div class="panel panel-default">
