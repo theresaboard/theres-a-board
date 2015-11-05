@@ -16,7 +16,7 @@ mentorRequestDispatcher.prototype.checkStatus = function () {
     self.activeRequests = response.open;
     self.setButtonState();
     if (self.activeRequests != 0) {
-      self.poll()
+      self.poll();
     }
   })
 }
@@ -30,17 +30,17 @@ mentorRequestDispatcher.prototype.setButtonState = function () {
 }
 
 mentorRequestDispatcher.prototype.buttonOpen = function () {
-  $('#help-button').addClass("bg-warning-400")
-  $('#help-button').removeClass("bg-danger-400")
-  $('#help-button').html('<i class="icon-people"></i><span>Get Help</span>')
-  $('#help-button').attr('onClick','mentorDispatcher.openRequest()')
+  $('#help-button').addClass("bg-warning-400");
+  $('#help-button').removeClass("bg-danger-400");
+  $('#help-button').html('<i class="icon-people"></i><span>Get Help</span>');
+  $('#help-button').attr('onClick','mentorDispatcher.openRequest()');
 }
 
 mentorRequestDispatcher.prototype.buttonCancel = function () {
-  $('#help-button').addClass("bg-danger-400")
-  $('#help-button').removeClass("bg-warning-400")
-  $('#help-button').html('<i class="icon-cross"></i><span>Cancel</span>')
-  $('#help-button').attr('onClick','mentorDispatcher.cancelRequest()')
+  $('#help-button').addClass("bg-danger-400");
+  $('#help-button').removeClass("bg-warning-400");
+  $('#help-button').html('<i class="icon-cross"></i><span>Cancel</span>');
+  $('#help-button').attr('onClick','mentorDispatcher.cancelRequest()');
 }
 
 
@@ -50,7 +50,7 @@ mentorRequestDispatcher.prototype.cancelRequest = function () {
     method: "PUT",
     data: {},
     url: "/api/mentor_requests"
-  }).done ( self.buttonOpen() )
+  }).done ( self.buttonOpen(); );
 }
 
 mentorRequestDispatcher.prototype.openRequest = function () {
@@ -59,8 +59,8 @@ mentorRequestDispatcher.prototype.openRequest = function () {
     method: "POST",
     data: {},
     url: "/api/mentor_requests"
-  }).done( self.buttonCancel() );
-  self.poll()
+  }).done( self.buttonCancel(); );
+  self.poll();
 }
 
 mentorRequestDispatcher.prototype.poll = function () {

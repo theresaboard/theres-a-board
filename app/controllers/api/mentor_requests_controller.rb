@@ -1,5 +1,4 @@
 class Api::MentorRequestsController < SecuredController
-
   def index
     render json: MentorRequest.where(open: true).to_json.includes(:student)
   end
@@ -29,5 +28,4 @@ class Api::MentorRequestsController < SecuredController
   def available_mentors
     @availabilities = AvailableMentor.all.includes(:mentor)
   end
-
 end

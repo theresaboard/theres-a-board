@@ -7,7 +7,7 @@ class MentorRequest < ActiveRecord::Base
   def light_up
     Light.on
   end
-    
+
 
   def self.open_by_user(user)
     self.where(student: user, open: true)
@@ -21,12 +21,11 @@ class MentorRequest < ActiveRecord::Base
     self.where(open: true).size > 0
   end
 
-  def close 
+  def close
     self.open = false
     self.save
     unless MentorRequest.open_requests?
       Light.off
     end
   end
-
 end

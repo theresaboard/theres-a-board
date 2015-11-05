@@ -1,5 +1,4 @@
 class Api::UsersController < SecuredController
-
   def update
     if current_user.update(user_params)
       render plain: { message: 'success' }
@@ -11,8 +10,7 @@ class Api::UsersController < SecuredController
 
   private
 
-    def user_params
-      params.permit(:email_notify, :text_notify, :cellphone)
-    end
-
+  def user_params
+    params.permit(:email_notify, :text_notify, :cellphone)
+  end
 end

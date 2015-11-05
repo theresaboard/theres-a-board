@@ -1,5 +1,4 @@
 class Api::MentorController < MentorController
-
   def index
     @requests = MentorRequest.where(open: true)
   end
@@ -26,5 +25,4 @@ class Api::MentorController < MentorController
     render json: {result: "success"}
     current_user.track_event("mentor-out")
   end
-
 end

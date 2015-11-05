@@ -28,9 +28,9 @@ $(document).ready(function(){
               type: "error"
           });
       });
-  })
+  });
 
-})
+});
 
 var createDate = function() {
   var date = $('.timepicker').val();

@@ -66,7 +66,7 @@ class Api::TimeslotsController < SecuredController
 
   private
 
-    def timeslot_params
-      params.permit(:start, :subject)
-    end
+  def timeslot_params
+    params.permit(:start, :subject)
+  end
 end

@@ -15,5 +15,4 @@ class Light
       return false
     end
   end
-
 end
