@@ -6,11 +6,14 @@
     <div class="content-wrapper">
       <div class="row">
         <div class="col-md-2">
+          <!-- Help Button -->
           <div class="panel panel-flat">
             <div class="panel-body">
                 <button onClick="mentorDispatcher.openRequest()" id="help-button" class="btn bg-warning-400 btn-block btn-float btn-float-lg" type="button"><i class="icon-people"></i><span>Get Help</span></button>
             </div>
           </div>
+          <!-- /Help Button -->
+          <!-- Active Mentors -->
           <div class="panel panel-flat">
             <div class="panel-heading">
               <h6 class="panel-title">Active Mentors</h6>
@@ -20,6 +23,47 @@
               </ul>
             </div>
           </div>
+          <!-- /Active Mentors -->
+          <!-- Tutor Leaderboard -->
+          <div class="panel panel-flat">
+            <div class="panel-heading">
+              <h6 class="panel-title">Tutor Leaderboard</h6>
+            </div>
+            <div class="panel-body">
+              <ul class="media-list" id="leaderboard">
+              <% @leaderboard.each do |leader| %>
+              <li class="media">
+                <a href="#" class="media-left"><img src="<%= leader.first.image %>" class="img-sm img-circle" alt=""></a>
+                <div class="media-body">
+                  <p class="media-heading text-semibold"><%= leader.first.name %></p>
+                  <small class="display-block no-margin"><%= leader[1] %> sessions</small>
+                </div>
+
+              </li>
+              <% end %>
+              </ul>
+            </div>
+          </div>
+          <!-- /Tutor Leaderboard -->
+          <!-- Tutoring Goal -->
+          <div class="panel panel-flat">
+            <div class="panel-heading">
+              <h6 class="panel-title">Tutoring Goal</h6>
+            </div>
+            <div class="panel-body">
+              <ul class="progress-list">
+                <li>
+                  <label>Goal: <span>10</span></label>
+                  <div class="progress progress-xxs">
+                    <div class="progress-bar progress-bar-info" style="width: <%= current_user.completed_count * 10 %>">
+                    </div>
+                  </div>
+                </li> 
+              </ul>
+            </div>
+          </div>
+          <!-- /Tutoring Goal -->
+
         </div>
         <div class="col-md-10">
           <div class="panel panel-default">
