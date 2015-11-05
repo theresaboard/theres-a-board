@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get   '/logout', to: 'sessions#destroy', as: :logout
   post '/shares/search', as: :search
 
-  resources :shares, only: [:index, :create, :new]
   resources :timeslots, only: [:show]
+  resources :users, only: [:edit]
+  resources :shares, only: [:index, :create, :new]
 
   namespace :api, defaults: {format: :json} do
     patch 'timeslots/:id/cancel', to: 'timeslots#cancel', as: :cancel
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
     get "mentor_requests/open", to: 'mentor_requests#index'
   end
 
+  get "/403", :to => "errors#forbidden"
   get "/404", :to => "errors#not_found"
   get "/422", :to => "errors#unacceptable"
   get "/500", :to => "errors#internal_error"

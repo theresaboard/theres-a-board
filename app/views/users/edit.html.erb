@@ -1,0 +1,62 @@
+<div class="panel-heading bg-primary">
+  <h5 class="panel-title"><i class="icon-profile"></i> &nbsp;Update Your User Settings</h5>
+</div>
+
+<div class="panel-body">
+  <div class="media">
+    <div class="media-left">
+      <img src="<%= @user.image %>" style="width: 70px; height: 70px;" class="img-circle" alt="User profile picture">
+    </div>
+
+    <div class="media-body">
+      <h6 class="media-heading"><%= @user.name %></h6>
+      <p class="text-muted"><%= @user.email %></p>
+    </div>
+  </div>
+</div>
+
+<form id="edit-user-form" action="/api/users/<%= @user.id %>" method="post">
+  <div class="panel-body">
+    <h5 class="modal-title"><h5 class="modal-title">Notification Preferences</h5>
+
+    <!-- Email Notifications -->
+    <legend class="text-semibold"><i class="icon-envelop4"></i>&nbsp; Email</legend>
+    <div class="checkbox">
+      <label>
+        <input id="email-alert-enabled" name="email_notify" type="checkbox" class="control-primary" checked="checked" value="true">
+        Email Notifications
+      </label>
+    </div>
+
+  <!-- /Email Notifications -->
+
+  <!-- Cell Phone Notifications -->
+    <legend class="text-semibold"><i class="icon-bubble9"></i>&nbsp; Text</legend>
+    <% unless @user.text_notify %>
+      <div class="form-group">
+        <label>Cell Phone:</label>
+          <input id="cellphone-number-input" type="text" class="form-control" name="cellphone" placeholder="(XXX)-XXX-XXXX" pattern="^(\(?)(\d{3})(\)?)(-| |.?)(\d{3})(-| |.?)(\d{4})">
+          <span class="help-block">Enter your cell phone number for text notifications.</span>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input id="text-alert-checker" name="text_notify" type="checkbox" class="control-primary"value="true">
+          Text Message Notifications
+        </label>
+      </div>
+    <% else %>
+      <div class="checkbox">
+        <label>
+          <input id="text-alert-enabled" name="text_notify" type="checkbox" class="control-primary" checked="checked" value="true">
+          Text Message Notifications
+        </label>
+      </div>
+    <% end %>
+
+  <!-- /Cell Phone Notifications -->
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+    <button id="edit-user-settings-btn" type="submit" class="btn btn-success">Update</button>
+  </div>
+</form>
