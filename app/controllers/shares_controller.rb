@@ -20,6 +20,7 @@ class SharesController < SecuredController
 
   def search
     @shares = Share.search(params[:search])
+    @params = params[:search]
     render 'results'
   end
 

@@ -10,4 +10,18 @@ class Share < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :url, :title, :user
+
+  def color
+    color_category = self.category
+    case color_category
+    when "Article"
+      "success"
+    when "Video"
+      "info"
+    when "Podcast"
+      "orange"
+    else
+      "primary"
+    end
+  end
 end
