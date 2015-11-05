@@ -5,7 +5,7 @@ class Api::TimeslotsController < SecuredController
     elsif params[:search] == 'AVAILABLE'
       @timeslots = Timeslot.available(params)
     elsif params[:search] == 'MINE'
-      @timeslots = Timeslot.owned_by_current_user(params)
+      @timeslots = Timeslot.owned_by_current_user(params, current_user)
     end
   end
 

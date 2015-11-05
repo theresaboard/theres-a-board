@@ -91,7 +91,7 @@ class Timeslot < ActiveRecord::Base
       ).includes(:tutor, :student)
   end
 
-  def self.owned_by_current_user(params)
+  def self.owned_by_current_user(params, current_user)
     self.where(
         'start >= ? AND start <= ? AND tutor_id = ?',
         params[:start],
