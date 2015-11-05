@@ -1,23 +1,11 @@
 class Api::TimeslotsController < SecuredController
   def index
     if params[:search] == 'ALL'
-      @timeslots = Timeslot.where(
-        'start >= ? AND start <= ?',
-        params[:start],
-        params[:end]
-      ).includes(:tutor, :student)
+      @timeslots = Timeslot.current(params)
     elsif params[:search] == 'AVAILABLE'
-      @timeslots = Timeslot.where(
-        'start >= ? AND start <= ? AND student_id IS NULL',
-        params[:start],
-        params[:end]
-      ).includes(:tutor, :student)
+      @timeslots = Timeslot.available(params)
     elsif params[:search] == 'MINE'
-      @timeslots = Timeslot.where(
-        'start >= ? AND start <= ? AND tutor_id = ?',
-        params[:start],
-        params[:end],
-      current_user.id).includes(:tutor, :student)
+      @timeslots = Timeslot.owned_by_current_user(params, current_user)
     end
   end
 
