@@ -10,17 +10,16 @@ class User < ActiveRecord::Base
   validates_inclusion_of :text_notify, in: [true, false], message: "can't be blank"
   validates_presence_of :cellphone, message: "must be present for text notifications", if: 'text_notify'
 
-  def self.leaderboard # Returns an array of Users, *not* an ActiveRecord::Relation
-    self.where(id: Timeslot.recent.booked.group(:tutor_id).pluck(:tutor_id))
-      .sort_by(&:recent_count)[-10..-1].reverse
+   # Returns an array of Users (*not* an ActiveRecord::Relation):
+   # [User, recent bookings count]
+  def self.leaderboard
+    timeslot_leaders = Timeslot.leaderboard
+    user_leaders = User.where(id: timeslot_leaders.map { |el| el[0] })
+    user_leaders.zip(timeslot_leaders.map { |el| el[1] }, (1..10).to_a)
   end
 
   def completed_count
-    self.timeslots.booked.count
-  end
-
-  def recent_count
-    self.timeslots.recent.booked.count
+    self.timeslots.booked.count(:id)
   end
 
   def cellphone=(cellphone_number)
