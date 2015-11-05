@@ -1,16 +1,114 @@
-<div id='shares_search_container'>
-  <form id='shares_search_form' action='/shares/search' method='post'>
-      <input type='text' name='search' placeholder='Search for...'>
-      <input type="submit" value="search">
-  </form>
-</div>
+  <!-- Page container -->
+  <div class="page-container">
 
-<div id='shares_index'>
-  <% @shares.each do |share| %>
-    <li><%= share.url %></li>
-    <li><%= share.title %></li>
-    <li><%= share.description %></li>
-    <li><%= share.category %></li>
-    <li><%= share.user.name %></li>
-  <% end %>
+    <!-- Page content -->
+    <div class="page-content">
+
+      <!-- Main content -->
+      <div class="content-wrapper">
+
+        <!-- Page header -->
+        <div class="page-header">
+          <div class="page-header-content">
+            <div class="page-title">
+              <h4><a href="/"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Resources</span> - Share Your Best Learning Materials</h4>
+            </div>
+
+            <div class="heading-elements">
+              <a href='/shares/new' id='new_share_link' class="btn-labeled btn-labeled-left btn bg-success heading-btn"><b><i class="icon-share3"></i></b>Share a Resource</a>
+            </div>
+          </div>
+        </div>
+        <!-- /page header -->
+
+<div class="content">
+
+    <div class="panel panel-flat">
+      <div class="panel-heading">
+        <h5 class="panel-title">Search Resources</h5>
+        <div class="heading-elements">
+          <ul class="icons-list">
+            <li><a data-action="collapse"></a></li>
+          </ul>
+        </div>
+      </div>
+
+    <div id='shares_search_container' class="panel-body">
+      <form class="main-search" id='shares_search_form' action='/shares/search' method='post'>
+        <div class="input-group content-group">
+          <div class="has-feedback has-feedback-left">
+            <input type="text" class="form-control input-xlg" name="search" value="Search for...">
+            <div class="form-control-feedback">
+              <i class="icon-search4 text-muted text-size-base"></i>
+            </div>
+          </div>
+
+          <div class="input-group-btn">
+            <button type="submit" class="btn btn-primary btn-xlg">Search</button>
+          </div>
+        </div>
+
+        </div>
+      </form>
+    </div>
+
 </div>
+<!-- Content area -->
+<div class="content">
+
+  <!-- Simple panel -->
+  <% @shares.each do |share| %>
+  <div class="panel panel-flat">
+    <div class="panel-heading">
+      <h5 class="panel-title"><%= share.title %></h5>
+      <div class="heading-elements">
+        <ul class="icons-list">
+                  <li><a data-action="collapse"></a></li>
+                  <li><a data-action="close"></a></li>
+                </ul>
+              </div>
+    </div>
+
+    <div class="panel-body">
+      <p class="media-left media-body content-group"><%= share.description %></p>
+      <div class="media-right media-middle">
+        <a target="_blank" href="<%= share.url %>" class="btn bg-primary heading-btn btn-labeled btn-labeled-left"><b><i class="icon-link"></i></b>Link</a>
+      </div>
+      <legend class="">Shared by:</legend>
+      <div class="media-left media-middle">
+        <img src="<%= share.user.image %>" alt="" class="img-circle">
+      </div>
+      <div class="media-body">
+        <h6><%= share.user.name %></h6>
+      </div>
+      <div class="media-right media-middle">
+        <h6 class="text-semibold"><%= share.category %></h6>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <!-- /simple panel -->
+
+  <div class="panel panel-flat">
+    <div id='shares_index'>
+      <% @shares.each do |share| %>
+        <li><%= share.url %></li>
+        <li><%= share.title %></li>
+        <li><%= share.description %></li>
+        <li><%= share.category %></li>
+        <li><%= share.user.name %></li>
+      <% end %>
+    </div>
+
+
+</div>
+</div>
+<!-- create new share modal-->
+<div id="new_share_modal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+
+    </div>
+  </div>
+</div>
+<!--/create new share modal-->
