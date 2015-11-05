@@ -65,12 +65,9 @@ mentorRequestDispatcher.prototype.openRequest = function () {
 
 mentorRequestDispatcher.prototype.poll = function () {
  var self = this;
- setTimeout(function() { 
+ setTimeout(function() {
     self.checkStatus();
- }, 3000);
+ }, 5500);
 }
 
-var mentorDispatcher = new mentorRequestDispatcher()
-
-
-
+var mentorDispatcher = new mentorRequestDispatcher();
