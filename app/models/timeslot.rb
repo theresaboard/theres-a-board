@@ -14,6 +14,15 @@ class Timeslot < ActiveRecord::Base
       message: 'you are already scheduled for another session at this time'
     }, unless: 'student_id.nil?'
 
+    scope :booked, -> { where.not(student_id: nil) }
+    scope :recent, -> { where(start: (Time.zone.now.midnight - 45.days)..Time.zone.now.beginning_of_day) }
+
+    # Returns 2-dimensional array:
+    # [tutor_id, count of Timeslot.recent.booked for tutor]
+    def self.leaderboard
+      Timeslot.recent.booked.group(:tutor_id).order('count_id desc').count(:id).first(10)
+    end
+
   def end
     start + 30.minutes
   end
