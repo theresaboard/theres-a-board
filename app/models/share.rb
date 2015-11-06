@@ -10,6 +10,7 @@ class Share < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :url, :title, :user
+  before_save :http_pad
 
   def color
     color_category = self.category
@@ -22,6 +23,14 @@ class Share < ActiveRecord::Base
       "orange"
     else
       "primary"
+    end
+  end
+
+  private
+  def http_pad
+    parsed_url = URI.parse(self.url)
+    if parsed_url.scheme.nil? && !parsed_url.host.nil?
+      self.url = "http://#{url}"
     end
   end
 end
