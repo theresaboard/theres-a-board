@@ -1,0 +1,7 @@
+Hi, <%= @timeslot.student.name %>!
+
+This is a scheduling notification from there's a board.
+
+You are scheduled for a tutoring session with <%= @timeslot.tutor.name %> on <%= Time.zone.at(@timeslot.start).to_formatted_s(:notify_long) %>.
+
+You can contact your tutor at <%= @timeslot.tutor.email %>.

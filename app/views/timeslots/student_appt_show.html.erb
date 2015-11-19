@@ -16,8 +16,8 @@
 
     <div class="media-left">
       <h5 class="text-semibold no-margin">
-        <%= @timeslot.start.strftime("%A at %I:%M%p") %>
-        <small class="display-block no-margin"><%= @timeslot.new_york_ordinal_time %></small>
+        <%= start_day_time(@timeslot) %>
+        <small class="display-block no-margin"><%= start_long_ordinal(@timeslot) %></small>
       </h5>
     </div>
   </div>
@@ -53,5 +53,32 @@
   <% end %>
   <!-- End Student -->
 
+  <!-- Subject -->
+  <% if @timeslot.subject %>
+    <div class="media">
+      <div class="media-left media-middle">
+        <a href="#" class="btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-book2"></i></a>
+      </div>
+
+      <div class="media-left">
+        <h5 class="text-semibold no-margin">
+          Subject
+          <small class="display-block no-margin"><%= @timeslot.subject %></small>
+        </h5>
+      </div>
+    </div>
+  <% end %>
+  <!-- End Subject -->
 </div>
 <!-- /Modal body -->
+
+<!-- Student Cancel Button -->
+<div class="modal-footer text-left">
+  <% unless @timeslot.open? %>
+    <button id="student-cancel-appointment" class="btn btn-danger btn-labeled btn-xs" onClick="cancelAppointment(<%= @timeslot.id %>)">
+      <b><i class="icon-alarm-cancel"></i></b>
+      Cancel Appointment
+    </button>
+  <% end %>
+</div>
+<!-- /Student Cancel Button -->

@@ -1,0 +1,50 @@
+<div class="modal-header bg-primary">
+  <h5 class="panel-title"><i class="icon-share3"></i> &nbsp;Share a Learning Resource</h5>
+</div>
+
+<form id="new-share-form" action="/shares" method="post">
+
+  <div class="modal-body">
+    <div class="form-group">
+      <label>Title:</label>
+      <input type="text" class="form-control" name="share[title]">
+    </div>
+    <div class="form-group">
+      <label>Description:</label>
+      <textarea rows="5" cols="5" class="form-control" name="share[description]" placeholder="Your reasons why this is worth sharing go here."></textarea>
+    </div>
+    <div class="form-group">
+      <label>Link:</label>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="icon-link2"></i></span>
+        <input type="text" class="form-control" name="share[url]">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="display-block">Category:</label>
+      <label class="radio-inline">
+        <input type="radio" class="styled" name="share[category]" checked="checked" value='Article'>
+        Article
+      </label>
+      <label class="radio-inline">
+        <input type="radio" class="styled" name="share[category]" value='Video'>
+        Video
+      </label>
+      <label class="radio-inline">
+        <input type="radio" class="styled" name="share[category]" value='Podcast'>
+        Podcast
+      </label>
+      <label class="radio-inline">
+        <input type="radio" class="styled" name="share[category]" value='Other'>
+        Other
+      </label>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button>
+    <button id="share-res-btn" type="submit" class="btn btn-success">Share!</button>
+  </div>
+</form>
+
+

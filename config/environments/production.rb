@@ -1,6 +1,20 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = 'mentor-me-dev.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -26,6 +40,7 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   # config.assets.css_compressor = :sass
+  config.assets.js_compressor = :uglifier
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false

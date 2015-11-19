@@ -1,13 +1,12 @@
 <!-- Modal Header -->
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal">&times;</button>
-  <h5 class="modal-title"><i class="icon-graduation"></i> &nbsp;Your Open Session</h5>
+  <h5 class="modal-title"><i class="icon-graduation"></i> &nbsp;Your Session</h5>
 </div>
 <!-- End Modal Header -->
 
 <!-- Modal Body -->
 <div class="modal-body">
-
   <!-- Time -->
   <div class="media">
     <div class="media-left media-middle">
@@ -16,8 +15,8 @@
 
     <div class="media-left">
       <h5 class="text-semibold no-margin">
-        <%= @timeslot.day_and_time %>
-        <small class="display-block no-margin"><%= @timeslot.new_york_ordinal_time %></small>
+        <%= start_day_time(@timeslot) %>
+        <small class="display-block no-margin"><%= start_long_ordinal(@timeslot) %></small>
       </h5>
     </div>
   </div>
@@ -70,8 +69,46 @@
     </div>
   <% end %>
   <!-- End Student -->
+
+  <!-- Subject -->
+  <% if @timeslot.subject %>
+  <div class="media">
+    <div class="media-left media-middle">
+      <a href="#" class="btn border-indigo-400 text-indigo-400 btn-flat btn-rounded btn-xs btn-icon"><i class="icon-book2"></i></a>
+    </div>
+
+    <div class="media-left">
+      <h5 class="text-semibold no-margin">
+        Subject
+        <small class="display-block no-margin">@timeslot.subject</small>
+      </h5>
+    </div>
+  </div>
+  <% end %>
+  <!-- End Subject -->
 </div>
 
+<!-- Delete Open Session-->
+<% if @timeslot.open? %>
+  <div class="modal-footer text-left">
+    <form onsubmit="deleteOpenSession(<%= @timeslot.id %>)">
+      <input type="hidden" name="_method" value="DELETE">
+      <button type="submit" class="btn btn-danger btn-labeled btn-xs">
+        <b><i class="icon-trash"></i></b>
+        Cancel your Availability
+      </button>
+    </form>
+  </div>
+<% end %>
+<!-- /Delete Open Session -->
 
-
-
+<!-- Tutor Cancel Session -->
+<% unless @timeslot.open? %>
+  <div class="modal-footer text-left">
+      <button id="tutor-cancel-appointment" class="btn btn-danger btn-labeled btn-xs" onClick="cancelAppointment(<%= @timeslot.id %>)">
+        <b><i class="icon-alarm-cancel"></i></b>
+        Cancel Appointment
+      </button>
+  </div>
+<% end %>
+<!-- /Tutor Cancel Session -->

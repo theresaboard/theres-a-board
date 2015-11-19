@@ -4,9 +4,10 @@ json.array! @timeslots do |slot|
     json.start slot.start
     json.end slot.end
     json.allDay false
+    json.subject slot.subject
     if slot.student
-      json.color slot.booked_slot
+      json.color "#FF5722"
     else
-      json.color slot.open_slot
+      json.color "#2196F3"
     end
 end
