@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>there's a board</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-  <%= render partial: "shared/head" %>
-</head>
-<body>
-<%= render partial: "shared/nav" %>
-<%= yield %>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>there's a board</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="/assets/css/icomoon/styles.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <%= render partial: "shared/nav" %>
+    <%= yield %>
+    <!-- edit user modal-->
+    <div id="edit_user_modal" class="modal fade">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
 
-</body>
+        </div>
+      </div>
+    </div>
+    <!--/edit user modal-->
+  </body>
 </html>
+
+<script id="mentor-template" type="text/x-handlebars-template">
+  {{#each .}}
+  <li class="media">
+    <a href="#" class="media-left"><img src="{{ image }}" class="img-sm img-circle" alt=""></a>
+    <div class="media-body">
+      <p class="media-heading text-semibold">{{ name }}</p>
+    </div>
+
+  </li>
+  {{/each}}
+</script>

@@ -10,7 +10,7 @@
 *
 * ---------------------------------------------------------------------------- */
 $(function() {
-  $('.fullcalendar-basic').fullCalendar({
+  $('#tutor-cal').fullCalendar({
       header: {
           left: 'prev,next today',
           center: 'title',
@@ -24,8 +24,15 @@ $(function() {
       slotEventOverlap: false,
       slotLabelInterval: '00:30:00',
       events: {
-          url: '/api/timeslots',
-          type: 'get'
+            url: '/api/timeslots',
+            type: 'get',
+            data: function(start, end){
+              var search = $('#calendar-filter').val();
+              var view = $('#tutor-cal').fullCalendar('getView');
+              var endDate = moment(view.end._d).format('MMMM D, YYYY');
+              var startDate = moment(view.start._d).format('MMMM D, YYYY');
+              return { search: search, start: startDate, end: endDate };
+            }
       },
       selectable: true,
       select: function(start, end, jsEvent, view) {
@@ -34,7 +41,7 @@ $(function() {
          $('.timepicker').val(moment(start).format('h:mm a'));
       },
       eventClick: function(event, jsEvent, view) {
-        var url = '/timeslots/' + event.id
+        var url = '/timeslots/' + event.id;
         $('#modal_remote').modal({
             remote: url,
             show: true
@@ -42,8 +49,22 @@ $(function() {
       }
   });
 
+   $('.timepicker').pickatime({
+     interval: 30
+   });
+
+   $('.datepicker').pickadate({
+
+   });
+
   // Fix for modals not changing between shows
   $('body').on('hidden.bs.modal', '.modal', function () {
     $(this).removeData('bs.modal');
   });
+
+  $('#calendar-filter').change(function(){
+    $('#tutor-cal').fullCalendar('refetchEvents');
+  });
+  //polling every 5 minutes
+  setInterval(function(){ $('#tutor-cal').fullCalendar('refetchEvents'); }, 300000);
 });

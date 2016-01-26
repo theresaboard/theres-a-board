@@ -9,7 +9,7 @@ var cancelAppointment = function(timeslot_id) {
         confirmButtonText: "Yes, cancel my appointment.",
         cancelButtonText: "No, I don't want to cancel.",
         closeOnConfirm: false,
-        closeOnCancel: false
+        closeOnCancel: true
     },
   function(isConfirm){
     if (isConfirm) {
@@ -21,10 +21,13 @@ var cancelAppointment = function(timeslot_id) {
             swal({
                 title: "Cancelled",
                 text: "Your mentoring appointment has been cancelled.",
-                confirmButtonColor: "#66BB6A",
+                confirmButtonColor: "#FFFFFF",
+                showConfirmButton: false,
+                allowOutsideClick: true,
+                timer: 1500,
                 type: "info"
             });
-            $('#tutor-cal').fullCalendar( 'refetchEvents' );
+            $('#tutor-cal').fullCalendar('refetchEvents');
         }).fail(function() {
           swal({
                 title: "Oops...",
@@ -34,14 +37,6 @@ var cancelAppointment = function(timeslot_id) {
             });
         });
     }
-    else {
-        swal({
-            title: "Never Mind!",
-            text: "Your Appointment is still on!",
-            confirmButtonColor: "#2196F3",
-            type: "error"
-        });
-      }
   });
 }
 

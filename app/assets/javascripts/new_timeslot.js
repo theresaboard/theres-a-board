@@ -13,25 +13,34 @@ $(document).ready(function(){
           swal({
                 title: "Great!",
                 text: "You have set up a tutoring availability!",
-                confirmButtonColor: "#66BB6A",
+                confirmButtonColor: "#FFFFFF",
+                showConfirmButton: false,
+                allowOutsideClick: true,
+                timer: 1500,
                 type: "success"
             });
-          $('#tutor-cal').fullCalendar( 'refetchEvents' );
+          $('#tutor-cal').fullCalendar('refetchEvents');
       }).fail(function(response) {
         swal({
               title: "Oops...",
-              text: "Something went wrong!",
+              text: response.responseJSON.errors,
               confirmButtonColor: "#EF5350",
               type: "error"
           });
       });
-  })
+  });
 
-})
+});
 
 var createDate = function() {
   var date = $('.timepicker').val();
   var time = $('.datepicker').val();
   var dateTime = date + " " + time;
   return (new Date(dateTime));
+}
+
+// Timeslot New Button
+
+var makeNewTimeslotbutton = function(){
+  $('#modal_new_timeslot').modal({ show: true });
 }

@@ -1,0 +1,29 @@
+<!-- Simple panel -->
+<div class="panel panel-flat border-top-lg border-top-<%= share.color %>">
+  <div class="panel-heading">
+    <h5 class="panel-title"><%= share.title %> <span class="text-muted mt-5">&lsaquo; <%= share.category %>::Category</span></h5>
+    <div class="heading-elements">
+      <ul class="icons-list">
+          <li><a data-action="collapse"></a></li>
+          <li><a data-action="close"></a></li>
+        </ul>
+      </div>
+  </div>
+
+  <div class="panel-body">
+    <div class="media-left media-middle">
+    <p><%= share.description %></p>
+      <a target="_blank" href="<%= share.url %>" class="btn bg-<%= share.color %> btn-xlg btn-labeled btn-labeled-left"><b><i class="icon-link"></i></b><%= share.title %></a>
+    </div>
+    <legend class="">Shared by:</legend>
+    <div class="media-left media-middle">
+      <img src="<%= share.user.image %>" alt="" class="img-circle">
+    </div>
+    <div class="media-body">
+      <h6><%= share.user.name %></h6>
+    </div>
+    <div class="media-right media-middle">
+    </div>
+  </div>
+</div>
+<!-- /simple panel -->

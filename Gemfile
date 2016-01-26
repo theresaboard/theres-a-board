@@ -9,6 +9,8 @@ gem 'pg'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'uglifier'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -31,6 +33,14 @@ gem 'simplecov', :require => false, :group => :test
 
 gem 'intercom-rails'
 gem 'intercom'
+
+gem 'faraday'
+
+gem 'particlerb'
+
+gem 'pg_search'
+
+gem 'twilio-ruby'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
