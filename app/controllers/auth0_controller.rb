@@ -50,7 +50,7 @@ class Auth0Controller < ApplicationController
 
     token = "#{request.env['omniauth.auth']['extra']['raw_info']['identities'][0]['access_token']}"
     response = conn.get do |req|
-      req.url "api.github.com/teams/1889928/memberships/#{request.env['omniauth.auth']['info']['nickname']}"
+      req.url "/teams/1889928/memberships/#{request.env['omniauth.auth']['info']['nickname']}"
       req.headers['Authorization'] = "token #{token}"
     end
 
