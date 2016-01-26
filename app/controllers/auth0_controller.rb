@@ -5,10 +5,17 @@ class Auth0Controller < ApplicationController
       user.image = request.env['omniauth.auth']['info']['image']
       user.name  = request.env['omniauth.auth']['info']['name']
       user.email = request.env['omniauth.auth']['info']['email']
+      if github_mentor?
+        user.roles << Role.find_by(name: "mentor")
+      end
       user.save
 
       session[:uid] = user.uid
-      redirect_to root_url
+      if user.is_mentor?
+        redirect_to mentor_index_url
+      else
+        redirect_to root_url
+      end
     else
       render plain: "You are not a member of the Devbootcamp Org on GitHub", status: 403
     end
@@ -34,5 +41,19 @@ class Auth0Controller < ApplicationController
       return true
     end
     false
+  end
+
+  def github_mentor?
+    conn = Faraday.new(:url => 'https://api.github.com') do |faraday|
+      faraday.adapter  Faraday.default_adapter
+    end
+
+    token = "#{request.env['omniauth.auth']['extra']['raw_info']['identities'][0]['access_token']}"
+    response = conn.get do |req|
+      req.url "/teams/1889928/memberships/#{request.env['omniauth.auth']['info']['nickname']}"
+      req.headers['Authorization'] = "token #{token}"
+    end
+
+    response[:status] == "200 OK"
   end
 end
