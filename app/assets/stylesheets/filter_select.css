@@ -6,3 +6,7 @@
   width: 100px;
   height: 2.4em;
 }
+
+.fc-view, .fc-view>table {
+  height: 70vh;
+}
