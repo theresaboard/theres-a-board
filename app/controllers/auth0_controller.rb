@@ -5,10 +5,10 @@ class Auth0Controller < ApplicationController
       user.image = request.env['omniauth.auth']['info']['image']
       user.name  = request.env['omniauth.auth']['info']['name']
       user.email = request.env['omniauth.auth']['info']['email']
+      user.save
       if github_mentor?
         user.roles << Role.find_by(name: "mentor")
       end
-      user.save
 
       session[:uid] = user.uid
       if user.is_mentor?
