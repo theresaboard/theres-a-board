@@ -9,6 +9,9 @@
 
   <div class="navbar-collapse collapse" id="navbar-mobile">
     <ul class="nav navbar-nav navbar-right">
+      <% if current_user.is_mentor? %>
+      <li><a href="/mentor"><i class="icon-people"></i></a></li>
+      <% end %>
       <li><a href="/"><i class="icon-calendar2"></i></a></li>
       <li><a href="/shares"><i class="icon-book"></i></a></li>
       <li class="dropdown dropdown-user">
