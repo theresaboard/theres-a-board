@@ -18,21 +18,29 @@ For DBC students who want to learn the mentor me site is a resource allocation t
 
 ### Scope
 ##### 1. NOT IN Scope
+
 - tinder
 - feedback (student)
 - chat
 - custom profile
 - sf/ chicago/ san diego
 - not testing view/angular
+
 ##### 2. IN Scope
-- notification - email - text - slack
+
+- notification 
+- email
+- text 
+- slack
 - scheduling
 - auto profile
 - user specified cohort
 - paid mentor queue
 - paid mentor status
 - testing for rails api and database
+
 ##### 3. Unresolved
+
 - admin + permissions
 - cohorts from git
 - authentication
@@ -40,6 +48,7 @@ For DBC students who want to learn the mentor me site is a resource allocation t
 
 ### Community
 Members of the community we will most likely need to communicate with:
+
 - paid mentors
 - dbc staff
 - students
@@ -51,12 +60,20 @@ Members of the community we will most likely need to communicate with:
 - erin
 
 ### Technical Stuff
-- angular - json - auth0(included in rails api as well) - github
-- rails api - send grid - sms - slack#
+
+- angular 
+- json 
+- auth0(included in rails api as well) 
+- github
+- rails api 
+- send grid 
+- sms
+- slack
 - postgres
 - heroku
 
-### Scary Shit
+### Scary Stuff
+
 - We don't know angular
 - David is possibly homeless
 - Everyone pulling their weight
@@ -65,7 +82,9 @@ Members of the community we will most likely need to communicate with:
 - Exhaustion
 
 ### Trade Offs
+
 Our priorities for when its down to the wire:
+
 1. Usability
 2. Code Quality
 3. Design

@@ -1,76 +1,23 @@
-# Mentor Me
+# There's a Board
 
-###  Why are we here?
-To enhance DBC's learning environment.
+## Project Description
 
-### Who is this for?
-For DBC students who want to learn, the mentor me site is a resource allocation tool that matches people needing help with those willing to give it.  Unlike the current post-its and whiteboard system, our product is realtime, visible, universally accessible
+> An open source mentorship app initially designed around the simple idea of students teaching other students at Dev Bootcamp. There's a Board evolved into a powerful support platform allowing students, alumni, and employee mentors to connect for studying, tutoring, and skill development. There's a Board was adopted by Dev Bootcamp and is currently in use as their tool for managing both paid and volunteer mentors.
 
-### Selling points:
 
-1. Help when you need it, want it, and without having to look for it
-2. Reinforce your learning so you get more from your time here and are better prepared for the workplace
-3. Immediate
-4. Online
-5. Low friction (github user authentification only)
+## Built With:
 
-### Scope
-##### 1. NOT IN Scope
-- tinder
-- feedback (student)
-- chat
-- custom profile
-- sf/ chicago/ san diego
-- not testing view/angular
+* Ruby/Rails for backend and API.
+* JavaScript for custom front end (utilizing AJAX for API consumption).
+* jQuery, FullCalendar, Bootstrap, for front end presentation and calendar interaction.
+* Test Driven Development using Rspec.
+* CircleCI and SimpleCov for continuous integration and coverage analysis.
+* OmniAuth/Auth0 for OAuth integration.
+* GitHub for version control.
+* Heroku for continuous deployment.
 
-##### 2. IN Scope
-- notification - email - text - slack
-- scheduling
-- auto profile
-- user specified cohort
-- paid mentor queue
-- paid mentor status
-- testing for rails api and database
+## Directions:
 
-##### 3. Unresolved
-- admin + permissions
-- cohorts from git
-- authentication
-- rating
+> There's a Board was designed to be as frictionless for the user as possible. For this reason, we decided to setup login and user registration via your github account. Only github members with a DBC affiliated repository can log in successfully and use the site to keep membership strictly within the DBC community. To see the site in action, we have provided a walkthrough of the site.
 
-### Community
-Members of the community we will most likely need to communicate with:
-
-- paid mentors
-- dbc staff
-- students
-- github
-- heroku
-- auth0
-- circleCI
-- envato
-- erin
-
-### Technical Stuff
-- angular - json - auth0(included in rails api as well) - github
-- rails api - send grid - sms - slack#
-- postgres
-- heroku
-
-### Scary Stuff
-- We don't know angular
-- David is possibly homeless
-- Everyone pulling their weight
-- Lack of Communication
-- Halloween
-- Exhaustion
-
-### Trade Offs
-Our priorities for when its down to the wire:
-
-1. Usability
-2. Code Quality
-3. Design
-4. Scope
-5. Testing
-6. Optimization
+> See [Walkthrough](https://vimeo.com/145595148)

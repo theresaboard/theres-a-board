@@ -38,7 +38,6 @@
                   <p class="media-heading text-semibold"><%= leader.first.name %></p>
                   <small class="display-block no-margin"><%= leader[1] %> sessions</small>
                 </div>
-
               </li>
               <% end %>
               </ul>
@@ -58,14 +57,16 @@
                     <div class="progress-bar progress-bar-info" style="width: <%= (current_user.completed_count * 10) %>%">
                     </div>
                   </div>
-                </li> 
+                </li>
               </ul>
             </div>
           </div>
           <!-- /Tutoring Goal -->
+        </div><!-- /End of col-md-2 -->
 
-        </div>
+        <!-- FullCalendar View -->
         <div class="col-md-10">
+
           <div class="panel panel-default">
             <div class="panel-heading">
               <h5 class="panel-title">The Board</h5>
@@ -87,11 +88,11 @@
             </div>
             <!-- FullCalendar View -->
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+        </div><!-- /End of col-md-10 -->
+      </div> <!-- /row -->
+    </div><!-- /content wrapper -->
+  </div><!-- /page content -->
+</div><!-- /page container -->
 
 <!-- Modal used for showing timeslots -->
 <div id="modal_remote" class="modal fade">
