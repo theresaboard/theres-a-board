@@ -33,7 +33,7 @@ activeMentors.prototype.poll = function () {
   setTimeout(function(){
     self.getMentors();
     self.poll();
-  }, 120000);
+  }, 60000);
 };
 
 var mentorList = new activeMentors()
