@@ -74,6 +74,6 @@ $(function() {
   $('#calendar-filter').change(function(){
     $('#tutor-cal').fullCalendar('refetchEvents');
   });
-  //polling every 5 minutes
-  setInterval(function(){ $('#tutor-cal').fullCalendar('refetchEvents'); }, 300000);
+  //polling every minute
+  setInterval(function(){ $('#tutor-cal').fullCalendar('refetchEvents'); }, 60000);
 });
