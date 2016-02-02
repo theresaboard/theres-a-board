@@ -57,6 +57,15 @@ $(function() {
 
    });
 
+   //Adding webpage scroll blocking when scrolling in calendar
+   $('.fc-view').mouseover(function(){
+    $('body').css({'overflow':'hidden'});
+    });
+
+   $('.fc-view').mouseout(function(){
+    $('body').css({'overflow':'visible'});
+   });
+
   // Fix for modals not changing between shows
   $('body').on('hidden.bs.modal', '.modal', function () {
     $(this).removeData('bs.modal');
