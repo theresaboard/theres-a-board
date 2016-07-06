@@ -40,7 +40,10 @@ class Auth0Controller < ApplicationController
     if response[:status] == "204 No Content"
       return true
     end
-    false
+    # false
+    # force return true to make dev-branch hosted at mentor-me-dev.herokuapp.com
+    # accessible to any user with a GitHub profile
+    true
   end
 
   def github_mentor?
